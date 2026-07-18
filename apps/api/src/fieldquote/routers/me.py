@@ -9,7 +9,7 @@ from fieldquote.core.tenancy import TenantContext, get_current_context
 router = APIRouter(tags=["account"])
 
 
-class CompanyOut(BaseModel):
+class MeCompanyOut(BaseModel):
     id: uuid.UUID
     name: str
     trade: str
@@ -20,7 +20,7 @@ class UserOut(BaseModel):
     id: uuid.UUID
     role: str
     name: str | None
-    company: CompanyOut
+    company: MeCompanyOut
 
 
 @router.get("/me")
@@ -29,7 +29,7 @@ def me(ctx: Annotated[TenantContext, Depends(get_current_context)]) -> UserOut:
         id=ctx.user.id,
         role=ctx.user.role,
         name=ctx.user.name,
-        company=CompanyOut(
+        company=MeCompanyOut(
             id=ctx.company.id,
             name=ctx.company.name,
             trade=ctx.company.trade,

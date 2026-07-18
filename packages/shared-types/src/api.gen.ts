@@ -234,6 +234,36 @@ export interface components {
       /** Notes */
       notes?: string | null;
     };
+    /** CompanyOut */
+    CompanyOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Name */
+      name: string;
+      /** Trade */
+      trade: string;
+      /** Logo Url */
+      logo_url: string | null;
+      /** License Number */
+      license_number: string | null;
+      /** Insurance Line */
+      insurance_line: string | null;
+      /** Phone */
+      phone: string | null;
+      /** Email */
+      email: string | null;
+      /** Address */
+      address: string | null;
+      /** Timezone */
+      timezone: string;
+      /** Settings */
+      settings: {
+        [key: string]: unknown;
+      };
+    };
     /** CompanyPatch */
     CompanyPatch: {
       /** Name */
@@ -327,6 +357,20 @@ export interface components {
       /** Storage Path */
       storage_path: string;
     };
+    /** MeCompanyOut */
+    MeCompanyOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Name */
+      name: string;
+      /** Trade */
+      trade: string;
+      /** Timezone */
+      timezone: string;
+    };
     /** RatesOut */
     RatesOut: {
       /** Labor Rate */
@@ -376,7 +420,7 @@ export interface components {
       role: string;
       /** Name */
       name: string | null;
-      company: components['schemas']['fieldquote__routers__me__CompanyOut'];
+      company: components['schemas']['MeCompanyOut'];
     };
     /** ValidationError */
     ValidationError: {
@@ -390,50 +434,6 @@ export interface components {
       input?: unknown;
       /** Context */
       ctx?: Record<string, never>;
-    };
-    /** CompanyOut */
-    fieldquote__routers__company__CompanyOut: {
-      /**
-       * Id
-       * Format: uuid
-       */
-      id: string;
-      /** Name */
-      name: string;
-      /** Trade */
-      trade: string;
-      /** Logo Url */
-      logo_url: string | null;
-      /** License Number */
-      license_number: string | null;
-      /** Insurance Line */
-      insurance_line: string | null;
-      /** Phone */
-      phone: string | null;
-      /** Email */
-      email: string | null;
-      /** Address */
-      address: string | null;
-      /** Timezone */
-      timezone: string;
-      /** Settings */
-      settings: {
-        [key: string]: unknown;
-      };
-    };
-    /** CompanyOut */
-    fieldquote__routers__me__CompanyOut: {
-      /**
-       * Id
-       * Format: uuid
-       */
-      id: string;
-      /** Name */
-      name: string;
-      /** Trade */
-      trade: string;
-      /** Timezone */
-      timezone: string;
     };
   };
   responses: never;
@@ -499,7 +499,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['fieldquote__routers__company__CompanyOut'];
+          'application/json': components['schemas']['CompanyOut'];
         };
       };
     };
@@ -523,7 +523,7 @@ export interface operations {
           [name: string]: unknown;
         };
         content: {
-          'application/json': components['schemas']['fieldquote__routers__company__CompanyOut'];
+          'application/json': components['schemas']['CompanyOut'];
         };
       };
       /** @description Validation Error */
