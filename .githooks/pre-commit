@@ -1,0 +1,25 @@
+#!/bin/sh
+# FieldQuote pre-commit: fast checks only (full suite runs in CI).
+set -e
+
+# Block accidental secret commits
+if git diff --cached --name-only | grep -E '(^|/)\.env(\..*)?$' | grep -v '\.env\.example$' >/dev/null 2>&1; then
+  echo "✗ Refusing to commit .env files. Use .env.example for documentation." >&2
+  exit 1
+fi
+
+# Python: lint staged api files if any
+if git diff --cached --name-only | grep '^apps/api/.*\.py$' >/dev/null 2>&1; then
+  (cd apps/api && uv run ruff check src tests) || exit 1
+fi
+
+# JS/TS: prettier check on staged files
+STAGED_JS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(ts|tsx|js|json)$' || true)
+if [ -n "$STAGED_JS" ]; then
+  pnpm exec prettier --check $STAGED_JS || {
+    echo "✗ Run 'pnpm format' and re-stage." >&2
+    exit 1
+  }
+fi
+
+exit 0

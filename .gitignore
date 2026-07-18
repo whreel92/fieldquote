@@ -1,0 +1,35 @@
+# deps
+node_modules/
+.pnpm-store/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+uv.lock.orig
+
+# builds
+dist/
+build/
+.next/
+.turbo/
+.expo/
+*.tsbuildinfo
+apps/api/openapi.json
+
+# env & secrets
+.env
+.env.*
+!.env.example
+
+# misc
+.DS_Store
+*.log
+.idea/
+.vscode/
