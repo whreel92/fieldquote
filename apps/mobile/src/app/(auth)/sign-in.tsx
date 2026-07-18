@@ -1,8 +1,10 @@
 import { colors, radii, spacing, typography } from '@fieldquote/ui';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
+import { BrandMark, FormScreen } from '@/components/screen';
+import { Button, ErrorText, Field } from '@/components/ui';
 import { isSupabaseConfigured, supabase } from '@/lib/supabase';
 
 export default function SignInScreen() {
@@ -27,41 +29,37 @@ export default function SignInScreen() {
     });
     setSending(false);
     if (err) {
-      setError('Could not send the code. Check the address and try again.');
+      setError('Could not send the sign-in email. Check the address and try again.');
       return;
     }
     router.push({ pathname: '/(auth)/verify', params: { email: email.trim() } });
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>FieldQuote</Text>
-      <Text style={styles.subtitle}>Estimates that build themselves on site.</Text>
-
+    <FormScreen>
+      <BrandMark tagline="Estimates that build themselves on site." />
       {isSupabaseConfigured ? (
         <>
-          <TextInput
-            style={styles.input}
+          <Field
+            label="Work email"
             placeholder="you@yourcompany.com"
-            placeholderTextColor={colors.textMuted}
             autoCapitalize="none"
             autoComplete="email"
             keyboardType="email-address"
             value={email}
             onChangeText={setEmail}
+            onSubmitEditing={() => void sendCode()}
           />
-          {error ? <Text style={styles.error}>{error}</Text> : null}
-          <Pressable
-            style={[styles.button, (!email.includes('@') || sending) && styles.buttonDisabled]}
-            disabled={!email.includes('@') || sending}
-            onPress={sendCode}
-          >
-            {sending ? (
-              <ActivityIndicator color={colors.textOnPrimary} />
-            ) : (
-              <Text style={styles.buttonText}>Email me a sign-in code</Text>
-            )}
-          </Pressable>
+          <ErrorText message={error} />
+          <Button
+            title="Email me a sign-in link"
+            onPress={() => void sendCode()}
+            disabled={!email.includes('@')}
+            loading={sending}
+          />
+          <Text style={styles.finePrint}>
+            No password needed — we email you a one-time sign-in link.
+          </Text>
         </>
       ) : (
         <View style={styles.notConfigured}>
@@ -71,52 +69,17 @@ export default function SignInScreen() {
           </Text>
         </View>
       )}
-    </View>
+    </FormScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bg,
-    justifyContent: 'center',
-    padding: spacing.lg,
-    gap: spacing.md,
-  },
-  title: {
-    fontSize: typography.size.xxl,
-    fontFamily: typography.family.bold,
-    color: colors.text,
+  finePrint: {
+    fontSize: typography.size.xs,
+    fontFamily: typography.family.regular,
+    color: colors.textMuted,
     textAlign: 'center',
   },
-  subtitle: {
-    fontSize: typography.size.md,
-    color: colors.textSecondary,
-    textAlign: 'center',
-    marginBottom: spacing.lg,
-  },
-  input: {
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
-    borderWidth: 1,
-    borderRadius: radii.md,
-    padding: spacing.md,
-    fontSize: typography.size.md,
-    color: colors.text,
-  },
-  button: {
-    backgroundColor: colors.primary,
-    borderRadius: radii.md,
-    padding: spacing.md,
-    alignItems: 'center',
-  },
-  buttonDisabled: { opacity: 0.5 },
-  buttonText: {
-    color: colors.textOnPrimary,
-    fontSize: typography.size.md,
-    fontFamily: typography.family.semibold,
-  },
-  error: { color: colors.danger, fontSize: typography.size.sm },
   notConfigured: {
     backgroundColor: colors.surface,
     borderColor: colors.warning,
@@ -124,5 +87,9 @@ const styles = StyleSheet.create({
     borderRadius: radii.md,
     padding: spacing.md,
   },
-  notConfiguredText: { color: colors.textSecondary, fontSize: typography.size.sm },
+  notConfiguredText: {
+    color: colors.textSecondary,
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.regular,
+  },
 });

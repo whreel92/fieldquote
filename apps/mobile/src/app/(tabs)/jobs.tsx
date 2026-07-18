@@ -105,7 +105,13 @@ function JobRow({ job, onPress }: { job: Job; onPress: () => void }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: colors.bg },
-  list: { padding: spacing.md, paddingBottom: 96 },
+  list: {
+    width: '100%',
+    maxWidth: 720,
+    alignSelf: 'center',
+    padding: spacing.md,
+    paddingBottom: 96,
+  },
   sectionHeader: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -133,7 +139,15 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   rowSub: { fontSize: typography.size.sm, color: colors.textMuted },
-  empty: { flex: 1, justifyContent: 'center', padding: spacing.lg, gap: spacing.md },
+  empty: {
+    flex: 1,
+    justifyContent: 'center',
+    padding: spacing.lg,
+    gap: spacing.md,
+    width: '100%',
+    maxWidth: 480,
+    alignSelf: 'center',
+  },
   emptyTitle: {
     fontSize: typography.size.lg,
     fontFamily: typography.family.semibold,
@@ -141,5 +155,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   emptyBody: { fontSize: typography.size.sm, color: colors.textSecondary, textAlign: 'center' },
-  fabWrap: { position: 'absolute', bottom: spacing.lg, left: spacing.lg, right: spacing.lg },
+  fabWrap: {
+    position: 'absolute',
+    bottom: spacing.lg,
+    left: spacing.lg,
+    right: spacing.lg,
+    maxWidth: 480,
+    alignSelf: 'center',
+    width: '100%',
+  },
 });

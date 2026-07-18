@@ -68,7 +68,13 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   screen: { backgroundColor: colors.bg },
-  container: { padding: spacing.md, gap: spacing.sm },
+  container: {
+    width: '100%',
+    maxWidth: 640,
+    alignSelf: 'center',
+    padding: spacing.md,
+    gap: spacing.sm,
+  },
   row: {
     flexDirection: 'row',
     alignItems: 'center',

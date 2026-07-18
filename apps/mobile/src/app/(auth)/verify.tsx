@@ -1,8 +1,10 @@
-import { colors, radii, spacing, typography } from '@fieldquote/ui';
+import { colors, typography } from '@fieldquote/ui';
 import { useLocalSearchParams } from 'expo-router';
 import { useState } from 'react';
-import { ActivityIndicator, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { StyleSheet, Text } from 'react-native';
 
+import { BrandMark, FormScreen } from '@/components/screen';
+import { Button, ErrorText, Field } from '@/components/ui';
 import { supabase } from '@/lib/supabase';
 
 export default function VerifyScreen() {
@@ -24,82 +26,48 @@ export default function VerifyScreen() {
     if (err) {
       setError('That code didn’t work. Check it and try again.');
     }
-    // On success the root layout's auth gate redirects to the tabs.
+    // On success the root layout's auth gate redirects onward.
   };
 
   return (
-    <View style={styles.container}>
+    <FormScreen>
+      <BrandMark />
       <Text style={styles.title}>Check your email</Text>
       <Text style={styles.subtitle}>
-        We emailed {email ?? 'you'} a sign-in link — tap it and you&apos;re in. Have a code instead?
+        We sent a sign-in link to {email ?? 'you'} — tap it and you&apos;re in. Have a code instead?
         Enter it below.
       </Text>
-      <TextInput
-        style={styles.input}
-        placeholder="123456"
-        placeholderTextColor={colors.textMuted}
+      <Field
+        label="Sign-in code"
+        placeholder="12345678"
         keyboardType="number-pad"
         maxLength={8}
         value={code}
         onChangeText={setCode}
+        onSubmitEditing={() => void verify()}
       />
-      {error ? <Text style={styles.error}>{error}</Text> : null}
-      <Pressable
-        style={[styles.button, (code.length < 6 || verifying) && styles.buttonDisabled]}
-        disabled={code.length < 6 || verifying}
-        onPress={verify}
-      >
-        {verifying ? (
-          <ActivityIndicator color={colors.textOnPrimary} />
-        ) : (
-          <Text style={styles.buttonText}>Sign in</Text>
-        )}
-      </Pressable>
-    </View>
+      <ErrorText message={error} />
+      <Button
+        title="Sign in"
+        onPress={() => void verify()}
+        disabled={code.length < 6}
+        loading={verifying}
+      />
+    </FormScreen>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.bg,
-    justifyContent: 'center',
-    padding: spacing.lg,
-    gap: spacing.md,
-  },
   title: {
-    fontSize: typography.size.xl,
+    fontSize: typography.size.lg,
     fontFamily: typography.family.bold,
     color: colors.text,
     textAlign: 'center',
   },
   subtitle: {
-    fontSize: typography.size.md,
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.regular,
     color: colors.textSecondary,
     textAlign: 'center',
   },
-  input: {
-    backgroundColor: colors.surface,
-    borderColor: colors.border,
-    borderWidth: 1,
-    borderRadius: radii.md,
-    padding: spacing.md,
-    fontSize: typography.size.xl,
-    color: colors.text,
-    textAlign: 'center',
-    letterSpacing: 8,
-  },
-  button: {
-    backgroundColor: colors.primary,
-    borderRadius: radii.md,
-    padding: spacing.md,
-    alignItems: 'center',
-  },
-  buttonDisabled: { opacity: 0.5 },
-  buttonText: {
-    color: colors.textOnPrimary,
-    fontSize: typography.size.md,
-    fontFamily: typography.family.semibold,
-  },
-  error: { color: colors.danger, fontSize: typography.size.sm, textAlign: 'center' },
 });

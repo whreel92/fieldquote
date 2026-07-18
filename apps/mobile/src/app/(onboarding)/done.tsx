@@ -37,6 +37,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.bg,
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
     justifyContent: 'center',
     padding: spacing.lg,
     gap: spacing.md,

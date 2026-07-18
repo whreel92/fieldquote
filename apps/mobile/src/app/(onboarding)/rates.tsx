@@ -36,7 +36,7 @@ export default function OnboardingRates() {
   });
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
+    <ScrollView style={styles.screenBg} contentContainerStyle={styles.container}>
       <Text style={styles.step}>Step 2 of 4</Text>
       <Text style={styles.title}>Your rates</Text>
       <Text style={styles.subtitle}>
@@ -103,9 +103,12 @@ export default function OnboardingRates() {
 }
 
 const styles = StyleSheet.create({
+  screenBg: { backgroundColor: colors.bg },
   container: {
     flexGrow: 1,
-    backgroundColor: colors.bg,
+    width: '100%',
+    maxWidth: 560,
+    alignSelf: 'center',
     padding: spacing.lg,
     paddingTop: spacing.xxl,
     gap: spacing.md,

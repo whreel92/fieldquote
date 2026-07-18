@@ -109,7 +109,14 @@ export default function JobDetailScreen() {
 
 const styles = StyleSheet.create({
   screen: { backgroundColor: colors.bg },
-  container: { padding: spacing.lg, gap: spacing.md, paddingBottom: spacing.xxl },
+  container: {
+    width: '100%',
+    maxWidth: 640,
+    alignSelf: 'center',
+    padding: spacing.lg,
+    gap: spacing.md,
+    paddingBottom: spacing.xxl,
+  },
   loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
   title: { fontSize: typography.size.xl, fontFamily: typography.family.bold, color: colors.text },
   statusRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },

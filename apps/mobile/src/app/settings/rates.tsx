@@ -115,7 +115,14 @@ function RatesForm({ initial }: { initial: Rates }) {
 
 const styles = StyleSheet.create({
   screen: { backgroundColor: colors.bg },
-  container: { padding: spacing.lg, gap: spacing.md, paddingBottom: spacing.xxl },
+  container: {
+    width: '100%',
+    maxWidth: 640,
+    alignSelf: 'center',
+    padding: spacing.lg,
+    gap: spacing.md,
+    paddingBottom: spacing.xxl,
+  },
   loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
   loadingText: { color: colors.textSecondary, fontSize: typography.size.sm },
   chipRow: { flexDirection: 'row', gap: spacing.sm },
