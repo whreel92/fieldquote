@@ -2,7 +2,10 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import { useEffect, useState } from 'react';
 
+import { initObservability } from '@/lib/observability';
 import { useAuth } from '@/state/auth';
+
+initObservability();
 
 const queryClient = new QueryClient();
 
