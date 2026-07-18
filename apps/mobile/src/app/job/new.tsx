@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
   container: { padding: spacing.lg, gap: spacing.md, paddingBottom: spacing.xxl },
   label: {
     fontSize: typography.size.sm,
-    fontWeight: typography.weight.medium,
+    fontFamily: typography.family.medium,
     color: colors.textSecondary,
   },
   chipWrap: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
@@ -153,10 +153,10 @@ const styles = StyleSheet.create({
   },
   selectedClientName: {
     fontSize: typography.size.md,
-    fontWeight: typography.weight.medium,
+    fontFamily: typography.family.medium,
     color: colors.text,
   },
-  changeLink: { color: colors.primary, fontSize: typography.size.sm },
+  changeLink: { color: colors.accentText, fontSize: typography.size.sm },
   suggestion: {
     backgroundColor: colors.surface,
     borderRadius: radii.sm,
@@ -167,5 +167,5 @@ const styles = StyleSheet.create({
   suggestionName: { fontSize: typography.size.md, color: colors.text },
   suggestionSub: { fontSize: typography.size.xs, color: colors.textMuted },
   createNew: { borderStyle: 'dashed', borderColor: colors.primary },
-  createNewText: { color: colors.primary, fontSize: typography.size.sm },
+  createNewText: { color: colors.accentText, fontSize: typography.size.sm },
 });

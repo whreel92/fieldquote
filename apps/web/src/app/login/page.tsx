@@ -16,7 +16,7 @@ export default function LoginPage() {
         <button
           type="button"
           disabled
-          className="rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white opacity-50"
+          className="rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white opacity-50"
         >
           Email me a sign-in code
         </button>

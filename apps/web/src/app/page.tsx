@@ -3,7 +3,7 @@ import Link from 'next/link';
 export default function MarketingPage() {
   return (
     <main className="flex flex-1 flex-col items-center justify-center gap-6 bg-slate-50 px-6 py-24 text-center">
-      <span className="rounded-full bg-amber-100 px-3 py-1 text-sm font-medium text-amber-800">
+      <span className="rounded-full bg-orange-100 px-3 py-1 text-sm font-medium text-orange-800">
         Built for residential electricians
       </span>
       <h1 className="max-w-2xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
@@ -17,7 +17,7 @@ export default function MarketingPage() {
       <div className="flex gap-4">
         <Link
           href="/login"
-          className="rounded-lg bg-blue-700 px-6 py-3 font-semibold text-white hover:bg-blue-800"
+          className="rounded-lg bg-orange-600 px-6 py-3 font-semibold text-white hover:bg-orange-700"
         >
           Sign in
         </Link>

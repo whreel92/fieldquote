@@ -17,7 +17,13 @@ export default function SignInScreen() {
     setError(null);
     const { error: err } = await supabase.auth.signInWithOtp({
       email: email.trim(),
-      options: { shouldCreateUser: true },
+      options: {
+        shouldCreateUser: true,
+        // Default Supabase emails carry a sign-in LINK (templates are locked
+        // until custom SMTP lands — HUMAN_TODO). On web the link redirects
+        // back here and signs in; the verify screen also accepts a code.
+        ...(typeof window !== 'undefined' ? { emailRedirectTo: window.location.origin } : {}),
+      },
     });
     setSending(false);
     if (err) {
@@ -79,7 +85,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: typography.size.xxl,
-    fontWeight: typography.weight.bold,
+    fontFamily: typography.family.bold,
     color: colors.text,
     textAlign: 'center',
   },
@@ -108,7 +114,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.textOnPrimary,
     fontSize: typography.size.md,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
   },
   error: { color: colors.danger, fontSize: typography.size.sm },
   notConfigured: {

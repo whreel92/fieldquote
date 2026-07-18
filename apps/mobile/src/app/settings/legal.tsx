@@ -33,7 +33,7 @@ export default function LegalScreen() {
 const styles = StyleSheet.create({
   screen: { backgroundColor: colors.bg },
   container: { padding: spacing.lg, gap: spacing.md },
-  heading: { fontSize: typography.size.lg, fontWeight: typography.weight.bold, color: colors.text },
+  heading: { fontSize: typography.size.lg, fontFamily: typography.family.bold, color: colors.text },
   body: { fontSize: typography.size.sm, color: colors.textSecondary },
   disclaimer: { fontSize: typography.size.sm, color: colors.text, fontStyle: 'italic' },
   footnote: { fontSize: typography.size.xs, color: colors.textMuted },

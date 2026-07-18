@@ -30,20 +30,23 @@ export default function VerifyScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Check your email</Text>
-      <Text style={styles.subtitle}>We sent a 6-digit code to {email ?? 'your email'}.</Text>
+      <Text style={styles.subtitle}>
+        We emailed {email ?? 'you'} a sign-in link — tap it and you&apos;re in. Have a code instead?
+        Enter it below.
+      </Text>
       <TextInput
         style={styles.input}
         placeholder="123456"
         placeholderTextColor={colors.textMuted}
         keyboardType="number-pad"
-        maxLength={6}
+        maxLength={8}
         value={code}
         onChangeText={setCode}
       />
       {error ? <Text style={styles.error}>{error}</Text> : null}
       <Pressable
-        style={[styles.button, (code.length !== 6 || verifying) && styles.buttonDisabled]}
-        disabled={code.length !== 6 || verifying}
+        style={[styles.button, (code.length < 6 || verifying) && styles.buttonDisabled]}
+        disabled={code.length < 6 || verifying}
         onPress={verify}
       >
         {verifying ? (
@@ -66,7 +69,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: typography.size.xl,
-    fontWeight: typography.weight.bold,
+    fontFamily: typography.family.bold,
     color: colors.text,
     textAlign: 'center',
   },
@@ -96,7 +99,7 @@ const styles = StyleSheet.create({
   buttonText: {
     color: colors.textOnPrimary,
     fontSize: typography.size.md,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
   },
   error: { color: colors.danger, fontSize: typography.size.sm, textAlign: 'center' },
 });

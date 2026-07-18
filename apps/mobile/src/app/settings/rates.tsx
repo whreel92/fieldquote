@@ -119,11 +119,11 @@ const styles = StyleSheet.create({
   loading: { flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: colors.bg },
   loadingText: { color: colors.textSecondary, fontSize: typography.size.sm },
   chipRow: { flexDirection: 'row', gap: spacing.sm },
-  warn: { color: '#92400E', fontSize: typography.size.sm },
+  warn: { color: colors.warning, fontSize: typography.size.sm },
   example: {
     fontSize: typography.size.sm,
-    fontWeight: typography.weight.semibold,
-    color: colors.primary,
+    fontFamily: typography.family.semibold,
+    color: colors.accentText,
   },
   effectiveNote: { fontSize: typography.size.xs, color: colors.textSecondary },
 });

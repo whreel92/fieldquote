@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
   emoji: { fontSize: 56, textAlign: 'center' },
   title: {
     fontSize: typography.size.xl,
-    fontWeight: typography.weight.bold,
+    fontFamily: typography.family.bold,
     color: colors.text,
     textAlign: 'center',
   },

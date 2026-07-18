@@ -19,8 +19,9 @@ export const supabase: SupabaseClient | null =
           // AsyncStorage is native-only; web/SSR falls back to supabase-js defaults.
           ...(Platform.OS === 'web' ? {} : { storage: AsyncStorage }),
           autoRefreshToken: true,
-          persistSession: Platform.OS !== 'web',
-          detectSessionInUrl: false,
+          persistSession: true,
+          // Web: pick up magic-link tokens from the URL hash after email redirect.
+          detectSessionInUrl: Platform.OS === 'web',
         },
       })
     : null;

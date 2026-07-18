@@ -2,9 +2,10 @@ import logging
 
 import sentry_sdk
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 
 from fieldquote import __version__
-from fieldquote.core.config import get_settings
+from fieldquote.core.config import AppEnv, get_settings
 from fieldquote.core.errors import register_error_handlers
 from fieldquote.core.logging import configure_logging
 from fieldquote.routers import clients, company, health, jobs, me
@@ -21,6 +22,17 @@ def create_app() -> FastAPI:
         )
 
     app = FastAPI(title="FieldQuote API", version=__version__)
+    origins = [settings.public_web_url]
+    if settings.app_env in (AppEnv.development, AppEnv.test):
+        # Expo web dev server + Next dev server.
+        origins += ["http://localhost:8081", "http://localhost:19006", "http://localhost:3000"]
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=sorted(set(origins)),
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
     register_error_handlers(app)
     app.include_router(health.router)
     app.include_router(me.router)

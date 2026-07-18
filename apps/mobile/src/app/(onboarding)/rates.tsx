@@ -111,18 +111,18 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   step: { fontSize: typography.size.sm, color: colors.textMuted },
-  title: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.text },
+  title: { fontSize: typography.size.xl, fontFamily: typography.family.bold, color: colors.text },
   subtitle: { fontSize: typography.size.sm, color: colors.textSecondary },
   chipRow: { flexDirection: 'row', gap: spacing.sm },
   explainTitle: {
     fontSize: typography.size.sm,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
     color: colors.text,
   },
   explainBody: { fontSize: typography.size.sm, color: colors.textSecondary },
   example: {
     fontSize: typography.size.sm,
-    fontWeight: typography.weight.semibold,
-    color: colors.primary,
+    fontFamily: typography.family.semibold,
+    color: colors.accentText,
   },
 });

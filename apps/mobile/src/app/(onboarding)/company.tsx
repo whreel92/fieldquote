@@ -75,6 +75,6 @@ const styles = StyleSheet.create({
     gap: spacing.md,
   },
   step: { fontSize: typography.size.sm, color: colors.textMuted },
-  title: { fontSize: typography.size.xl, fontWeight: typography.weight.bold, color: colors.text },
+  title: { fontSize: typography.size.xl, fontFamily: typography.family.bold, color: colors.text },
   subtitle: { fontSize: typography.size.sm, color: colors.textSecondary },
 });

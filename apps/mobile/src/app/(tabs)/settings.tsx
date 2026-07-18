@@ -82,17 +82,17 @@ const styles = StyleSheet.create({
   rowTitleWrap: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
   rowTitle: {
     fontSize: typography.size.md,
-    fontWeight: typography.weight.medium,
+    fontFamily: typography.family.medium,
     color: colors.text,
   },
   rowSub: { fontSize: typography.size.sm, color: colors.textMuted },
   badge: {
-    backgroundColor: '#FEF3C7',
+    backgroundColor: colors.warningBg,
     borderRadius: radii.full,
     paddingHorizontal: spacing.sm,
     paddingVertical: 2,
   },
-  badgeText: { fontSize: typography.size.xs, color: '#92400E' },
+  badgeText: { fontSize: typography.size.xs, color: colors.warning },
   chevron: { fontSize: typography.size.xl, color: colors.textMuted },
   signOut: { marginTop: spacing.lg },
 });

@@ -1,4 +1,4 @@
-import { colors, radii, spacing, typography } from '@fieldquote/ui';
+import { colors, radii, spacing, touchTarget, typography } from '@fieldquote/ui';
 import type { ReactNode } from 'react';
 import {
   ActivityIndicator,
@@ -23,23 +23,32 @@ export function Button({
   loading?: boolean;
   variant?: 'primary' | 'secondary' | 'danger';
 }) {
-  const style = [
-    styles.button,
-    variant === 'secondary' && styles.buttonSecondary,
-    variant === 'danger' && styles.buttonDanger,
-    (disabled || loading) && styles.buttonDisabled,
-  ];
-  const textStyle = [
-    styles.buttonText,
-    variant === 'secondary' && { color: colors.text },
-    variant === 'danger' && { color: colors.danger },
-  ];
   return (
-    <Pressable style={style} onPress={onPress} disabled={disabled || loading}>
+    <Pressable
+      onPress={onPress}
+      disabled={disabled || loading}
+      accessibilityRole="button"
+      accessibilityLabel={title}
+      style={({ pressed }) => [
+        styles.button,
+        variant === 'secondary' && styles.buttonSecondary,
+        variant === 'danger' && styles.buttonDanger,
+        pressed && (variant === 'primary' ? styles.buttonPrimaryPressed : styles.buttonAltPressed),
+        (disabled || loading) && styles.buttonDisabled,
+      ]}
+    >
       {loading ? (
-        <ActivityIndicator color={variant === 'primary' ? colors.textOnPrimary : colors.primary} />
+        <ActivityIndicator color={variant === 'primary' ? colors.textOnPrimary : colors.ink} />
       ) : (
-        <Text style={textStyle}>{title}</Text>
+        <Text
+          style={[
+            styles.buttonText,
+            variant === 'secondary' && { color: colors.ink },
+            variant === 'danger' && { color: colors.danger },
+          ]}
+        >
+          {title}
+        </Text>
       )}
     </Pressable>
   );
@@ -52,8 +61,13 @@ export function Field({
 }: { label: string; hint?: string } & TextInputProps) {
   return (
     <View style={styles.field}>
-      <Text style={styles.label}>{label}</Text>
-      <TextInput style={styles.input} placeholderTextColor={colors.textMuted} {...inputProps} />
+      {label ? <Text style={styles.label}>{label}</Text> : null}
+      <TextInput
+        style={styles.input}
+        placeholderTextColor={colors.textMuted}
+        accessibilityLabel={label || inputProps.placeholder}
+        {...inputProps}
+      />
       {hint ? <Text style={styles.hint}>{hint}</Text> : null}
     </View>
   );
@@ -69,7 +83,17 @@ export function Chip({
   onPress: () => void;
 }) {
   return (
-    <Pressable style={[styles.chip, selected && styles.chipSelected]} onPress={onPress}>
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityState={{ selected }}
+      hitSlop={{ top: 6, bottom: 6, left: 4, right: 4 }}
+      style={({ pressed }) => [
+        styles.chip,
+        selected && styles.chipSelected,
+        pressed && { opacity: 0.85 },
+      ]}
+    >
       <Text style={[styles.chipText, selected && styles.chipTextSelected]}>{label}</Text>
     </Pressable>
   );
@@ -88,52 +112,70 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.primary,
     borderRadius: radii.md,
-    padding: spacing.md,
+    minHeight: touchTarget,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm + 4,
     alignItems: 'center',
+    justifyContent: 'center',
   },
+  buttonPrimaryPressed: { backgroundColor: colors.primaryPressed },
+  buttonAltPressed: { backgroundColor: colors.surfaceSunken },
   buttonSecondary: {
     backgroundColor: colors.surface,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.border,
   },
   buttonDanger: {
     backgroundColor: colors.surface,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.danger,
   },
-  buttonDisabled: { opacity: 0.5 },
+  buttonDisabled: { opacity: 0.45 },
   buttonText: {
     color: colors.textOnPrimary,
     fontSize: typography.size.md,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
   },
   field: { gap: spacing.xs },
   label: {
     fontSize: typography.size.sm,
-    fontWeight: typography.weight.medium,
+    fontFamily: typography.family.medium,
     color: colors.textSecondary,
   },
   input: {
     backgroundColor: colors.surface,
     borderColor: colors.border,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderRadius: radii.md,
-    padding: spacing.md,
+    minHeight: touchTarget,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm + 2,
     fontSize: typography.size.md,
+    fontFamily: typography.family.regular,
     color: colors.text,
   },
-  hint: { fontSize: typography.size.xs, color: colors.textMuted },
+  hint: {
+    fontSize: typography.size.xs,
+    fontFamily: typography.family.regular,
+    color: colors.textMuted,
+  },
   chip: {
+    minHeight: 40,
+    justifyContent: 'center',
     paddingVertical: spacing.sm,
     paddingHorizontal: spacing.md,
     borderRadius: radii.full,
     backgroundColor: colors.surface,
-    borderWidth: 1,
+    borderWidth: 1.5,
     borderColor: colors.border,
   },
-  chipSelected: { backgroundColor: colors.primary, borderColor: colors.primary },
-  chipText: { color: colors.text, fontSize: typography.size.sm },
-  chipTextSelected: { color: colors.textOnPrimary },
+  chipSelected: { backgroundColor: colors.ink, borderColor: colors.ink },
+  chipText: {
+    color: colors.text,
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.medium,
+  },
+  chipTextSelected: { color: colors.textOnInk },
   card: {
     backgroundColor: colors.surface,
     borderRadius: radii.lg,
@@ -142,5 +184,9 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     gap: spacing.sm,
   },
-  error: { color: colors.danger, fontSize: typography.size.sm },
+  error: {
+    color: colors.danger,
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.medium,
+  },
 });

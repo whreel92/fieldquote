@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: typography.size.lg,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
     color: colors.text,
   },
   subtitle: { fontSize: typography.size.sm, color: colors.textMuted },

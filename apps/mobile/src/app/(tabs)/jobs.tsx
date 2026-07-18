@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
   dot: { width: 10, height: 10, borderRadius: 5 },
   sectionTitle: {
     fontSize: typography.size.sm,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
     color: colors.textSecondary,
   },
   row: {
@@ -129,14 +129,14 @@ const styles = StyleSheet.create({
   },
   rowTitle: {
     fontSize: typography.size.md,
-    fontWeight: typography.weight.medium,
+    fontFamily: typography.family.medium,
     color: colors.text,
   },
   rowSub: { fontSize: typography.size.sm, color: colors.textMuted },
   empty: { flex: 1, justifyContent: 'center', padding: spacing.lg, gap: spacing.md },
   emptyTitle: {
     fontSize: typography.size.lg,
-    fontWeight: typography.weight.semibold,
+    fontFamily: typography.family.semibold,
     color: colors.text,
     textAlign: 'center',
   },
