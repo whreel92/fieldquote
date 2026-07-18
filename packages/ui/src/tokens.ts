@@ -14,6 +14,8 @@ export const colors = {
 
   /** Authority base — headers, nav, emphasis surfaces. */
   ink: '#0F172A',
+  inkDeep: '#0B1120',
+  inkBorder: '#1E293B',
   inkPressed: '#1E293B',
 
   bg: '#F8FAFC',
@@ -69,6 +71,8 @@ export const typography = {
     semibold: 'PlusJakartaSans_600SemiBold',
     bold: 'PlusJakartaSans_700Bold',
     extrabold: 'PlusJakartaSans_800ExtraBold',
+    /** Meter-readout face for numbers, codes, money. */
+    mono: 'JetBrainsMono_500Medium',
   },
   size: {
     xs: 12,

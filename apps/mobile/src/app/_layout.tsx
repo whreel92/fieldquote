@@ -1,3 +1,4 @@
+import { JetBrainsMono_500Medium } from '@expo-google-fonts/jetbrains-mono';
 import {
   PlusJakartaSans_400Regular,
   PlusJakartaSans_500Medium,
@@ -6,6 +7,7 @@ import {
   PlusJakartaSans_800ExtraBold,
   useFonts,
 } from '@expo-google-fonts/plus-jakarta-sans';
+import { colors, typography } from '@fieldquote/ui';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import { Stack, useRouter, useSegments } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
@@ -56,7 +58,15 @@ function useProtectedRoute() {
 function RootNavigator() {
   useProtectedRoute();
   return (
-    <Stack screenOptions={{ headerShown: false }}>
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        headerStyle: { backgroundColor: colors.ink },
+        headerTintColor: colors.textOnInk,
+        headerTitleStyle: { fontFamily: typography.family.semibold, color: colors.textOnInk },
+        headerShadowVisible: false,
+      }}
+    >
       <Stack.Screen name="(auth)" />
       <Stack.Screen name="(onboarding)" />
       <Stack.Screen name="(tabs)" />
@@ -71,6 +81,7 @@ function RootNavigator() {
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
+    JetBrainsMono_500Medium,
     PlusJakartaSans_400Regular,
     PlusJakartaSans_500Medium,
     PlusJakartaSans_600SemiBold,

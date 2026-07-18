@@ -24,7 +24,9 @@ export function FormScreen({ children, footer }: { children: ReactNode; footer?:
 export function BrandMark({ tagline }: { tagline?: string }) {
   return (
     <View style={styles.brand}>
-      <Text style={styles.wordmark}>FieldQuote</Text>
+      <Text style={styles.wordmark}>
+        Field<Text style={styles.wordmarkAccent}>Quote</Text>
+      </Text>
       <View style={styles.rule} />
       {tagline ? <Text style={styles.tagline}>{tagline}</Text> : null}
     </View>
@@ -64,6 +66,7 @@ const styles = StyleSheet.create({
     color: colors.ink,
     letterSpacing: -0.5,
   },
+  wordmarkAccent: { color: colors.primary },
   rule: { width: 48, height: 4, borderRadius: radii.full, backgroundColor: colors.primary },
   tagline: {
     fontSize: typography.size.sm,

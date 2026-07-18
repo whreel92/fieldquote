@@ -1,5 +1,6 @@
 import { colors, spacing, typography } from '@fieldquote/ui';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { Zap } from 'lucide-react-native';
 import { StyleSheet, Text, View } from 'react-native';
 
 import { Button, ErrorText } from '@/components/ui';
@@ -21,7 +22,9 @@ export default function OnboardingDone() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.emoji}>⚡</Text>
+      <View style={styles.iconWrap}>
+        <Zap size={44} color={colors.primary} strokeWidth={2.25} />
+      </View>
       <Text style={styles.title}>You&apos;re set up</Text>
       <Text style={styles.subtitle}>
         Create your first job from the Jobs tab. On-site capture and AI estimates arrive as the
@@ -44,7 +47,7 @@ const styles = StyleSheet.create({
     padding: spacing.lg,
     gap: spacing.md,
   },
-  emoji: { fontSize: 56, textAlign: 'center' },
+  iconWrap: { alignItems: 'center' },
   title: {
     fontSize: typography.size.xl,
     fontFamily: typography.family.bold,

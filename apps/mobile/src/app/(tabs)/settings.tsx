@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { Alert, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
+import { HeaderBand } from '@/components/header-band';
 import { Button } from '@/components/ui';
 import { api } from '@/lib/api';
 import { useAuth } from '@/state/auth';
@@ -40,33 +41,37 @@ export default function SettingsScreen() {
   ];
 
   return (
-    <ScrollView style={styles.screen} contentContainerStyle={styles.container}>
-      {rows.map((row) => (
-        <Pressable key={row.title} style={styles.row} onPress={row.onPress}>
-          <View style={styles.rowText}>
-            <View style={styles.rowTitleWrap}>
-              <Text style={styles.rowTitle}>{row.title}</Text>
-              {row.badge ? (
-                <View style={styles.badge}>
-                  <Text style={styles.badgeText}>{row.badge}</Text>
-                </View>
-              ) : null}
+    <View style={styles.root}>
+      <HeaderBand eyebrow="Your shop" title="Settings" />
+      <ScrollView style={styles.screen} contentContainerStyle={styles.container}>
+        {rows.map((row) => (
+          <Pressable key={row.title} style={styles.row} onPress={row.onPress}>
+            <View style={styles.rowText}>
+              <View style={styles.rowTitleWrap}>
+                <Text style={styles.rowTitle}>{row.title}</Text>
+                {row.badge ? (
+                  <View style={styles.badge}>
+                    <Text style={styles.badgeText}>{row.badge}</Text>
+                  </View>
+                ) : null}
+              </View>
+              <Text style={styles.rowSub} numberOfLines={1}>
+                {row.sub}
+              </Text>
             </View>
-            <Text style={styles.rowSub} numberOfLines={1}>
-              {row.sub}
-            </Text>
-          </View>
-          <Text style={styles.chevron}>›</Text>
-        </Pressable>
-      ))}
-      <View style={styles.signOut}>
-        <Button title="Sign out" variant="danger" onPress={() => void signOut()} />
-      </View>
-    </ScrollView>
+            <Text style={styles.chevron}>›</Text>
+          </Pressable>
+        ))}
+        <View style={styles.signOut}>
+          <Button title="Sign out" variant="danger" onPress={() => void signOut()} />
+        </View>
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  root: { flex: 1, backgroundColor: colors.bg },
   screen: { backgroundColor: colors.bg },
   container: {
     width: '100%',

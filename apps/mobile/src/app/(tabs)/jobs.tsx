@@ -3,6 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useRouter } from 'expo-router';
 import { Pressable, RefreshControl, SectionList, StyleSheet, Text, View } from 'react-native';
 
+import { EquipmentLabel, HeaderBand } from '@/components/header-band';
 import { Button } from '@/components/ui';
 import { api, type Job } from '@/lib/api';
 
@@ -31,27 +32,34 @@ const STATUS_LABEL: Record<JobStatus, string> = {
 export default function JobsScreen() {
   const router = useRouter();
   const jobsQuery = useQuery({ queryKey: ['jobs'], queryFn: api.jobs.list });
+  const jobs = jobsQuery.data ?? [];
 
   const sections = STATUS_ORDER.map((status) => ({
     status,
     title: STATUS_LABEL[status],
-    data: (jobsQuery.data ?? []).filter((j) => j.status === status),
+    data: jobs.filter((j) => j.status === status),
   })).filter((s) => s.data.length > 0);
 
   return (
     <View style={styles.container}>
+      <HeaderBand
+        eyebrow="Pipeline"
+        title="Jobs"
+        meta={jobs.length ? `${jobs.length}` : undefined}
+      />
       {jobsQuery.data?.length === 0 ? (
         <View style={styles.empty}>
-          <Text style={styles.emptyTitle}>No jobs yet</Text>
+          <Text style={styles.emptyTitle}>No jobs on the board</Text>
           <Text style={styles.emptyBody}>
-            Create your first job — captures and estimates hang off it.
+            Every estimate starts with a job. Create the first one.
           </Text>
-          <Button title="New job" onPress={() => router.push('/job/new')} />
+          <Button title="Create a job" onPress={() => router.push('/job/new')} />
         </View>
       ) : (
         <SectionList
           sections={sections}
           keyExtractor={(item) => item.id}
+          stickySectionHeadersEnabled={false}
           refreshControl={
             <RefreshControl
               refreshing={jobsQuery.isRefetching}
@@ -60,15 +68,10 @@ export default function JobsScreen() {
           }
           renderSectionHeader={({ section }) => (
             <View style={styles.sectionHeader}>
-              <View
-                style={[
-                  styles.dot,
-                  { backgroundColor: colors.status[section.status as JobStatus] },
-                ]}
+              <EquipmentLabel
+                text={`${section.title} · ${section.data.length}`}
+                color={colors.status[section.status as JobStatus]}
               />
-              <Text style={styles.sectionTitle}>
-                {section.title} · {section.data.length}
-              </Text>
             </View>
           )}
           renderItem={({ item }) => (
@@ -80,9 +83,11 @@ export default function JobsScreen() {
           }
         />
       )}
-      {jobsQuery.data && jobsQuery.data.length > 0 ? (
-        <View style={styles.fabWrap}>
-          <Button title="+ New job" onPress={() => router.push('/job/new')} />
+      {jobs.length > 0 ? (
+        <View style={styles.fabRow} pointerEvents="box-none">
+          <View style={styles.fabWrap}>
+            <Button title="+ New job" onPress={() => router.push('/job/new')} />
+          </View>
         </View>
       ) : null}
     </View>
@@ -90,15 +95,24 @@ export default function JobsScreen() {
 }
 
 function JobRow({ job, onPress }: { job: Job; onPress: () => void }) {
+  const rail = colors.status[job.status as JobStatus] ?? colors.textMuted;
   return (
-    <Pressable style={styles.row} onPress={onPress}>
-      <Text style={styles.rowTitle} numberOfLines={1}>
-        {job.title}
-      </Text>
-      <Text style={styles.rowSub} numberOfLines={1}>
-        {job.client_name ?? 'No client'}
-        {job.address ? ` · ${job.address}` : ''}
-      </Text>
+    <Pressable
+      onPress={onPress}
+      accessibilityRole="button"
+      accessibilityLabel={job.title}
+      style={({ pressed }) => [styles.row, pressed && styles.rowPressed]}
+    >
+      <View style={[styles.rail, { backgroundColor: rail }]} />
+      <View style={styles.rowBody}>
+        <Text style={styles.rowTitle} numberOfLines={1}>
+          {job.title}
+        </Text>
+        <Text style={styles.rowSub} numberOfLines={1}>
+          {job.client_name ?? 'No client'}
+          {job.address ? `  ·  ${job.address}` : ''}
+        </Text>
+      </View>
     </Pressable>
   );
 }
@@ -112,33 +126,36 @@ const styles = StyleSheet.create({
     padding: spacing.md,
     paddingBottom: 96,
   },
-  sectionHeader: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: spacing.sm,
-    paddingVertical: spacing.sm,
-  },
-  dot: { width: 10, height: 10, borderRadius: 5 },
-  sectionTitle: {
-    fontSize: typography.size.sm,
-    fontFamily: typography.family.semibold,
-    color: colors.textSecondary,
-  },
+  sectionHeader: { paddingTop: spacing.md, paddingBottom: spacing.sm },
   row: {
+    flexDirection: 'row',
     backgroundColor: colors.surface,
     borderRadius: radii.md,
     borderWidth: 1,
     borderColor: colors.border,
-    padding: spacing.md,
     marginBottom: spacing.sm,
+    overflow: 'hidden',
+    minHeight: 64,
+  },
+  rowPressed: { backgroundColor: colors.surfaceSunken },
+  rail: { width: 5 },
+  rowBody: {
+    flex: 1,
+    paddingHorizontal: spacing.md,
+    paddingVertical: spacing.sm + 4,
+    justifyContent: 'center',
     gap: 2,
   },
   rowTitle: {
     fontSize: typography.size.md,
-    fontFamily: typography.family.medium,
+    fontFamily: typography.family.semibold,
     color: colors.text,
   },
-  rowSub: { fontSize: typography.size.sm, color: colors.textMuted },
+  rowSub: {
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.regular,
+    color: colors.textMuted,
+  },
   empty: {
     flex: 1,
     justifyContent: 'center',
@@ -150,18 +167,23 @@ const styles = StyleSheet.create({
   },
   emptyTitle: {
     fontSize: typography.size.lg,
-    fontFamily: typography.family.semibold,
+    fontFamily: typography.family.bold,
     color: colors.text,
     textAlign: 'center',
   },
-  emptyBody: { fontSize: typography.size.sm, color: colors.textSecondary, textAlign: 'center' },
-  fabWrap: {
+  emptyBody: {
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.regular,
+    color: colors.textSecondary,
+    textAlign: 'center',
+  },
+  fabRow: {
     position: 'absolute',
     bottom: spacing.lg,
-    left: spacing.lg,
-    right: spacing.lg,
-    maxWidth: 480,
-    alignSelf: 'center',
-    width: '100%',
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+    paddingHorizontal: spacing.lg,
   },
+  fabWrap: { width: '100%', maxWidth: 480 },
 });
