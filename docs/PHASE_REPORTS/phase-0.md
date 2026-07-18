@@ -10,11 +10,19 @@ github.com/whreel92/fieldquote with `main`)
 > config. **Live round-trip demonstrated:** real hosted-Supabase ES256 token → JWKS verify →
 > auto-provision → `GET /me` returned user + company, idempotent on repeat. (API ran against a
 > migrated local Postgres; hosted `DATABASE_URL` still needs the DB password — HUMAN_TODO.)
-> Remaining before Phase 1: enable GitHub Actions on the repo (currently disabled — one click,
-> needs Will) and see CI green; hosted `DATABASE_URL` + `alembic upgrade head` against it.
 > A smoke auth user `fieldquote.smoke@gmail.com` exists in the hosted project; delete freely.
-> Revised recommendation: **GO for Phase 1 once CI runs green on GitHub** — hosted DATABASE_URL
-> can land in parallel and isn't needed for Phase 1 development (local stack covers it).
+>
+> **CI: GREEN.** GitHub Actions was blocked by an account-level $0 "stop usage" budget (new
+> GitHub billing platform migration). With Will's approval the Actions budget was raised to
+> $5/month (stop-usage kept ON — public-repo CI never bills) and Actions enabled on the repo.
+> Run #1 on `main`: **all 5 jobs passed** — JS lint·typecheck·test, API lint·typecheck·test,
+> RLS isolation suite (live Postgres service), migration offline SQL check, OpenAPI-client
+> drift check. The four private storage buckets (job-photos, job-audio, documents, receipts)
+> were also created on the hosted project via the storage API.
+>
+> **PHASE 0 CLOSED — recommendation: GO for Phase 1.** Sole carry-over: hosted `DATABASE_URL`
+> (needs Will's DB password, see HUMAN_TODO) — not required for Phase 1 development, which
+> runs against the local stack.
 
 ## 1. Deliverables checklist
 

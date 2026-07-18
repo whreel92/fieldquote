@@ -15,9 +15,11 @@ Running list. Items are appended by phase; nothing is deleted, only checked off.
       (keep the `postgresql+psycopg://` prefix). If you've lost the DB password: Settings →
       Database → Reset database password. Then apply the schema:
       `cd apps/api && uv run alembic upgrade head`.
-- [ ] **Enable GitHub Actions** on github.com/whreel92/fieldquote (Settings → Actions → General →
-      Allow all actions) — the Actions tab currently says workflows are disabled, so CI can't run.
-      Claude can click this for you with your say-so.
+- [x] **Enable GitHub Actions** — done 2026-07-18 with Will's approval. Root cause was the
+      account-level $0 "stop usage" budget for Actions (new GitHub billing platform); raised to
+      $5/month with stop-usage kept ON, then enabled Actions on the repo. CI run #1: all 5 jobs
+      green. Note: Codespaces/Packages/Git LFS/AI budgets are still $0+stop — fine unless those
+      products are needed.
 - [ ] **Anthropic API key** (console.anthropic.com) → `ANTHROPIC_API_KEY`. Needed Phase 3.
 - [ ] **Deepgram API key** (console.deepgram.com, free tier fine to start) → `DEEPGRAM_API_KEY`.
       Needed Phase 3.
