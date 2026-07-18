@@ -1,0 +1,53 @@
+# Supabase project configuration (checked in; used by `supabase` CLI from infra/).
+project_id = "fieldquote"
+
+[api]
+enabled = true
+port = 54321
+schemas = ["public", "storage"]
+max_rows = 1000
+
+[db]
+port = 54322
+major_version = 15
+
+[auth]
+enabled = true
+site_url = "http://localhost:3000"
+additional_redirect_urls = ["fieldquote://auth-callback"]
+jwt_expiry = 3600
+enable_signup = true
+
+[auth.email]
+enable_signup = true
+enable_confirmations = false
+otp_length = 6
+otp_expiry = 3600
+
+[storage]
+enabled = true
+file_size_limit = "50MiB"
+
+# All buckets are private; access is via signed URLs only (CLAUDE.md Phase 0 §2).
+[storage.buckets.job-photos]
+public = false
+file_size_limit = "25MiB"
+allowed_mime_types = ["image/jpeg", "image/png", "image/webp", "image/heic"]
+
+[storage.buckets.job-audio]
+public = false
+file_size_limit = "50MiB"
+allowed_mime_types = ["audio/mp4", "audio/mpeg", "audio/wav", "audio/webm", "audio/aac"]
+
+[storage.buckets.documents]
+public = false
+file_size_limit = "25MiB"
+allowed_mime_types = ["application/pdf", "text/html"]
+
+[storage.buckets.receipts]
+public = false
+file_size_limit = "25MiB"
+allowed_mime_types = ["image/jpeg", "image/png", "image/webp", "image/heic", "application/pdf"]
+
+[realtime]
+enabled = true
