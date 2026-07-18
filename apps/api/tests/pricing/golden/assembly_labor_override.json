@@ -1,0 +1,84 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": "circuit_20a",
+        "breakdown": {
+          "base_labor_hours": "2.60",
+          "company_override_mult": "1.3",
+          "cost_total": "322.50",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "260.00",
+          "labor_rate": "100",
+          "material_cost": "62.50",
+          "materials": [
+            {
+              "description": "12/2 NM-B per ft",
+              "extended": "50.00",
+              "qty": "50",
+              "sku": "WIRE-123",
+              "unit_price": "1.00"
+            },
+            {
+              "description": "20A breaker",
+              "extended": "12.50",
+              "qty": "1",
+              "sku": "BRKR-20A",
+              "unit_price": "12.50"
+            }
+          ],
+          "modifier_applications": [],
+          "pct_applied": "50",
+          "pricing_model": "margin",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "2.60",
+          "unit_labor_hours": "2.60"
+        },
+        "confidence": "known",
+        "description": "20A dedicated circuit",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "2.60",
+        "labor_rate": "100",
+        "line_type": "standard",
+        "material_cost": "62.50",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "645.00",
+        "unit": "ea",
+        "unit_price": "645.00"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": false,
+      "cost_total": "322.50",
+      "effective_margin_pct": "50.0",
+      "price_basis": "645.00",
+      "target_margin_pct": "50"
+    },
+    "subtotal": "645.00",
+    "subtotal_labor": "260.00",
+    "subtotal_material": "62.50",
+    "tax": "0.00",
+    "total": "645.00"
+  },
+  "input": {
+    "assemblies": [
+      {
+        "code": "circuit_20a"
+      }
+    ],
+    "company_rates": {
+      "assembly_labor_overrides": {
+        "circuit_20a": "1.3"
+      },
+      "labor_rate": "100",
+      "target_margin_pct": "50"
+    }
+  },
+  "scenario": "assembly_labor_override"
+}

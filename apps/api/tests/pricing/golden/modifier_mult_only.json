@@ -1,0 +1,90 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": "circuit_20a",
+        "breakdown": {
+          "base_labor_hours": "2.00",
+          "company_override_mult": "1",
+          "cost_total": "312.50",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "250.00",
+          "labor_rate": "100",
+          "material_cost": "62.50",
+          "materials": [
+            {
+              "description": "12/2 NM-B per ft",
+              "extended": "50.00",
+              "qty": "50",
+              "sku": "WIRE-123",
+              "unit_price": "1.00"
+            },
+            {
+              "description": "20A breaker",
+              "extended": "12.50",
+              "qty": "1",
+              "sku": "BRKR-20A",
+              "unit_price": "12.50"
+            }
+          ],
+          "modifier_applications": [
+            {
+              "code": "stucco_exterior",
+              "hours_after": "2.50",
+              "hours_before": "2.00",
+              "kind": "multiply",
+              "name": "Stucco exterior"
+            }
+          ],
+          "pct_applied": "50",
+          "pricing_model": "margin",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "2.50",
+          "unit_labor_hours": "2.50"
+        },
+        "confidence": "known",
+        "description": "20A dedicated circuit",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "2.50",
+        "labor_rate": "100",
+        "line_type": "standard",
+        "material_cost": "62.50",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "625.00",
+        "unit": "ea",
+        "unit_price": "625.00"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": false,
+      "cost_total": "312.50",
+      "effective_margin_pct": "50.0",
+      "price_basis": "625.00",
+      "target_margin_pct": "50"
+    },
+    "subtotal": "625.00",
+    "subtotal_labor": "250.00",
+    "subtotal_material": "62.50",
+    "tax": "0.00",
+    "total": "625.00"
+  },
+  "input": {
+    "assemblies": [
+      {
+        "code": "circuit_20a",
+        "modifiers": ["stucco_exterior"]
+      }
+    ],
+    "company_rates": {
+      "labor_rate": "100",
+      "target_margin_pct": "50"
+    }
+  },
+  "scenario": "modifier_mult_only"
+}

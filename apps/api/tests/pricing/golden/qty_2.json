@@ -1,0 +1,82 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": "circuit_20a",
+        "breakdown": {
+          "base_labor_hours": "2.00",
+          "company_override_mult": "1",
+          "cost_total": "525.00",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "400.00",
+          "labor_rate": "100",
+          "material_cost": "125.00",
+          "materials": [
+            {
+              "description": "12/2 NM-B per ft",
+              "extended": "100.00",
+              "qty": "100",
+              "sku": "WIRE-123",
+              "unit_price": "1.00"
+            },
+            {
+              "description": "20A breaker",
+              "extended": "25.00",
+              "qty": "2",
+              "sku": "BRKR-20A",
+              "unit_price": "12.50"
+            }
+          ],
+          "modifier_applications": [],
+          "pct_applied": "50",
+          "pricing_model": "margin",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "4.00",
+          "unit_labor_hours": "2.00"
+        },
+        "confidence": "known",
+        "description": "20A dedicated circuit",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "4.00",
+        "labor_rate": "100",
+        "line_type": "standard",
+        "material_cost": "125.00",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "2",
+        "total": "1050.00",
+        "unit": "ea",
+        "unit_price": "525.00"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": false,
+      "cost_total": "525.00",
+      "effective_margin_pct": "50.0",
+      "price_basis": "1050.00",
+      "target_margin_pct": "50"
+    },
+    "subtotal": "1050.00",
+    "subtotal_labor": "400.00",
+    "subtotal_material": "125.00",
+    "tax": "0.00",
+    "total": "1050.00"
+  },
+  "input": {
+    "assemblies": [
+      {
+        "code": "circuit_20a",
+        "qty": "2"
+      }
+    ],
+    "company_rates": {
+      "labor_rate": "100",
+      "target_margin_pct": "50"
+    }
+  },
+  "scenario": "qty_2"
+}

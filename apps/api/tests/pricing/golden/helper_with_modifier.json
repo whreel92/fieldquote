@@ -1,0 +1,84 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": "panel_200a",
+        "breakdown": {
+          "base_labor_hours": "8.00",
+          "company_override_mult": "1",
+          "cost_total": "1610.00",
+          "helper_cost": "260.00",
+          "helper_rate": "65",
+          "labor_cost": "1000.00",
+          "labor_rate": "100",
+          "material_cost": "350.00",
+          "materials": [
+            {
+              "description": "200A panel",
+              "extended": "350.00",
+              "qty": "1",
+              "sku": "PANEL-200",
+              "unit_price": "350.00"
+            }
+          ],
+          "modifier_applications": [
+            {
+              "code": "stucco_exterior",
+              "hours_after": "10.00",
+              "hours_before": "8.00",
+              "kind": "multiply",
+              "name": "Stucco exterior"
+            }
+          ],
+          "pct_applied": "42.5",
+          "pricing_model": "margin",
+          "total_helper_hours": "4.00",
+          "total_labor_hours": "10.00",
+          "unit_labor_hours": "10.00"
+        },
+        "confidence": "known",
+        "description": "200A panel upgrade",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "10.00",
+        "labor_rate": "100",
+        "line_type": "standard",
+        "material_cost": "350.00",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "2800.00",
+        "unit": "ea",
+        "unit_price": "2800.00"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": false,
+      "cost_total": "1610.00",
+      "effective_margin_pct": "42.5",
+      "price_basis": "2800.00",
+      "target_margin_pct": "42.5"
+    },
+    "subtotal": "2800.00",
+    "subtotal_labor": "1260.00",
+    "subtotal_material": "350.00",
+    "tax": "0.00",
+    "total": "2800.00"
+  },
+  "input": {
+    "assemblies": [
+      {
+        "code": "panel_200a",
+        "modifiers": ["stucco_exterior"]
+      }
+    ],
+    "company_rates": {
+      "helper_rate": "65",
+      "labor_rate": "100",
+      "target_margin_pct": "42.5"
+    }
+  },
+  "scenario": "helper_with_modifier"
+}

@@ -1,0 +1,27 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": true,
+      "cost_total": "0.00",
+      "effective_margin_pct": "0",
+      "price_basis": "0.00",
+      "target_margin_pct": "50"
+    },
+    "subtotal": "0.00",
+    "subtotal_labor": "0.00",
+    "subtotal_material": "0.00",
+    "tax": "0.00",
+    "total": "0.00"
+  },
+  "input": {
+    "assemblies": [],
+    "company_rates": {
+      "labor_rate": "100",
+      "target_margin_pct": "50"
+    }
+  },
+  "scenario": "empty_request"
+}

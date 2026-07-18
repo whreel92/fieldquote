@@ -1,0 +1,52 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": null,
+        "breakdown": null,
+        "confidence": "allowance",
+        "description": "TBD",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "0",
+        "labor_rate": "100",
+        "line_type": "allowance",
+        "material_cost": "0",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "0.00",
+        "unit": "ea",
+        "unit_price": "0.00"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": true,
+      "cost_total": "0.00",
+      "effective_margin_pct": "0",
+      "price_basis": "0.00",
+      "target_margin_pct": "50"
+    },
+    "subtotal": "0.00",
+    "subtotal_labor": "0.00",
+    "subtotal_material": "0.00",
+    "tax": "0.00",
+    "total": "0.00"
+  },
+  "input": {
+    "allowances": [
+      {
+        "amount": "0",
+        "description": "TBD"
+      }
+    ],
+    "assemblies": [],
+    "company_rates": {
+      "labor_rate": "100",
+      "target_margin_pct": "50"
+    }
+  },
+  "scenario": "allowance_zero_amount"
+}

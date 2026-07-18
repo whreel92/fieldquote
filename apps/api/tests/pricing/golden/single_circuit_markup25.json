@@ -1,0 +1,82 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": "circuit_20a",
+        "breakdown": {
+          "base_labor_hours": "2.00",
+          "company_override_mult": "1",
+          "cost_total": "262.50",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "200.00",
+          "labor_rate": "100",
+          "material_cost": "62.50",
+          "materials": [
+            {
+              "description": "12/2 NM-B per ft",
+              "extended": "50.00",
+              "qty": "50",
+              "sku": "WIRE-123",
+              "unit_price": "1.00"
+            },
+            {
+              "description": "20A breaker",
+              "extended": "12.50",
+              "qty": "1",
+              "sku": "BRKR-20A",
+              "unit_price": "12.50"
+            }
+          ],
+          "modifier_applications": [],
+          "pct_applied": "25",
+          "pricing_model": "markup",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "2.00",
+          "unit_labor_hours": "2.00"
+        },
+        "confidence": "known",
+        "description": "20A dedicated circuit",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "2.00",
+        "labor_rate": "100",
+        "line_type": "standard",
+        "material_cost": "62.50",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "328.13",
+        "unit": "ea",
+        "unit_price": "328.13"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": true,
+      "cost_total": "262.50",
+      "effective_margin_pct": "20.0",
+      "price_basis": "328.13",
+      "target_margin_pct": "25"
+    },
+    "subtotal": "328.13",
+    "subtotal_labor": "200.00",
+    "subtotal_material": "62.50",
+    "tax": "0.00",
+    "total": "328.13"
+  },
+  "input": {
+    "assemblies": [
+      {
+        "code": "circuit_20a"
+      }
+    ],
+    "company_rates": {
+      "labor_rate": "100",
+      "markup_model": "markup",
+      "target_margin_pct": "25"
+    }
+  },
+  "scenario": "single_circuit_markup25"
+}

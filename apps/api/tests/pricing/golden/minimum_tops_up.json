@@ -1,0 +1,161 @@
+{
+  "expected": {
+    "engine_version": "2.0.0",
+    "lines": [
+      {
+        "assembly_code": "recessed_led",
+        "breakdown": {
+          "base_labor_hours": "1.00",
+          "company_override_mult": "1",
+          "cost_total": "100.00",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "100.00",
+          "labor_rate": "100",
+          "material_cost": "0.00",
+          "materials": [],
+          "modifier_applications": [],
+          "pct_applied": "50",
+          "pricing_model": "margin",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "1.00",
+          "unit_labor_hours": "1.00"
+        },
+        "confidence": "known",
+        "description": "Recessed LED lighting \u2014 Standard 4\"",
+        "editable_note": "",
+        "included": true,
+        "labor_hours": "1.00",
+        "labor_rate": "100",
+        "line_type": "option_good",
+        "material_cost": "0.00",
+        "position": 0,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "200.00",
+        "unit": "ea",
+        "unit_price": "200.00"
+      },
+      {
+        "assembly_code": "recessed_led",
+        "breakdown": {
+          "base_labor_hours": "1.50",
+          "company_override_mult": "1",
+          "cost_total": "150.00",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "150.00",
+          "labor_rate": "100",
+          "material_cost": "0.00",
+          "materials": [],
+          "modifier_applications": [],
+          "pct_applied": "50",
+          "pricing_model": "margin",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "1.50",
+          "unit_labor_hours": "1.50"
+        },
+        "confidence": "known",
+        "description": "Recessed LED lighting \u2014 Gimbal 4\"",
+        "editable_note": "",
+        "included": false,
+        "labor_hours": "1.50",
+        "labor_rate": "100",
+        "line_type": "option_better",
+        "material_cost": "0.00",
+        "position": 1,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "300.00",
+        "unit": "ea",
+        "unit_price": "300.00"
+      },
+      {
+        "assembly_code": "recessed_led",
+        "breakdown": {
+          "base_labor_hours": "2.00",
+          "company_override_mult": "1",
+          "cost_total": "212.50",
+          "helper_cost": "0.00",
+          "helper_rate": "100",
+          "labor_cost": "200.00",
+          "labor_rate": "100",
+          "material_cost": "12.50",
+          "materials": [
+            {
+              "description": "20A breaker",
+              "extended": "12.50",
+              "qty": "1",
+              "sku": "BRKR-20A",
+              "unit_price": "12.50"
+            }
+          ],
+          "modifier_applications": [],
+          "pct_applied": "50",
+          "pricing_model": "margin",
+          "total_helper_hours": "0.00",
+          "total_labor_hours": "2.00",
+          "unit_labor_hours": "2.00"
+        },
+        "confidence": "known",
+        "description": "Recessed LED lighting \u2014 Smart RGBW",
+        "editable_note": "",
+        "included": false,
+        "labor_hours": "2.00",
+        "labor_rate": "100",
+        "line_type": "option_best",
+        "material_cost": "12.50",
+        "position": 2,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "425.00",
+        "unit": "ea",
+        "unit_price": "425.00"
+      },
+      {
+        "assembly_code": null,
+        "breakdown": null,
+        "confidence": "known",
+        "description": "Minimum job charge",
+        "editable_note": "Applied to meet the company job minimum.",
+        "included": true,
+        "labor_hours": "0",
+        "labor_rate": "100",
+        "line_type": "standard",
+        "material_cost": "0",
+        "position": 3,
+        "price_source": "engine",
+        "qty": "1",
+        "total": "250.00",
+        "unit": "ea",
+        "unit_price": "250.00"
+      }
+    ],
+    "margin_check": {
+      "below_floor": false,
+      "below_target": false,
+      "cost_total": "100.00",
+      "effective_margin_pct": "77.8",
+      "price_basis": "450.00",
+      "target_margin_pct": "50"
+    },
+    "subtotal": "450.00",
+    "subtotal_labor": "100.00",
+    "subtotal_material": "0.00",
+    "tax": "0.00",
+    "total": "450.00"
+  },
+  "input": {
+    "assemblies": [
+      {
+        "code": "recessed_led"
+      }
+    ],
+    "company_rates": {
+      "job_minimum": "450",
+      "labor_rate": "100",
+      "target_margin_pct": "50"
+    }
+  },
+  "scenario": "minimum_tops_up"
+}
