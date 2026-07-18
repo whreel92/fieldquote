@@ -57,6 +57,7 @@ testpaths = ["tests"]
 addopts = "-ra"
 markers = [
     "rls: RLS integration tests requiring a live Postgres (docker)",
+    "db: API integration tests requiring a live Postgres (docker)",
 ]
 
 [tool.coverage.run]

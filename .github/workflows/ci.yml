@@ -60,7 +60,7 @@ jobs:
         with:
           enable-cache: true
       - run: uv sync --locked
-      - run: uv run pytest -m rls -q
+      - run: uv run pytest -m "rls or db" -q
 
   migration-check:
     name: Migration offline SQL check

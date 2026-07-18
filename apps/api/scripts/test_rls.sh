@@ -17,7 +17,7 @@ for i in $(seq 1 30); do
 done
 
 export FQ_RLS_DB_URL="postgresql+psycopg://postgres:postgres@localhost:$PORT/postgres"
-uv run pytest -m rls -q
+uv run pytest -m "rls or db" -q
 STATUS=$?
 
 docker rm -f "$CONTAINER" >/dev/null 2>&1 || true

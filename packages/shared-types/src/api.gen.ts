@@ -38,12 +38,168 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/company': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Company */
+    get: operations['get_company_company_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** Update Company */
+    patch: operations['update_company_company_patch'];
+    trace?: never;
+  };
+  '/company/rates': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Rates */
+    get: operations['get_rates_company_rates_get'];
+    /** Put Rates */
+    put: operations['put_rates_company_rates_put'];
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/company/logo-upload-url': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Logo Upload Url */
+    post: operations['logo_upload_url_company_logo_upload_url_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/clients': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Clients */
+    get: operations['list_clients_clients_get'];
+    put?: never;
+    /** Create Client */
+    post: operations['create_client_clients_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/clients/{client_id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Client */
+    get: operations['get_client_clients__client_id__get'];
+    put?: never;
+    post?: never;
+    /** Delete Client */
+    delete: operations['delete_client_clients__client_id__delete'];
+    options?: never;
+    head?: never;
+    /** Update Client */
+    patch: operations['update_client_clients__client_id__patch'];
+    trace?: never;
+  };
+  '/jobs': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Jobs */
+    get: operations['list_jobs_jobs_get'];
+    put?: never;
+    /** Create Job */
+    post: operations['create_job_jobs_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/jobs/{job_id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Job */
+    get: operations['get_job_jobs__job_id__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** Update Job */
+    patch: operations['update_job_jobs__job_id__patch'];
+    trace?: never;
+  };
+  '/jobs/{job_id}/transition': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Transition Job */
+    post: operations['transition_job_jobs__job_id__transition_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
-    /** CompanyOut */
-    CompanyOut: {
+    /** ClientIn */
+    ClientIn: {
+      /** Name */
+      name: string;
+      /** Phone */
+      phone?: string | null;
+      /** Email */
+      email?: string | null;
+      /** Address */
+      address?: string | null;
+      /** Notes */
+      notes?: string | null;
+    };
+    /** ClientOut */
+    ClientOut: {
       /**
        * Id
        * Format: uuid
@@ -51,10 +207,60 @@ export interface components {
       id: string;
       /** Name */
       name: string;
-      /** Trade */
-      trade: string;
+      /** Phone */
+      phone: string | null;
+      /** Email */
+      email: string | null;
+      /** Address */
+      address: string | null;
+      /** Notes */
+      notes: string | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+    };
+    /** ClientPatch */
+    ClientPatch: {
+      /** Name */
+      name?: string | null;
+      /** Phone */
+      phone?: string | null;
+      /** Email */
+      email?: string | null;
+      /** Address */
+      address?: string | null;
+      /** Notes */
+      notes?: string | null;
+    };
+    /** CompanyPatch */
+    CompanyPatch: {
+      /** Name */
+      name?: string | null;
+      /** Logo Url */
+      logo_url?: string | null;
+      /** License Number */
+      license_number?: string | null;
+      /** Insurance Line */
+      insurance_line?: string | null;
+      /** Phone */
+      phone?: string | null;
+      /** Email */
+      email?: string | null;
+      /** Address */
+      address?: string | null;
       /** Timezone */
-      timezone: string;
+      timezone?: string | null;
+      /** Settings */
+      settings?: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** HTTPValidationError */
+    HTTPValidationError: {
+      /** Detail */
+      detail?: components['schemas']['ValidationError'][];
     };
     /** HealthResponse */
     HealthResponse: {
@@ -62,6 +268,102 @@ export interface components {
       status: string;
       /** Version */
       version: string;
+    };
+    /** JobIn */
+    JobIn: {
+      /** Title */
+      title: string;
+      /** Client Id */
+      client_id?: string | null;
+      /** Job Type Code */
+      job_type_code?: string | null;
+      /** Address */
+      address?: string | null;
+    };
+    /** JobOut */
+    JobOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Title */
+      title: string;
+      /** Status */
+      status: string;
+      /** Job Type Code */
+      job_type_code: string | null;
+      /** Address */
+      address: string | null;
+      /** Client Id */
+      client_id: string | null;
+      /** Client Name */
+      client_name: string | null;
+      /** Allowed Transitions */
+      allowed_transitions: string[];
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+    };
+    /** JobPatch */
+    JobPatch: {
+      /** Title */
+      title?: string | null;
+      /** Client Id */
+      client_id?: string | null;
+      /** Job Type Code */
+      job_type_code?: string | null;
+      /** Address */
+      address?: string | null;
+    };
+    /** LogoUploadOut */
+    LogoUploadOut: {
+      /** Upload Url */
+      upload_url: string;
+      /** Token */
+      token: string;
+      /** Storage Path */
+      storage_path: string;
+    };
+    /** RatesOut */
+    RatesOut: {
+      /** Labor Rate */
+      labor_rate: string;
+      /** Helper Rate */
+      helper_rate: string | null;
+      /** Target Margin Pct */
+      target_margin_pct: string;
+      /** Tax Rate Pct */
+      tax_rate_pct: string;
+      /** Markup Model */
+      markup_model: string;
+      /** Confirmed */
+      confirmed: boolean;
+    };
+    /** RatesPut */
+    RatesPut: {
+      /** Labor Rate */
+      labor_rate: number | string;
+      /** Helper Rate */
+      helper_rate?: number | string | null;
+      /** Target Margin Pct */
+      target_margin_pct: number | string;
+      /** Tax Rate Pct */
+      tax_rate_pct: number | string;
+      /** Markup Model */
+      markup_model: string;
+      /**
+       * Confirmed
+       * @default true
+       */
+      confirmed: boolean;
+    };
+    /** TransitionIn */
+    TransitionIn: {
+      /** To Status */
+      to_status: string;
     };
     /** UserOut */
     UserOut: {
@@ -74,7 +376,64 @@ export interface components {
       role: string;
       /** Name */
       name: string | null;
-      company: components['schemas']['CompanyOut'];
+      company: components['schemas']['fieldquote__routers__me__CompanyOut'];
+    };
+    /** ValidationError */
+    ValidationError: {
+      /** Location */
+      loc: (string | number)[];
+      /** Message */
+      msg: string;
+      /** Error Type */
+      type: string;
+      /** Input */
+      input?: unknown;
+      /** Context */
+      ctx?: Record<string, never>;
+    };
+    /** CompanyOut */
+    fieldquote__routers__company__CompanyOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Name */
+      name: string;
+      /** Trade */
+      trade: string;
+      /** Logo Url */
+      logo_url: string | null;
+      /** License Number */
+      license_number: string | null;
+      /** Insurance Line */
+      insurance_line: string | null;
+      /** Phone */
+      phone: string | null;
+      /** Email */
+      email: string | null;
+      /** Address */
+      address: string | null;
+      /** Timezone */
+      timezone: string;
+      /** Settings */
+      settings: {
+        [key: string]: unknown;
+      };
+    };
+    /** CompanyOut */
+    fieldquote__routers__me__CompanyOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Name */
+      name: string;
+      /** Trade */
+      trade: string;
+      /** Timezone */
+      timezone: string;
     };
   };
   responses: never;
@@ -121,6 +480,458 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['UserOut'];
+        };
+      };
+    };
+  };
+  get_company_company_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['fieldquote__routers__company__CompanyOut'];
+        };
+      };
+    };
+  };
+  update_company_company_patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CompanyPatch'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['fieldquote__routers__company__CompanyOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  get_rates_company_rates_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['RatesOut'];
+        };
+      };
+    };
+  };
+  put_rates_company_rates_put: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['RatesPut'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['RatesOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  logo_upload_url_company_logo_upload_url_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['LogoUploadOut'];
+        };
+      };
+    };
+  };
+  list_clients_clients_get: {
+    parameters: {
+      query?: {
+        search?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ClientOut'][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  create_client_clients_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ClientIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ClientOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  get_client_clients__client_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        client_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ClientOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  delete_client_clients__client_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        client_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      204: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  update_client_clients__client_id__patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        client_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ClientPatch'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ClientOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  list_jobs_jobs_get: {
+    parameters: {
+      query?: {
+        status?: string | null;
+        limit?: number;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['JobOut'][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  create_job_jobs_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['JobIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['JobOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  get_job_jobs__job_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['JobOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  update_job_jobs__job_id__patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['JobPatch'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['JobOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  transition_job_jobs__job_id__transition_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['TransitionIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['JobOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
         };
       };
     };
