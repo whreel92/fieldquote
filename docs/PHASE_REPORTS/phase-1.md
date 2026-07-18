@@ -50,8 +50,8 @@ unit-tested `@fieldquote/shared-types` helper (margin vs markup, effective-margi
 1. Acceptance walkthrough on simulator/device: fresh install → onboard → create job in ≤ 3 min,
    zero crashes (needs a machine with Android Studio emulator or a physical device via Expo Go).
 2. Logo upload UI in wizard/branding (endpoint live; mobile image picker not yet wired — small).
-3. CI green on `phase/1-domain-core` (run in flight at time of writing; branch pushes now
-   trigger CI).
+3. ~~CI green on `phase/1-domain-core`~~ ✅ run #4: all 5 jobs passed (JS, API, RLS suite,
+   migration check, OpenAPI drift).
 
 ## Notes / debt
 
