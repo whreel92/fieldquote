@@ -35,6 +35,10 @@ jobs:
       - run: uv run ruff check src tests scripts migrations
       - run: uv run mypy
       - run: uv run pytest -q --cov --cov-report=term
+      - name: Pricing engine 100% branch coverage (§0.1.7)
+        run: >
+          uv run pytest tests/pricing -q --cov=fieldquote.pricing --cov-branch
+          --cov-fail-under=100
 
   rls:
     name: RLS isolation suite

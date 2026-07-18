@@ -181,10 +181,155 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/catalog/assemblies': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Assemblies */
+    get: operations['list_assemblies_catalog_assemblies_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/catalog/assemblies/{code}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Assembly */
+    get: operations['get_assembly_catalog_assemblies__code__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** Update Assembly */
+    patch: operations['update_assembly_catalog_assemblies__code__patch'];
+    trace?: never;
+  };
+  '/catalog/modifiers': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Modifiers */
+    get: operations['list_modifiers_catalog_modifiers_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/catalog/materials': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Materials */
+    get: operations['list_materials_catalog_materials_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/pricing/preview': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Preview */
+    post: operations['preview_pricing_preview_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** AssemblyList */
+    AssemblyList: {
+      /** Items */
+      items: components['schemas']['AssemblyOut'][];
+    };
+    /** AssemblyOut */
+    AssemblyOut: {
+      /** Code */
+      code: string;
+      /** Trade */
+      trade: string;
+      /** Name */
+      name: string;
+      /** Description */
+      description: string | null;
+      /** Job Type Codes */
+      job_type_codes: string[];
+      /** Unit */
+      unit: string;
+      /** Labor Hours */
+      labor_hours: string;
+      /** Helper Hours */
+      helper_hours: string;
+      /** Labor Notes */
+      labor_notes: string | null;
+      /** Bom */
+      bom: {
+        [key: string]: unknown;
+      }[];
+      /** Modifiers Allowed */
+      modifiers_allowed: string[];
+      /** Option Tiers */
+      option_tiers:
+        | {
+            [key: string]: unknown;
+          }[]
+        | null;
+      /** Version */
+      version: number;
+      /** Status */
+      status: string;
+    };
+    /** AssemblyPatch */
+    AssemblyPatch: {
+      /** Name */
+      name?: string | null;
+      /** Description */
+      description?: string | null;
+      /** Labor Hours */
+      labor_hours?: number | string | null;
+      /** Helper Hours */
+      helper_hours?: number | string | null;
+      /** Labor Notes */
+      labor_notes?: string | null;
+      /** Modifiers Allowed */
+      modifiers_allowed?: string[] | null;
+      /** Status */
+      status?: string | null;
+    };
     /** ClientIn */
     ClientIn: {
       /** Name */
@@ -348,6 +493,45 @@ export interface components {
       /** Address */
       address?: string | null;
     };
+    /**
+     * LineBreakdown
+     * @description The 'show the math' payload for the estimate editor.
+     */
+    LineBreakdown: {
+      /** Base Labor Hours */
+      base_labor_hours: string;
+      /** Company Override Mult */
+      company_override_mult: string;
+      /** Modifier Applications */
+      modifier_applications: components['schemas']['ModifierApplication'][];
+      /** Unit Labor Hours */
+      unit_labor_hours: string;
+      /** Total Labor Hours */
+      total_labor_hours: string;
+      /** Total Helper Hours */
+      total_helper_hours: string;
+      /** Labor Rate */
+      labor_rate: string;
+      /** Helper Rate */
+      helper_rate: string;
+      /** Labor Cost */
+      labor_cost: string;
+      /** Helper Cost */
+      helper_cost: string;
+      /** Materials */
+      materials: components['schemas']['MaterialBreakdownItem'][];
+      /** Material Cost */
+      material_cost: string;
+      /** Cost Total */
+      cost_total: string;
+      /**
+       * Pricing Model
+       * @enum {string}
+       */
+      pricing_model: 'margin' | 'markup';
+      /** Pct Applied */
+      pct_applied: string;
+    };
     /** LogoUploadOut */
     LogoUploadOut: {
       /** Upload Url */
@@ -356,6 +540,54 @@ export interface components {
       token: string;
       /** Storage Path */
       storage_path: string;
+    };
+    /** MarginCheck */
+    MarginCheck: {
+      /** Cost Total */
+      cost_total: string;
+      /** Price Basis */
+      price_basis: string;
+      /** Effective Margin Pct */
+      effective_margin_pct: string;
+      /** Target Margin Pct */
+      target_margin_pct: string;
+      /** Below Target */
+      below_target: boolean;
+      /** Below Floor */
+      below_floor: boolean;
+    };
+    /** MaterialBreakdownItem */
+    MaterialBreakdownItem: {
+      /** Sku */
+      sku: string;
+      /** Description */
+      description: string;
+      /** Unit Price */
+      unit_price: string;
+      /** Qty */
+      qty: string;
+      /** Extended */
+      extended: string;
+    };
+    /** MaterialList */
+    MaterialList: {
+      /** Items */
+      items: components['schemas']['MaterialOut'][];
+    };
+    /** MaterialOut */
+    MaterialOut: {
+      /** Sku */
+      sku: string;
+      /** Description */
+      description: string;
+      /** Unit */
+      unit: string;
+      /** Category */
+      category: string | null;
+      /** Base Price */
+      base_price: string;
+      /** Source */
+      source: string | null;
     };
     /** MeCompanyOut */
     MeCompanyOut: {
@@ -370,6 +602,167 @@ export interface components {
       trade: string;
       /** Timezone */
       timezone: string;
+    };
+    /** ModifierApplication */
+    ModifierApplication: {
+      /** Code */
+      code: string;
+      /** Name */
+      name: string;
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: 'multiply' | 'add';
+      /** Hours Before */
+      hours_before: string;
+      /** Hours After */
+      hours_after: string;
+    };
+    /** ModifierList */
+    ModifierList: {
+      /** Items */
+      items: components['schemas']['ModifierOut'][];
+    };
+    /** ModifierOut */
+    ModifierOut: {
+      /** Code */
+      code: string;
+      /** Name */
+      name: string;
+      /** Description */
+      description: string | null;
+      /** Effect */
+      effect: {
+        [key: string]: unknown;
+      };
+      /** Version */
+      version: number;
+    };
+    /** PreviewAdjustments */
+    PreviewAdjustments: {
+      /**
+       * Discount
+       * @default 0
+       */
+      discount: number | string;
+      /** Margin Override Pct */
+      margin_override_pct?: number | string | null;
+    };
+    /** PreviewAllowance */
+    PreviewAllowance: {
+      /** Description */
+      description: string;
+      /** Amount */
+      amount: number | string;
+      /**
+       * Reason
+       * @default
+       */
+      reason: string;
+    };
+    /** PreviewIn */
+    PreviewIn: {
+      /** Assemblies */
+      assemblies?: components['schemas']['PreviewLine'][];
+      /** Allowances */
+      allowances?: components['schemas']['PreviewAllowance'][];
+      /**
+       * @default {
+       *       "discount": "0"
+       *     }
+       */
+      adjustments: components['schemas']['PreviewAdjustments'];
+    };
+    /** PreviewLine */
+    PreviewLine: {
+      /** Code */
+      code: string;
+      /**
+       * Qty
+       * @default 1
+       */
+      qty: number | string;
+      /** Modifiers */
+      modifiers?: string[];
+      /** Selected Tier */
+      selected_tier?: ('good' | 'better' | 'best') | null;
+    };
+    /** PricedEstimate */
+    PricedEstimate: {
+      /** Engine Version */
+      engine_version: string;
+      /** Lines */
+      lines: components['schemas']['PricedLine'][];
+      /** Subtotal Material */
+      subtotal_material: string;
+      /** Subtotal Labor */
+      subtotal_labor: string;
+      /** Subtotal */
+      subtotal: string;
+      /** Tax */
+      tax: string;
+      /** Total */
+      total: string;
+      margin_check: components['schemas']['MarginCheck'];
+    };
+    /** PricedLine */
+    PricedLine: {
+      /** Position */
+      position: number;
+      /** Assembly Code */
+      assembly_code: string | null;
+      /** Description */
+      description: string;
+      /** Qty */
+      qty: string;
+      /** Unit */
+      unit: string;
+      /**
+       * Line Type
+       * @enum {string}
+       */
+      line_type:
+        | 'standard'
+        | 'allowance'
+        | 'verify'
+        | 'option_good'
+        | 'option_better'
+        | 'option_best'
+        | 'discount';
+      /**
+       * Price Source
+       * @default engine
+       * @enum {string}
+       */
+      price_source: 'engine' | 'manual' | 'pricebook';
+      /**
+       * Confidence
+       * @default known
+       * @enum {string}
+       */
+      confidence: 'known' | 'allowance' | 'verify';
+      /** Unit Price */
+      unit_price: string;
+      /** Total */
+      total: string;
+      /** Material Cost */
+      material_cost: string;
+      /** Labor Hours */
+      labor_hours: string;
+      /** Labor Rate */
+      labor_rate: string;
+      /**
+       * Included
+       * @default true
+       */
+      included: boolean;
+      /**
+       * Editable Note
+       * @default
+       */
+      editable_note: string;
+      breakdown?: components['schemas']['LineBreakdown'] | null;
     };
     /** RatesOut */
     RatesOut: {
@@ -923,6 +1316,188 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['JobOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  list_assemblies_catalog_assemblies_get: {
+    parameters: {
+      query?: {
+        job_type?: string | null;
+        q?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AssemblyList'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  get_assembly_catalog_assemblies__code__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AssemblyOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  update_assembly_catalog_assemblies__code__patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        code: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['AssemblyPatch'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AssemblyOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  list_modifiers_catalog_modifiers_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ModifierList'];
+        };
+      };
+    };
+  };
+  list_materials_catalog_materials_get: {
+    parameters: {
+      query?: {
+        q?: string | null;
+      };
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['MaterialList'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  preview_pricing_preview_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['PreviewIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PricedEstimate'];
         };
       };
       /** @description Validation Error */

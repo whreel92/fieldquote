@@ -8,7 +8,7 @@ from fieldquote import __version__
 from fieldquote.core.config import AppEnv, get_settings
 from fieldquote.core.errors import register_error_handlers
 from fieldquote.core.logging import configure_logging
-from fieldquote.routers import clients, company, health, jobs, me
+from fieldquote.routers import catalog, clients, company, health, jobs, me, pricing
 
 
 def create_app() -> FastAPI:
@@ -39,6 +39,8 @@ def create_app() -> FastAPI:
     app.include_router(company.router)
     app.include_router(clients.router)
     app.include_router(jobs.router)
+    app.include_router(catalog.router)
+    app.include_router(pricing.router)
     return app
 
 

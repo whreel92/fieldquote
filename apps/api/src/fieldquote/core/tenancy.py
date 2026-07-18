@@ -14,6 +14,7 @@ from sqlalchemy.orm import Session
 
 from fieldquote.core.auth import AuthContext, get_auth
 from fieldquote.core.db import get_db
+from fieldquote.core.errors import ForbiddenError
 from fieldquote.domain.models import Company, User
 
 
@@ -38,3 +39,12 @@ def get_current_context(
     if found is None:  # FK guarantees this can't happen outside data corruption
         raise RuntimeError(f"user {user.id} has no company row")
     return TenantContext(user=user, company=found)
+
+
+def require_role(ctx: TenantContext, *roles: str) -> None:
+    """Raise ForbiddenError unless the current user has one of the roles."""
+    if ctx.user.role not in roles:
+        raise ForbiddenError(
+            "You don't have permission to do that.",
+            details={"required_roles": sorted(roles)},
+        )

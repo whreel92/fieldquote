@@ -45,9 +45,13 @@ Running list. Items are appended by phase; nothing is deleted, only checked off.
 
 ## Standing (from Phase 2 onward)
 
-- [ ] **Recruit 2–3 licensed electrician advisors** to validate the assembly catalog
-      (`docs/ASSEMBLY_VALIDATION.md` will be the packet). **No production launch until advisors
-      flip assemblies to `advisor_approved`. Placeholder prices must never reach a real
+- [ ] **Recruit 2–3 licensed electrician advisors** to validate the assembly catalog.
+      **The packet now exists** — `docs/ASSEMBLY_VALIDATION.md` explains the review process and
+      `docs/validation/assemblies_v0.csv` is the spreadsheet to send (regenerate with
+      `cd apps/api && uv run python scripts/export_validation_csv.py`). Apply their adjustments
+      in `/app/admin/assemblies` (owner/admin role) and flip rows to `advisor_approved`.
+      **No production launch until advisors approve — the API structurally refuses to price
+      draft assemblies for production companies. Placeholder prices must never reach a real
       customer.**
 - [ ] **Attorney review** of `docs/LEGAL_COPY.md` (estimate disclaimer, ToS, e-sign consent)
       before any real customer signs anything.

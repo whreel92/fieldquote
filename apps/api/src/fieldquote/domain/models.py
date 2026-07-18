@@ -11,7 +11,7 @@ from decimal import Decimal
 from typing import Any
 
 from sqlalchemy import DateTime, ForeignKey, Numeric, String, Text, func
-from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.dialects.postgresql import ARRAY, JSONB, UUID
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 
 
@@ -111,6 +111,54 @@ class CompanyRate(Base):
     tax_rate_pct: Mapped[Decimal] = mapped_column(Numeric, default=Decimal(0))
     markup_model: Mapped[str] = mapped_column(String(16), default="margin")
     overrides: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+
+
+class MaterialItem(Base):
+    """Global pricing catalog — not tenant-scoped."""
+
+    __tablename__ = "material_items"
+
+    sku: Mapped[str] = mapped_column(Text, primary_key=True)
+    description: Mapped[str] = mapped_column(Text)
+    unit: Mapped[str] = mapped_column(Text, default="ea")
+    category: Mapped[str | None] = mapped_column(Text)
+    base_price: Mapped[Decimal] = mapped_column(Numeric)
+    price_asof: Mapped[datetime | None] = mapped_column(DateTime(timezone=False))
+    source: Mapped[str | None] = mapped_column(Text)
+    region_multipliers: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+
+
+class Assembly(Base):
+    """Global pricing catalog — not tenant-scoped."""
+
+    __tablename__ = "assemblies"
+
+    code: Mapped[str] = mapped_column(Text, primary_key=True)
+    trade: Mapped[str] = mapped_column(Text, default="electrical")
+    name: Mapped[str] = mapped_column(Text)
+    description: Mapped[str | None] = mapped_column(Text)
+    job_type_codes: Mapped[list[str]] = mapped_column(ARRAY(Text), default=list)
+    unit: Mapped[str] = mapped_column(Text, default="ea")
+    labor_hours: Mapped[Decimal] = mapped_column(Numeric)
+    helper_hours: Mapped[Decimal] = mapped_column(Numeric, default=Decimal(0))
+    labor_notes: Mapped[str | None] = mapped_column(Text)
+    bom: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, default=list)
+    modifiers_allowed: Mapped[list[str]] = mapped_column(ARRAY(Text), default=list)
+    option_tiers: Mapped[list[dict[str, Any]] | None] = mapped_column(JSONB)
+    version: Mapped[int] = mapped_column(default=1)
+    status: Mapped[str] = mapped_column(Text, default="draft")
+
+
+class Modifier(Base):
+    """Global pricing catalog — not tenant-scoped."""
+
+    __tablename__ = "modifiers"
+
+    code: Mapped[str] = mapped_column(Text, primary_key=True)
+    name: Mapped[str] = mapped_column(Text)
+    description: Mapped[str | None] = mapped_column(Text)
+    effect: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    version: Mapped[int] = mapped_column(default=1)
 
 
 class AuditLog(Base):
