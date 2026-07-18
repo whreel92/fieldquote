@@ -1,0 +1,23 @@
+{
+  "name": "@fieldquote/shared-types",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "generate": "cd ../../apps/api && uv run python scripts/export_openapi.py && cd ../../packages/shared-types && openapi-typescript ../../apps/api/openapi.json -o src/api.gen.ts",
+    "lint": "eslint src --ignore-pattern src/api.gen.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"no tests yet\" && exit 0"
+  },
+  "dependencies": {
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "eslint": "^9.17.0",
+    "openapi-typescript": "^7.5.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^8.19.0"
+  }
+}
