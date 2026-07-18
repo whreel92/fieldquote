@@ -1,6 +1,20 @@
 # Phase 0 Gate Report — Foundation & Scaffold
 
-Session 1 of Phase 0 (target 2–3 sessions) · 2026-07-18 · branch `phase/0-foundation`
+Sessions 1–2 of Phase 0 · 2026-07-18 · branch `phase/0-foundation` (pushed to
+github.com/whreel92/fieldquote with `main`)
+
+> **Session 2 close-out (appended):** Supabase project live. Discovered the hosted project signs
+> tokens with **ES256**, so `SupabaseVerifier` now routes by `alg` header — JWKS/ES256 for
+> hosted, HS256 for local/tests (closes FQ-D001; 5 new unit tests, 13 total passing). Mobile
+> observability facade landed (closes FQ-D002); `apps/mobile/.env` written with public Supabase
+> config. **Live round-trip demonstrated:** real hosted-Supabase ES256 token → JWKS verify →
+> auto-provision → `GET /me` returned user + company, idempotent on repeat. (API ran against a
+> migrated local Postgres; hosted `DATABASE_URL` still needs the DB password — HUMAN_TODO.)
+> Remaining before Phase 1: enable GitHub Actions on the repo (currently disabled — one click,
+> needs Will) and see CI green; hosted `DATABASE_URL` + `alembic upgrade head` against it.
+> A smoke auth user `fieldquote.smoke@gmail.com` exists in the hosted project; delete freely.
+> Revised recommendation: **GO for Phase 1 once CI runs green on GitHub** — hosted DATABASE_URL
+> can land in parallel and isn't needed for Phase 1 development (local stack covers it).
 
 ## 1. Deliverables checklist
 

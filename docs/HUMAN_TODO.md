@@ -5,13 +5,19 @@ Running list. Items are appended by phase; nothing is deleted, only checked off.
 
 ## Phase 0
 
-- [ ] **Create the Supabase project** (supabase.com → New project, region close to first users).
-      Then copy into `.env` (never commit): `SUPABASE_URL`, `SUPABASE_ANON_KEY`,
-      `SUPABASE_SERVICE_ROLE_KEY`, `SUPABASE_JWT_SECRET` (Settings → API → JWT Secret), and
-      `DATABASE_URL` (Settings → Database → connection string, use the `postgresql+psycopg://`
-      prefix). Apply migrations: `cd apps/api && uv run alembic upgrade head`.
-      For mobile, set `EXPO_PUBLIC_SUPABASE_URL` and `EXPO_PUBLIC_SUPABASE_ANON_KEY`
-      in `apps/mobile/.env`.
+- [x] **Create the Supabase project** — done 2026-07-18 (project `qamhpzoxojpduqiktbpf`; keys in
+      `.env`, `SUPABASE_URL` corrected from placeholder, `apps/mobile/.env` written; token
+      verification confirmed live via JWKS/ES256).
+- [ ] **DATABASE_URL still points at localhost.** Grab the hosted connection string:
+      Supabase dashboard → your project → Connect (top bar) → "Session pooler" URI, substitute
+      your database password, and put it in `.env` as
+      `DATABASE_URL=postgresql+psycopg://postgres.qamhpzoxojpduqiktbpf:<PASSWORD>@<pooler-host>:5432/postgres`
+      (keep the `postgresql+psycopg://` prefix). If you've lost the DB password: Settings →
+      Database → Reset database password. Then apply the schema:
+      `cd apps/api && uv run alembic upgrade head`.
+- [ ] **Enable GitHub Actions** on github.com/whreel92/fieldquote (Settings → Actions → General →
+      Allow all actions) — the Actions tab currently says workflows are disabled, so CI can't run.
+      Claude can click this for you with your say-so.
 - [ ] **Anthropic API key** (console.anthropic.com) → `ANTHROPIC_API_KEY`. Needed Phase 3.
 - [ ] **Deepgram API key** (console.deepgram.com, free tier fine to start) → `DEEPGRAM_API_KEY`.
       Needed Phase 3.
