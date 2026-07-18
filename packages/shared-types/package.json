@@ -8,7 +8,7 @@
     "generate": "cd ../../apps/api && uv run python scripts/export_openapi.py && cd ../../packages/shared-types && openapi-typescript ../../apps/api/openapi.json -o src/api.gen.ts",
     "lint": "eslint src --ignore-pattern src/api.gen.ts",
     "typecheck": "tsc --noEmit",
-    "test": "echo \"no tests yet\" && exit 0"
+    "test": "vitest run"
   },
   "dependencies": {
     "zod": "^3.24.1"
@@ -18,6 +18,7 @@
     "eslint": "^9.17.0",
     "openapi-typescript": "^7.5.0",
     "typescript": "^5.7.2",
-    "typescript-eslint": "^8.19.0"
+    "typescript-eslint": "^8.19.0",
+    "vitest": "^3.0.0"
   }
 }
