@@ -1,0 +1,976 @@
+[
+  {
+    "code": "circuit_15a_new_up_to_25ft",
+    "name": "New 15A circuit (up to 25 ft)",
+    "description": "Install a new dedicated 15A circuit from the panel to a new receptacle location (Up to 25 ft), including breaker, cable, box, and device.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers panel work, cable routing up to 25 ft, and device trim. Short home runs near the panel are the baseline: about half fishing, half terminations.",
+    "bom": [
+      {
+        "sku": "BRK-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 30
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-15A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_15a_new_25_50ft",
+    "name": "New 15A circuit (25-50 ft)",
+    "description": "Install a new dedicated 15A circuit from the panel to a new receptacle location (25-50 ft), including breaker, cable, box, and device.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 3.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers panel work, cable routing 25-50 ft, and device trim. The longer run adds drilling and fishing time through additional bays.",
+    "bom": [
+      {
+        "sku": "BRK-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 60
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-15A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_15a_new_50_100ft",
+    "name": "New 15A circuit (50-100 ft)",
+    "description": "Install a new dedicated 15A circuit from the panel to a new receptacle location (50-100 ft), including breaker, cable, box, and device.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers panel work, cable routing 50-100 ft, and device trim. Cross-house runs usually traverse attic or crawl; allow for access setup at both ends.",
+    "bom": [
+      {
+        "sku": "BRK-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 110
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-15A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_20a_new_up_to_25ft",
+    "name": "New 20A circuit (up to 25 ft)",
+    "description": "Install a new dedicated 20A circuit from the panel to a new receptacle location (Up to 25 ft), including breaker, cable, box, and device.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers panel work, cable routing up to 25 ft, and device trim. Same routing effort as 15A; 12 AWG terminations are slightly stiffer to work.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 30
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_20a_new_25_50ft",
+    "name": "New 20A circuit (25-50 ft)",
+    "description": "Install a new dedicated 20A circuit from the panel to a new receptacle location (25-50 ft), including breaker, cable, box, and device.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 3.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers panel work, cable routing 25-50 ft, and device trim. The longer run adds drilling and fishing time through additional bays.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 60
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_20a_new_50_100ft",
+    "name": "New 20A circuit (50-100 ft)",
+    "description": "Install a new dedicated 20A circuit from the panel to a new receptacle location (50-100 ft), including breaker, cable, box, and device.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 4.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers panel work, cable routing 50-100 ft, and device trim. Long 12 AWG pulls across the structure; check panel-side routing space early.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 110
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_dedicated_dishwasher",
+    "name": "Dedicated dishwasher circuit",
+    "description": "Install a dedicated 20A circuit for a dishwasher, routed to the sink cabinet area.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Kitchen cabinet routing is tighter than open-wall work; includes GFCI protection per current code via breaker or device per layout.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 40
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_dedicated_disposal",
+    "name": "Dedicated disposal circuit with switch",
+    "description": "Install a dedicated 20A disposal circuit with a countertop-height switch and sink-cabinet receptacle.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Adds a switch leg over the plain appliance circuit; cabinet and backsplash routing set the pace.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 40
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 2
+      },
+      {
+        "sku": "SW-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 2
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_dedicated_microwave",
+    "name": "Dedicated microwave circuit",
+    "description": "Install a dedicated 20A circuit for an over-range or countertop microwave.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Upper-cabinet receptacle placement means working above the range area; otherwise a standard dedicated circuit.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 40
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_dedicated_fridge",
+    "name": "Dedicated refrigerator circuit",
+    "description": "Install a dedicated 20A circuit for the refrigerator.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 2.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Usually a straightforward run to an accessible wall cavity behind the fridge; slightly quicker than cabinet-bound circuits.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 35
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "circuit_dedicated_laundry",
+    "name": "Dedicated laundry (washer) circuit",
+    "description": "Install a dedicated 20A laundry-area circuit per code.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Laundry areas are often adjacent to the panel or garage, but GFCI requirements and finished-wall fishing keep this at three hours.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 40
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-GFCI-20A",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "kitchen_small_appliance_pair",
+    "name": "Kitchen small-appliance circuit pair",
+    "description": "Install the two code-required 20A small-appliance circuits serving kitchen countertop receptacles.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 5.5,
+    "helper_hours": 1.0,
+    "labor_notes": "Two full circuits with GFCI protection and backsplash boxes; counted together because they share routing paths and setup.",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 90
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 2
+      },
+      {
+        "sku": "REC-GFCI-20A",
+        "qty": 2
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 2
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "gfci_retrofit_single",
+    "name": "GFCI receptacle retrofit (first location)",
+    "description": "Replace a standard receptacle with a GFCI receptacle at one location (kitchen, bath, garage, or exterior).",
+    "job_type_codes": ["circuits_outlets", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Half an hour covers verification of line/load, the swap, and test; first location carries the setup time.",
+    "bom": [
+      {
+        "sku": "REC-GFCI-15A",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "gfci_retrofit_additional",
+    "name": "GFCI receptacle retrofit (each additional)",
+    "description": "Each additional GFCI receptacle replaced during the same visit.",
+    "job_type_codes": ["circuits_outlets", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.35,
+    "helper_hours": 0.0,
+    "labor_notes": "Marginal per-device time once tools are staged and the circuit map is known.",
+    "bom": [
+      {
+        "sku": "REC-GFCI-15A",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "gfci_breaker_retrofit",
+    "name": "GFCI breaker retrofit",
+    "description": "Protect an entire circuit by replacing its breaker with a GFCI breaker at the panel.",
+    "job_type_codes": ["circuits_outlets", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Panel work plus locating the circuit's neutral; includes trip-testing downstream devices.",
+    "bom": [
+      {
+        "sku": "BRK-GFCI-1P-20A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "afci_breaker_retrofit_single",
+    "name": "AFCI breaker retrofit (first)",
+    "description": "Replace a standard breaker with a combination AFCI breaker to add arc-fault protection to a circuit.",
+    "job_type_codes": ["circuits_outlets", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Swap plus neutral relocation and a nuisance-trip check with typical loads on the circuit.",
+    "bom": [
+      {
+        "sku": "BRK-AFCI-1P-15A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "afci_breaker_retrofit_additional",
+    "name": "AFCI breaker retrofit (each additional)",
+    "description": "Each additional AFCI breaker installed during the same panel session.",
+    "job_type_codes": ["circuits_outlets", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.35,
+    "helper_hours": 0.0,
+    "labor_notes": "Marginal time per breaker with the panel already open and mapped.",
+    "bom": [
+      {
+        "sku": "BRK-AFCI-1P-15A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "dual_function_breaker_retrofit",
+    "name": "Dual-function AFCI/GFCI breaker retrofit",
+    "description": "Replace a standard breaker with a dual-function AFCI/GFCI breaker for combined protection.",
+    "job_type_codes": ["circuits_outlets", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Same labor as an AFCI swap; the dual-function device carries the cost difference.",
+    "bom": [
+      {
+        "sku": "BRK-DF-1P-20A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "afci_panel_full_retrofit",
+    "name": "Whole-panel AFCI retrofit (up to 10 circuits)",
+    "description": "Upgrade up to ten branch circuits to AFCI protection in one panel session, with load testing on each.",
+    "job_type_codes": ["circuits_outlets", "panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Batching ten breaker swaps with neutral relocations and per-circuit testing; obsolete panels change the math and should be flagged.",
+    "bom": [
+      {
+        "sku": "BRK-AFCI-1P-15A",
+        "qty": 6
+      },
+      {
+        "sku": "BRK-AFCI-1P-20A",
+        "qty": 4
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "usb_receptacle_swap",
+    "name": "USB charging receptacle swap (first)",
+    "description": "Replace a standard receptacle with a duplex receptacle that includes USB-A/USB-C charging ports.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "USB devices are deeper than standard receptacles — box fill check included in the half hour.",
+    "bom": [
+      {
+        "sku": "REC-USB-AC",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "usb_receptacle_swap_additional",
+    "name": "USB charging receptacle swap (each additional)",
+    "description": "Each additional USB receptacle installed during the same visit.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 0.35,
+    "helper_hours": 0.0,
+    "labor_notes": "Marginal per-device time once staged.",
+    "bom": [
+      {
+        "sku": "REC-USB-AC",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "switch_to_dimmer_swap",
+    "name": "Switch to dimmer swap (single-pole)",
+    "description": "Replace a standard switch with an LED-compatible dimmer.",
+    "job_type_codes": ["circuits_outlets", "fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Includes verifying fixture load compatibility with the dimmer; LED flicker checks add a few minutes.",
+    "bom": [
+      {
+        "sku": "DIM-LED-1P",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "switch_to_dimmer_3way_swap",
+    "name": "Switch to dimmer swap (3-way)",
+    "description": "Replace a 3-way switch with an LED-compatible 3-way dimmer.",
+    "job_type_codes": ["circuits_outlets", "fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Traveler identification on older wiring takes the extra quarter hour over a single-pole swap.",
+    "bom": [
+      {
+        "sku": "DIM-LED-3W",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "three_way_switch_new_install",
+    "name": "New 3-way switching (two locations)",
+    "description": "Add 3-way switching so a light can be controlled from two locations, including new switch and traveler cable.",
+    "job_type_codes": ["circuits_outlets", "fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Fishing 14/3 traveler cable between two switch points through finished walls is the bulk of the time.",
+    "bom": [
+      {
+        "sku": "SW-3W-15A",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-NMB-14-3",
+        "qty": 25
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 2
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 2
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "exterior_receptacle_add",
+    "name": "Exterior receptacle add",
+    "description": "Add a weather-resistant GFCI receptacle with in-use cover on an exterior wall, fed from an interior circuit or new run.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Back-to-back through the rim or wall from an interior box keeps this at 1.5 hours; sealing the penetration properly matters.",
+    "bom": [
+      {
+        "sku": "REC-GFCI-20A-WR",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-WP-1G",
+        "qty": 1
+      },
+      {
+        "sku": "COV-WP-INUSE",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 15
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "garage_receptacle_add_surface",
+    "name": "Garage receptacle add (surface EMT)",
+    "description": "Add a 20A receptacle in a garage using surface-mounted EMT from an existing circuit or the panel.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 1.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Exposed EMT in a garage is fast, honest work: no fishing, just neat bends and anchors.",
+    "bom": [
+      {
+        "sku": "CND-EMT-050",
+        "qty": 15
+      },
+      {
+        "sku": "FIT-EMT-CONN-050",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-EMT-STRAP-050",
+        "qty": 4
+      },
+      {
+        "sku": "BOX-4SQ",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-4SQ-COVER",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-THHN-12",
+        "qty": 45
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "receptacle_add_existing_circuit",
+    "name": "Receptacle add on existing circuit",
+    "description": "Add a new receptacle fed from a nearby existing receptacle or junction point.",
+    "job_type_codes": ["circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Short fish from an adjacent box; load check on the existing circuit is part of the job.",
+    "bom": [
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-15A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 20
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "floor_receptacle_add",
+    "name": "Floor receptacle add",
+    "description": "Install a floor box receptacle for furniture placement away from walls, fed from below or an adjacent wall.",
+    "job_type_codes": ["circuits_outlets", "remodel"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Cutting flooring cleanly and routing from below (crawl or basement) makes this slower than a wall receptacle.",
+    "bom": [
+      {
+        "sku": "BOX-FLOOR-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 25
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["crawlspace", "finished_walls", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "smart_switch_install",
+    "name": "Smart switch install",
+    "description": "Replace a standard switch with a Wi-Fi smart switch, including neutral verification and app pairing handoff.",
+    "job_type_codes": ["circuits_outlets", "fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Neutral availability check is the gating factor; includes pairing the device and confirming remote control works.",
+    "bom": [
+      {
+        "sku": "SW-SMART-WIFI",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "timer_switch_install",
+    "name": "Timer switch install",
+    "description": "Install an electronic countdown timer switch, typically for a bath fan or exterior lighting.",
+    "job_type_codes": ["circuits_outlets", "fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.6,
+    "helper_hours": 0.0,
+    "labor_notes": "Simple device swap plus programming and a walkthrough with the homeowner.",
+    "bom": [
+      {
+        "sku": "SW-TIMER-BATH",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  }
+]

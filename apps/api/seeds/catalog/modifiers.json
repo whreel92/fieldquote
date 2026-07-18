@@ -1,0 +1,100 @@
+[
+  {
+    "code": "occupied_home",
+    "name": "Occupied home",
+    "description": "Working around furniture, finishes, pets, and daily household activity; extra protection and cleanup.",
+    "effect": {
+      "labor_hours_mult": 1.15
+    }
+  },
+  {
+    "code": "stucco_exterior",
+    "name": "Stucco exterior",
+    "description": "Cutting, patching, and sealing stucco for exterior penetrations and surface-mounted equipment.",
+    "effect": {
+      "labor_hours_mult": 1.25
+    }
+  },
+  {
+    "code": "two_story",
+    "name": "Two-story home",
+    "description": "Extra ladder work, longer pulls, and slower access on two-story structures.",
+    "effect": {
+      "labor_hours_mult": 1.2
+    }
+  },
+  {
+    "code": "attic_run",
+    "name": "Attic run",
+    "description": "Routing cable through an attic space: insulation, heat, and restricted movement.",
+    "effect": {
+      "labor_hours_add": 0.75
+    }
+  },
+  {
+    "code": "finished_walls",
+    "name": "Finished walls",
+    "description": "Fishing cable through closed walls/ceilings with minimal drywall openings and patch-ready cuts.",
+    "effect": {
+      "labor_hours_mult": 1.35
+    }
+  },
+  {
+    "code": "crawlspace",
+    "name": "Crawlspace access",
+    "description": "Routing through a crawlspace: suit-up, limited clearance, slower cable runs.",
+    "effect": {
+      "labor_hours_add": 0.5
+    }
+  },
+  {
+    "code": "permit_handling",
+    "name": "Permit handling",
+    "description": "Preparing, filing, and coordinating the electrical permit and inspection.",
+    "effect": {
+      "labor_hours_add": 1.0
+    }
+  },
+  {
+    "code": "panel_brand_obsolete",
+    "name": "Obsolete panel brand",
+    "description": "Legacy panel (Zinsco, FPE, etc.): sourcing/adapting parts and extra care on aged equipment.",
+    "effect": {
+      "labor_hours_add": 1.5
+    }
+  },
+  {
+    "code": "long_run_over_50ft",
+    "name": "Long run over 50 ft",
+    "description": "Circuit run beyond 50 ft: additional wire, possible upsizing for voltage drop, longer pull.",
+    "effect": {
+      "material_mult": 1.5,
+      "labor_hours_add": 0.5
+    }
+  },
+  {
+    "code": "tight_workspace",
+    "name": "Tight workspace",
+    "description": "Constrained working clearance (closets, packed garages) slowing every task.",
+    "effect": {
+      "labor_hours_mult": 1.15
+    }
+  },
+  {
+    "code": "ceiling_over_10ft",
+    "name": "Ceiling over 10 ft",
+    "description": "High-ceiling work requiring taller ladders/scaffold and slower overhead handling.",
+    "effect": {
+      "labor_hours_add": 0.5
+    }
+  },
+  {
+    "code": "trench_required",
+    "name": "Trenching required",
+    "description": "Excavating, bedding, and backfilling a trench for underground conduit.",
+    "effect": {
+      "labor_hours_add": 3.0,
+      "material_mult": 1.2
+    }
+  }
+]

@@ -1,0 +1,728 @@
+[
+  {
+    "code": "ev_charger_48a_install_up_to_25ft",
+    "name": "48A hardwired EV charger install (up to 25 ft)",
+    "description": "Install a 48A hardwired Level 2 EV charger on a new 60A circuit within 25 ft of the panel, including breaker, cable run, and charger commissioning.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Short run from panel to garage wall: mount, pull 6/3, terminate at both ends, commission and test charging. Half a day solo when the panel has capacity.",
+    "bom": [
+      {
+        "sku": "EVSE-48A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 30
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_charger_48a_install_25_50ft",
+    "name": "48A hardwired EV charger install (25-50 ft)",
+    "description": "Install a 48A hardwired Level 2 EV charger on a new 60A circuit 25-50 ft from the panel.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 5.0,
+    "helper_hours": 0.0,
+    "labor_notes": "The longer 6/3 run adds roughly an hour of drilling and routing through framing versus the short-run version.",
+    "bom": [
+      {
+        "sku": "EVSE-48A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 60
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 8
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_charger_48a_install_50_100ft",
+    "name": "48A hardwired EV charger install (50-100 ft)",
+    "description": "Install a 48A hardwired Level 2 EV charger on a new 60A circuit 50-100 ft from the panel, typically crossing the structure.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 6.5,
+    "helper_hours": 1.0,
+    "labor_notes": "Long pulls of 6/3 usually cross attic or crawl and need a second set of hands; voltage-drop check included in the design time.",
+    "bom": [
+      {
+        "sku": "EVSE-48A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 110
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 2
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 12
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling",
+      "two_story"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_charger_60a_install_up_to_25ft",
+    "name": "60A-circuit EV charger install (up to 25 ft, conduit)",
+    "description": "Install a premium hardwired EV charger on a new 60A-rated conduit circuit within 25 ft of the panel, using EMT with THHN conductors.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 5.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Conduit work (bend, mount, pull) is slower than cable but required for the larger charger's exposed run; includes commissioning.",
+    "bom": [
+      {
+        "sku": "EVSE-60A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-80A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-EMT-075",
+        "qty": 30
+      },
+      {
+        "sku": "FIT-EMT-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-EMT-COUP-075",
+        "qty": 3
+      },
+      {
+        "sku": "FIT-EMT-STRAP-075",
+        "qty": 10
+      },
+      {
+        "sku": "WIRE-THHN-4",
+        "qty": 90
+      },
+      {
+        "sku": "WIRE-THHN-8",
+        "qty": 30
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_charger_60a_install_25_50ft",
+    "name": "60A-circuit EV charger install (25-50 ft, conduit)",
+    "description": "Install a premium hardwired EV charger on a new 60A-rated conduit circuit 25-50 ft from the panel.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 6.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Each additional stick of EMT adds measurable bend-and-mount time; a 50 ft conduit run with #4 conductors is a solid day's finish.",
+    "bom": [
+      {
+        "sku": "EVSE-60A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-80A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-EMT-075",
+        "qty": 60
+      },
+      {
+        "sku": "FIT-EMT-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-EMT-COUP-075",
+        "qty": 6
+      },
+      {
+        "sku": "FIT-EMT-STRAP-075",
+        "qty": 20
+      },
+      {
+        "sku": "WIRE-THHN-4",
+        "qty": 180
+      },
+      {
+        "sku": "WIRE-THHN-8",
+        "qty": 60
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_charger_60a_install_50_100ft",
+    "name": "60A-circuit EV charger install (50-100 ft, conduit)",
+    "description": "Install a premium hardwired EV charger on a new 60A-rated conduit circuit 50-100 ft from the panel.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 8.0,
+    "helper_hours": 2.0,
+    "labor_notes": "Long conduit runs need a helper for pulls; #4 copper across 100 ft is a hard two-person pull with lube and staged boxes.",
+    "bom": [
+      {
+        "sku": "EVSE-60A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-80A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-EMT-075",
+        "qty": 110
+      },
+      {
+        "sku": "FIT-EMT-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-EMT-COUP-075",
+        "qty": 11
+      },
+      {
+        "sku": "FIT-EMT-STRAP-075",
+        "qty": 36
+      },
+      {
+        "sku": "WIRE-THHN-4",
+        "qty": 330
+      },
+      {
+        "sku": "WIRE-THHN-8",
+        "qty": 110
+      },
+      {
+        "sku": "FIT-LB-075",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling",
+      "two_story"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_nema_14_50_install_up_to_25ft",
+    "name": "NEMA 14-50 EV outlet install (up to 25 ft)",
+    "description": "Install a NEMA 14-50 receptacle on a new GFCI-protected 50A circuit within 25 ft of the panel for plug-in EV charging.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Receptacle circuits are quicker than hardwired chargers; GFCI breaker termination and a solid box mount are the care points.",
+    "bom": [
+      {
+        "sku": "BRK-GFCI-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 30
+      },
+      {
+        "sku": "REC-14-50",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-2G-NEW",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_nema_14_50_install_25_50ft",
+    "name": "NEMA 14-50 EV outlet install (25-50 ft)",
+    "description": "Install a NEMA 14-50 receptacle on a new GFCI-protected 50A circuit 25-50 ft from the panel.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 4.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Adds an hour of cable routing over the short-run version for the longer 6/3 pull through framing.",
+    "bom": [
+      {
+        "sku": "BRK-GFCI-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 60
+      },
+      {
+        "sku": "REC-14-50",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-2G-NEW",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 6
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_load_management_install",
+    "name": "EV load-management device install",
+    "description": "Install a dynamic load-management device so an EV charger can share panel capacity safely when a service upgrade isn't wanted.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Mounting the controller, CT installation on the service conductors, and configuration/testing with the charger takes a careful half-morning.",
+    "bom": [
+      {
+        "sku": "EVLM-DEVICE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "tight_workspace", "panel_brand_obsolete"],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_evse_swap_replace",
+    "name": "EV charger swap/replacement (existing circuit)",
+    "description": "Remove an existing wall charger and install a customer-supplied replacement on the existing circuit, with termination check and commissioning.",
+    "job_type_codes": ["ev_charger", "service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Existing circuit verified, old unit off, new unit mounted and terminated — quick when the circuit checks out; circuit faults become a diagnostic.",
+    "bom": [
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_hardwire_customer_supplied_up_to_25ft",
+    "name": "Customer-supplied EV charger hookup (up to 25 ft)",
+    "description": "Install a new 60A circuit and hardwire a customer-supplied Level 2 charger within 25 ft of the panel.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Same circuit work as our supplied-charger assembly minus hardware markup; commissioning depends on the customer's unit being on site and undamaged.",
+    "bom": [
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 30
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_exterior_conduit_run_50ft",
+    "name": "Exterior EV circuit in conduit (approx 50 ft)",
+    "description": "Run an exterior-rated 60A EV circuit approximately 50 ft along the outside of the structure in EMT to reach a detached parking area or far garage wall.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 6.0,
+    "helper_hours": 1.0,
+    "labor_notes": "Exterior conduit means weatherproof fittings, wall anchoring, and neat runs a customer will see every day — slower than interior work by design.",
+    "bom": [
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-EMT-075",
+        "qty": 60
+      },
+      {
+        "sku": "FIT-EMT-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-EMT-COUP-075",
+        "qty": 6
+      },
+      {
+        "sku": "FIT-EMT-STRAP-075",
+        "qty": 20
+      },
+      {
+        "sku": "FIT-LB-075",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-6",
+        "qty": 180
+      },
+      {
+        "sku": "WIRE-THHN-10",
+        "qty": 60
+      },
+      {
+        "sku": "ANCHOR-KIT-MASONRY",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "two_story", "occupied_home", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_receptacle_relocate",
+    "name": "EV receptacle relocate (short move)",
+    "description": "Relocate an existing NEMA 14-50 EV receptacle a short distance to better suit the vehicle's charge port.",
+    "job_type_codes": ["ev_charger", "service_call"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Extending 6/3 to a new box a few feet away, with a junction at the old location; simple but heavy-gauge terminations take time.",
+    "bom": [
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 15
+      },
+      {
+        "sku": "BOX-2G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_load_calc_verification",
+    "name": "EV load calculation & panel capacity check",
+    "description": "Perform a NEC load calculation and panel inspection to confirm capacity for a proposed EV charger, with a written recommendation.",
+    "job_type_codes": ["ev_charger", "service_call"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "On-site survey plus the load calc worksheet; the deliverable is a clear go / load-manage / upgrade recommendation.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "ev_charger_install_tiered",
+    "name": "EV charger install (good/better/best)",
+    "description": "EV charging package with selectable tiers: a solid 48A install, added whole-home surge protection, or a premium 60A charger with load management.",
+    "job_type_codes": ["ev_charger"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Base tier matches the standard 48A short-run install; higher tiers add surge protection or step up to the 60A conduit circuit with load management.",
+    "bom": [
+      {
+        "sku": "EVSE-48A-HW",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 30
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "stucco_exterior",
+      "permit_handling"
+    ],
+    "option_tiers": [
+      {
+        "tier": "good",
+        "label": "48A hardwired charger",
+        "labor_hours": 4.0,
+        "helper_hours": 0.0,
+        "bom": [
+          {
+            "sku": "EVSE-48A-HW",
+            "qty": 1
+          },
+          {
+            "sku": "BRK-2P-60A",
+            "qty": 1
+          },
+          {
+            "sku": "WIRE-NMB-6-3",
+            "qty": 30
+          },
+          {
+            "sku": "MISC-STAPLE-NM",
+            "qty": 1
+          },
+          {
+            "sku": "MISC-WIRENUT-100",
+            "qty": 1
+          }
+        ]
+      },
+      {
+        "tier": "better",
+        "label": "48A charger + whole-home surge protection",
+        "labor_hours": 4.5,
+        "helper_hours": 0.0,
+        "bom": [
+          {
+            "sku": "EVSE-48A-HW",
+            "qty": 1
+          },
+          {
+            "sku": "BRK-2P-60A",
+            "qty": 1
+          },
+          {
+            "sku": "WIRE-NMB-6-3",
+            "qty": 30
+          },
+          {
+            "sku": "MISC-STAPLE-NM",
+            "qty": 1
+          },
+          {
+            "sku": "MISC-WIRENUT-100",
+            "qty": 1
+          },
+          {
+            "sku": "SPD-2P-TYPE2",
+            "qty": 1
+          },
+          {
+            "sku": "BRK-2P-30A",
+            "qty": 1
+          }
+        ]
+      },
+      {
+        "tier": "best",
+        "label": "60A premium charger + load management",
+        "labor_hours": 6.0,
+        "helper_hours": 1.0,
+        "bom": [
+          {
+            "sku": "EVSE-60A-HW",
+            "qty": 1
+          },
+          {
+            "sku": "EVLM-DEVICE",
+            "qty": 1
+          },
+          {
+            "sku": "BRK-2P-80A",
+            "qty": 1
+          },
+          {
+            "sku": "CND-EMT-075",
+            "qty": 30
+          },
+          {
+            "sku": "FIT-EMT-CONN-075",
+            "qty": 2
+          },
+          {
+            "sku": "FIT-EMT-STRAP-075",
+            "qty": 10
+          },
+          {
+            "sku": "WIRE-THHN-4",
+            "qty": 90
+          },
+          {
+            "sku": "WIRE-THHN-8",
+            "qty": 30
+          }
+        ]
+      }
+    ]
+  }
+]

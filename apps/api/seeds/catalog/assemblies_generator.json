@@ -1,0 +1,378 @@
+[
+  {
+    "code": "generator_inlet_30a_install",
+    "name": "Generator inlet box install (30A)",
+    "description": "Install a 30A exterior generator power inlet box wired to the panel area for portable generator connection.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Exterior box mounting, wall penetration sealing, and 10/3 back to the panel; pairs with an interlock or transfer switch line.",
+    "bom": [
+      {
+        "sku": "GEN-INLET-30A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-10-3",
+        "qty": 15
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "ANCHOR-KIT-MASONRY",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_inlet_50a_install",
+    "name": "Generator inlet box install (50A)",
+    "description": "Install a 50A exterior generator power inlet box wired to the panel area for larger portable generators.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Same scope as the 30A inlet with heavier 6/3 cable and terminations adding half an hour.",
+    "bom": [
+      {
+        "sku": "GEN-INLET-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 15
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "ANCHOR-KIT-MASONRY",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_interlock_kit_install",
+    "name": "Generator interlock kit install",
+    "description": "Install a mechanical interlock kit on the main panel with a generator back-feed breaker, allowing safe whole-panel generator use.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Kit fitting is panel-brand specific and includes dead-front modification, back-feed breaker, and operation labeling/testing.",
+    "bom": [
+      {
+        "sku": "GEN-INTERLOCK-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-30A",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_transfer_switch_6cir",
+    "name": "Manual transfer switch install (6-circuit)",
+    "description": "Install a 6-circuit manual transfer switch beside the main panel for selected-circuit generator backup.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 5.0,
+    "helper_hours": 1.0,
+    "labor_notes": "Each transferred circuit is intercepted and re-routed through the switch — six circuits of careful re-work plus testing under generator power.",
+    "bom": [
+      {
+        "sku": "GEN-XFER-6CIR",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-10-3",
+        "qty": 10
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "panel_brand_obsolete",
+      "tight_workspace",
+      "occupied_home",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_transfer_switch_10cir",
+    "name": "Manual transfer switch install (10-circuit)",
+    "description": "Install a 10-circuit manual transfer switch beside the main panel for extended-circuit generator backup.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 6.5,
+    "helper_hours": 2.0,
+    "labor_notes": "Ten intercepted circuits push this to a long day; helper time covers panel-side re-work and load testing.",
+    "bom": [
+      {
+        "sku": "GEN-XFER-10CIR",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-10-3",
+        "qty": 10
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "panel_brand_obsolete",
+      "tight_workspace",
+      "occupied_home",
+      "permit_handling"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_interlock_inlet_package_30a",
+    "name": "Interlock + 30A inlet package (surface run)",
+    "description": "Complete portable-generator hookup: 30A exterior inlet, interlock kit, back-feed breaker, and surface cable run to the panel.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Bundles the inlet and interlock at a package rate reflecting shared setup; assumes inlet within about 15 ft of the panel.",
+    "bom": [
+      {
+        "sku": "GEN-INLET-30A",
+        "qty": 1
+      },
+      {
+        "sku": "GEN-INTERLOCK-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-30A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-10-3",
+        "qty": 20
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "ANCHOR-KIT-MASONRY",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "stucco_exterior",
+      "occupied_home",
+      "permit_handling",
+      "panel_brand_obsolete"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_interlock_inlet_package_50a",
+    "name": "Interlock + 50A inlet package (surface run)",
+    "description": "Complete portable-generator hookup: 50A exterior inlet, interlock kit, back-feed breaker, and surface cable run to the panel.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 4.5,
+    "helper_hours": 1.0,
+    "labor_notes": "The 50A package's heavier cable and terminations add a half hour and a helper hour over the 30A package.",
+    "bom": [
+      {
+        "sku": "GEN-INLET-50A",
+        "qty": 1
+      },
+      {
+        "sku": "GEN-INTERLOCK-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 20
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "ANCHOR-KIT-MASONRY",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "stucco_exterior",
+      "occupied_home",
+      "permit_handling",
+      "panel_brand_obsolete"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_interlock_inlet_package_50a_trench",
+    "name": "Interlock + 50A inlet package (underground run)",
+    "description": "Portable-generator hookup with the 50A inlet mounted away from the house (pad or fence line), fed by underground conduit.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 7.0,
+    "helper_hours": 3.0,
+    "labor_notes": "Adds underground PVC assembly and conductor pull to the 50A package; trench excavation itself is billed via the trench modifier.",
+    "bom": [
+      {
+        "sku": "GEN-INLET-50A",
+        "qty": 1
+      },
+      {
+        "sku": "GEN-INTERLOCK-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-PVC-100",
+        "qty": 40
+      },
+      {
+        "sku": "FIT-PVC-ELL-100",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-PVC-MA-100",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-6",
+        "qty": 130
+      },
+      {
+        "sku": "WIRE-THHN-10",
+        "qty": 40
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "trench_required",
+      "stucco_exterior",
+      "permit_handling",
+      "panel_brand_obsolete"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_inlet_remote_mount_50ft",
+    "name": "Remote generator inlet (approx 50 ft exterior conduit)",
+    "description": "Mount a 50A generator inlet approximately 50 ft from the panel along the exterior in surface conduit, for generator placement away from living areas.",
+    "job_type_codes": ["generator"],
+    "unit": "ea",
+    "labor_hours": 5.5,
+    "helper_hours": 1.0,
+    "labor_notes": "A long exterior EMT run with weatherproof fittings dominates the time; conductor pull needs a second set of hands.",
+    "bom": [
+      {
+        "sku": "GEN-INLET-50A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-EMT-075",
+        "qty": 60
+      },
+      {
+        "sku": "FIT-EMT-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-EMT-COUP-075",
+        "qty": 6
+      },
+      {
+        "sku": "FIT-EMT-STRAP-075",
+        "qty": 20
+      },
+      {
+        "sku": "FIT-LB-075",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-6",
+        "qty": 180
+      },
+      {
+        "sku": "WIRE-THHN-10",
+        "qty": 60
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "ANCHOR-KIT-MASONRY",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "permit_handling", "two_story"],
+    "option_tiers": null
+  },
+  {
+    "code": "generator_startup_load_test",
+    "name": "Generator hookup startup & load test",
+    "description": "Commission a completed generator hookup: transfer procedure walkthrough with the homeowner and a live load test.",
+    "job_type_codes": ["generator", "service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Live transfer testing with the customer's generator plus a written quick-start card; scheduling depends on the generator being on site and fueled.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  }
+]

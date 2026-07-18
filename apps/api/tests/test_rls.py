@@ -40,6 +40,11 @@ def admin() -> Iterator[Connection]:
 
     engine = create_engine(DB_URL)
     with engine.begin() as conn:
+        # Idempotent for local container reuse (FK cascades clean children).
+        conn.execute(
+            text("delete from companies where id in (:ca, :cb)"),
+            {"ca": COMPANY_A, "cb": COMPANY_B},
+        )
         conn.execute(
             text(
                 """

@@ -1,0 +1,1472 @@
+[
+  {
+    "sku": "PNL-100A-MB-20SP",
+    "description": "100A main breaker load center, 20-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 145.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-125A-MB-24SP",
+    "description": "125A main breaker load center, 24-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 185.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-150A-MB-30SP",
+    "description": "150A main breaker load center, 30-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 230.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-200A-MB-30SP",
+    "description": "200A main breaker load center, 30-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 265.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-200A-MB-40SP",
+    "description": "200A main breaker load center, 40-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 320.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "MM-200A-COMBO",
+    "description": "200A meter-main combination panel, surface mount, NEMA 3R",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 680.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-SUB-60A-8SP",
+    "description": "60A main lug sub-panel, 8-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 85.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-SUB-100A-12SP",
+    "description": "100A main lug sub-panel, 12-space indoor",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 125.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PNL-COVER-200A",
+    "description": "Replacement dead-front cover for 200A load center",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 45.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "MTR-SOCKET-200A",
+    "description": "200A ringless meter socket, overhead/underground feed",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 95.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-MAIN-200A",
+    "description": "200A 2-pole main breaker, plug-on",
+    "unit": "ea",
+    "category": "panel",
+    "base_price": 95.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-1P-15A",
+    "description": "15A 1-pole standard breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 7.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-1P-20A",
+    "description": "20A 1-pole standard breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 7.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-1P-30A",
+    "description": "30A 1-pole standard breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 11.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-TANDEM-15A",
+    "description": "15A/15A tandem breaker (space saver)",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 14.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-20A",
+    "description": "20A 2-pole breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 16.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-30A",
+    "description": "30A 2-pole breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 18.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-40A",
+    "description": "40A 2-pole breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 20.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-50A",
+    "description": "50A 2-pole breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 22.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-60A",
+    "description": "60A 2-pole breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 26.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-80A",
+    "description": "80A 2-pole breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 48.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-2P-100A",
+    "description": "100A 2-pole breaker (sub-feed)",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 62.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-GFCI-1P-20A",
+    "description": "20A 1-pole GFCI breaker, self-test",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 48.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-GFCI-2P-20A",
+    "description": "20A 2-pole GFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 85.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-GFCI-2P-50A",
+    "description": "50A 2-pole GFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 98.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-GFCI-2P-60A",
+    "description": "60A 2-pole GFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 112.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-AFCI-1P-15A",
+    "description": "15A 1-pole combination AFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 42.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-AFCI-1P-20A",
+    "description": "20A 1-pole combination AFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 45.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-DF-1P-15A",
+    "description": "15A 1-pole dual-function AFCI/GFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 52.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BRK-DF-1P-20A",
+    "description": "20A 1-pole dual-function AFCI/GFCI breaker",
+    "unit": "ea",
+    "category": "breaker",
+    "base_price": 55.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-14-2",
+    "description": "14/2 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.42,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-14-3",
+    "description": "14/3 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.68,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-12-2",
+    "description": "12/2 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.62,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-12-3",
+    "description": "12/3 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.92,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-10-2",
+    "description": "10/2 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 1.05,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-10-3",
+    "description": "10/3 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 1.45,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-8-3",
+    "description": "8/3 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 2.35,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-NMB-6-3",
+    "description": "6/3 NM-B w/ ground copper cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 3.55,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-THHN-12",
+    "description": "#12 THHN/THWN-2 stranded copper",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.26,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-THHN-10",
+    "description": "#10 THHN/THWN-2 stranded copper",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.4,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-THHN-8",
+    "description": "#8 THHN/THWN-2 stranded copper",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.65,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-THHN-6",
+    "description": "#6 THHN/THWN-2 stranded copper",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 1.02,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-THHN-4",
+    "description": "#4 THHN/THWN-2 stranded copper",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 1.58,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-SER-4-0-AL",
+    "description": "4/0-4/0-2/0-4 aluminum SER service entrance cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 6.4,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-SER-2-AL",
+    "description": "2-2-2-4 aluminum SER feeder cable",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 2.85,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-XHHW-4-0-AL",
+    "description": "4/0 XHHW-2 aluminum, underground service conductor",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 2.25,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-XHHW-2-AL",
+    "description": "#2 XHHW-2 aluminum feeder conductor",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 1.15,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-BARE-CU-6",
+    "description": "#6 bare solid copper grounding conductor",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 0.82,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WIRE-BARE-CU-4",
+    "description": "#4 bare solid copper bonding conductor",
+    "unit": "ft",
+    "category": "wire",
+    "base_price": 1.25,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-EMT-050",
+    "description": "1/2 in EMT conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 0.88,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-EMT-075",
+    "description": "3/4 in EMT conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 1.32,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-EMT-100",
+    "description": "1 in EMT conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 2.15,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-PVC-075",
+    "description": "3/4 in schedule 40 PVC conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 0.95,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-PVC-100",
+    "description": "1 in schedule 40 PVC conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 1.42,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-PVC-200",
+    "description": "2 in schedule 40 PVC conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 2.65,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CND-LFMC-075",
+    "description": "3/4 in liquidtight flexible metal conduit",
+    "unit": "ft",
+    "category": "conduit",
+    "base_price": 1.85,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-EMT-CONN-050",
+    "description": "1/2 in EMT set-screw connector",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.6,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-EMT-COUP-050",
+    "description": "1/2 in EMT set-screw coupling",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.55,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-EMT-STRAP-050",
+    "description": "1/2 in EMT one-hole strap",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.25,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-EMT-CONN-075",
+    "description": "3/4 in EMT set-screw connector",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.95,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-EMT-COUP-075",
+    "description": "3/4 in EMT set-screw coupling",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.85,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-EMT-STRAP-075",
+    "description": "3/4 in EMT one-hole strap",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.35,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-PVC-ELL-100",
+    "description": "1 in PVC 90-degree sweep elbow",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 2.4,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-PVC-MA-100",
+    "description": "1 in PVC male terminal adapter",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 0.95,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-PVC-ELL-200",
+    "description": "2 in PVC 90-degree sweep elbow",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 4.6,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-PVC-COUP-200",
+    "description": "2 in PVC coupling",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 1.85,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-PVC-MA-200",
+    "description": "2 in PVC male terminal adapter",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 1.6,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-LB-075",
+    "description": "3/4 in LB conduit body w/ cover and gasket",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 6.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIT-LFMC-CONN-075",
+    "description": "3/4 in liquidtight straight connector",
+    "unit": "ea",
+    "category": "conduit_fitting",
+    "base_price": 3.2,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-1G-NEW",
+    "description": "Single-gang new-work nail-on box, 18 cu in",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 0.72,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-1G-OLDWORK",
+    "description": "Single-gang old-work cut-in box w/ swing clamps",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 2.15,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-2G-NEW",
+    "description": "Two-gang new-work nail-on box",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 1.55,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-2G-OLDWORK",
+    "description": "Two-gang old-work cut-in box",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 3.35,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-CEIL-STD",
+    "description": "Round ceiling box, new-work, 15 lb fixture rated",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 2.45,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-CEIL-FAN-NEW",
+    "description": "Ceiling fan-rated new-work box w/ joist mount, 70 lb",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 12.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-CEIL-FAN-OLDWORK",
+    "description": "Ceiling fan-rated old-work brace box, 70 lb",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 22.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-4SQ",
+    "description": "4 in square metal box, 1-1/2 in deep",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 2.75,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-4SQ-COVER",
+    "description": "4 in square blank/mud-ring cover",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 1.2,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-WP-1G",
+    "description": "Single-gang weatherproof surface box, NEMA 3R",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 6.4,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "COV-WP-INUSE",
+    "description": "Weatherproof in-use bubble cover, single-gang",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 9.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "BOX-FLOOR-KIT",
+    "description": "Floor box kit w/ brass cover and receptacle-ready insert",
+    "unit": "ea",
+    "category": "box",
+    "base_price": 32.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-15A-DUP",
+    "description": "15A tamper-resistant duplex receptacle",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 1.75,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-20A-DUP",
+    "description": "20A tamper-resistant duplex receptacle",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 3.4,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-GFCI-15A",
+    "description": "15A GFCI receptacle, self-test, TR",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 16.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-GFCI-20A",
+    "description": "20A GFCI receptacle, self-test, TR",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 21.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-GFCI-20A-WR",
+    "description": "20A GFCI receptacle, weather-resistant, TR",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 24.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-USB-AC",
+    "description": "15A duplex receptacle w/ USB-A/C charging ports",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 28.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-14-50",
+    "description": "NEMA 14-50R 50A range/EV receptacle",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 13.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-14-30",
+    "description": "NEMA 14-30R 30A dryer receptacle",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 11.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "REC-6-50",
+    "description": "NEMA 6-50R 50A welder receptacle",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 14.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SW-1P-15A",
+    "description": "15A single-pole toggle switch",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 1.45,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SW-3W-15A",
+    "description": "15A 3-way toggle switch",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 3.1,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SW-SMART-WIFI",
+    "description": "Smart Wi-Fi switch, single-pole, neutral required",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 42.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SW-OCC-SENSOR",
+    "description": "Occupancy/vacancy sensor wall switch",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 26.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SW-TIMER-BATH",
+    "description": "Electronic countdown timer switch (bath fan)",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 24.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "DIM-LED-1P",
+    "description": "LED-compatible dimmer, single-pole",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 22.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "DIM-LED-3W",
+    "description": "LED-compatible dimmer, 3-way",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 28.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PLT-1G",
+    "description": "Single-gang wall plate",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 0.55,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "PLT-2G",
+    "description": "Two-gang wall plate",
+    "unit": "ea",
+    "category": "device",
+    "base_price": 0.85,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "LED-RC-4-STD",
+    "description": "4 in canless recessed LED downlight, selectable CCT",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 14.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "LED-RC-4-GIM",
+    "description": "4 in canless recessed LED gimbal downlight",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 19.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "LED-RC-6-STD",
+    "description": "6 in canless recessed LED downlight, selectable CCT",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 16.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "LED-RC-6-GIM",
+    "description": "6 in canless recessed LED gimbal downlight",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 22.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "LED-RC-6-SMART",
+    "description": "6 in smart RGBW recessed LED downlight, app/voice control",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 38.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-EXT-WALL",
+    "description": "Exterior LED wall lantern, wet rated",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 45.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-EXT-FLOOD-LED",
+    "description": "Exterior LED flood w/ motion sensor, wet rated",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 42.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-FLUSH-LED",
+    "description": "LED flush-mount ceiling fixture, 13 in",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 28.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-VANITY-3L",
+    "description": "3-lamp LED vanity bar fixture",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 65.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-PEND",
+    "description": "Pendant fixture, standard canopy mount",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 62.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-TRACK-4FT",
+    "description": "4 ft LED track lighting kit, 3 heads",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 55.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-SHOP-LED-4FT",
+    "description": "4 ft linkable LED shop light",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 38.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FIX-UC-LED",
+    "description": "Linkable under-cabinet LED strip (per ft, hardwire kit)",
+    "unit": "ft",
+    "category": "fixture",
+    "base_price": 12.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FAN-CEIL-52",
+    "description": "52 in ceiling fan w/ LED light kit, builder grade",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 118.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FAN-BATH-110CFM",
+    "description": "110 CFM quiet bath exhaust fan",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 95.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "FAN-BATH-LIGHT",
+    "description": "110 CFM bath exhaust fan w/ LED light",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 135.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "DUCT-4-FLEX",
+    "description": "4 in insulated flex duct",
+    "unit": "ft",
+    "category": "fixture",
+    "base_price": 1.15,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "DUCT-4-ROOFCAP",
+    "description": "4 in roof/wall exhaust cap w/ damper",
+    "unit": "ea",
+    "category": "fixture",
+    "base_price": 28.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "EVSE-48A-HW",
+    "description": "48A hardwired Level 2 EV charger, Wi-Fi, 25 ft cable",
+    "unit": "ea",
+    "category": "ev",
+    "base_price": 650.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "EVSE-60A-HW",
+    "description": "60A-circuit hardwired Level 2 EV charger, premium",
+    "unit": "ea",
+    "category": "ev",
+    "base_price": 850.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "EVLM-DEVICE",
+    "description": "EV load-management / dynamic load control device",
+    "unit": "ea",
+    "category": "ev",
+    "base_price": 450.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SPD-2P-TYPE2",
+    "description": "Type 2 whole-home surge protective device",
+    "unit": "ea",
+    "category": "ev",
+    "base_price": 115.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GEN-INLET-30A",
+    "description": "30A generator power inlet box, NEMA 3R",
+    "unit": "ea",
+    "category": "generator",
+    "base_price": 78.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GEN-INLET-50A",
+    "description": "50A generator power inlet box, NEMA 3R",
+    "unit": "ea",
+    "category": "generator",
+    "base_price": 122.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GEN-INTERLOCK-KIT",
+    "description": "Main breaker interlock kit (panel-brand specific)",
+    "unit": "ea",
+    "category": "generator",
+    "base_price": 68.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GEN-XFER-6CIR",
+    "description": "6-circuit manual transfer switch, 30A",
+    "unit": "ea",
+    "category": "generator",
+    "base_price": 325.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GEN-XFER-10CIR",
+    "description": "10-circuit manual transfer switch, 50A",
+    "unit": "ea",
+    "category": "generator",
+    "base_price": 485.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GRD-ROD-8FT",
+    "description": "5/8 in x 8 ft copper-bonded ground rod",
+    "unit": "ea",
+    "category": "grounding",
+    "base_price": 17.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GRD-CLAMP-ACORN",
+    "description": "Acorn ground rod clamp",
+    "unit": "ea",
+    "category": "grounding",
+    "base_price": 2.4,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "GRD-CLAMP-WATERPIPE",
+    "description": "Water pipe ground clamp, 1/2-1 in",
+    "unit": "ea",
+    "category": "grounding",
+    "base_price": 4.6,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "MAST-RIGID-200-2IN",
+    "description": "2 in rigid steel service mast, 10 ft stick",
+    "unit": "ea",
+    "category": "service",
+    "base_price": 88.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WEATHERHEAD-200",
+    "description": "2 in service entrance weatherhead",
+    "unit": "ea",
+    "category": "service",
+    "base_price": 24.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "HUB-MAST-200",
+    "description": "2 in meter hub for mast entry",
+    "unit": "ea",
+    "category": "service",
+    "base_price": 18.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "ROOF-FLASH-MAST",
+    "description": "Roof flashing for 2 in service mast",
+    "unit": "ea",
+    "category": "service",
+    "base_price": 16.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "MISC-WIRENUT-100",
+    "description": "Wire connector assortment, box of 100",
+    "unit": "box",
+    "category": "misc",
+    "base_price": 12.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "MISC-STAPLE-NM",
+    "description": "Insulated NM cable staples, box of 100",
+    "unit": "box",
+    "category": "misc",
+    "base_price": 6.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "MISC-GRN-SCREW-PK",
+    "description": "Green grounding screw/pigtail pack",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 4.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "LBL-PANEL-KIT",
+    "description": "Panel directory + breaker label kit",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 8.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "TAPE-ELEC",
+    "description": "Professional electrical tape",
+    "unit": "roll",
+    "category": "misc",
+    "base_price": 3.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "STRP-NAILPLATE",
+    "description": "Steel nail protection plate",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 0.75,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "CLK-SILICONE",
+    "description": "Exterior-grade silicone sealant tube",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 7.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "DISC-60A-NF",
+    "description": "60A non-fused AC disconnect, NEMA 3R",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 28.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "WHIP-AC-6FT",
+    "description": "6 ft liquidtight A/C whip w/ fittings",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 24.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "HTB-SPA-PANEL-50A",
+    "description": "50A spa panel w/ GFCI breaker, NEMA 3R",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 138.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "DBELL-XFMR-16V",
+    "description": "16V/30VA doorbell transformer",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 18.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SMOKE-CO-HW",
+    "description": "Hardwired combination smoke/CO alarm w/ battery backup",
+    "unit": "ea",
+    "category": "safety",
+    "base_price": 52.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "SMOKE-HW",
+    "description": "Hardwired smoke alarm w/ battery backup",
+    "unit": "ea",
+    "category": "safety",
+    "base_price": 28.0,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  },
+  {
+    "sku": "ANCHOR-KIT-MASONRY",
+    "description": "Masonry anchor/fastener kit",
+    "unit": "ea",
+    "category": "misc",
+    "base_price": 6.5,
+    "price_asof": "2026-07-01",
+    "source": "placeholder_v0",
+    "region_multipliers": {}
+  }
+]

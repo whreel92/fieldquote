@@ -1,0 +1,224 @@
+[
+  {
+    "code": "breaker_replace_standard",
+    "name": "Breaker replacement (standard)",
+    "description": "Replace a failed or damaged standard breaker with a new matching breaker.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Swap, torque, and load test; assumes the panel accepts current-production breakers (flag obsolete brands).",
+    "bom": [
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "breaker_replace_gfci",
+    "name": "Breaker replacement (GFCI)",
+    "description": "Replace a failed GFCI breaker with a new self-test GFCI breaker.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "GFCI breakers add the neutral pigtail and a downstream trip test over a standard swap.",
+    "bom": [
+      {
+        "sku": "BRK-GFCI-1P-20A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "breaker_replace_afci",
+    "name": "Breaker replacement (AFCI)",
+    "description": "Replace a failed AFCI breaker with a new combination AFCI breaker.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Same handling as the GFCI swap, plus a nuisance-trip check with the circuit's typical loads.",
+    "bom": [
+      {
+        "sku": "BRK-AFCI-1P-20A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "receptacle_replace_standard",
+    "name": "Receptacle replacement",
+    "description": "Replace a damaged, worn, or discolored receptacle with a new tamper-resistant device.",
+    "job_type_codes": ["service_call", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Includes checking the box's conductors for heat damage while it's open — the part that matters more than the swap.",
+    "bom": [
+      {
+        "sku": "REC-15A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "switch_replace_standard",
+    "name": "Switch replacement",
+    "description": "Replace a failed or worn switch with a new device.",
+    "job_type_codes": ["service_call", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Straightforward swap; multi-way or dimmer replacements use their own assemblies.",
+    "bom": [
+      {
+        "sku": "SW-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "junction_box_violation_repair",
+    "name": "Junction box violation repair",
+    "description": "Correct an open-splice or buried-junction violation: install a proper accessible box, re-make splices, and cover.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Re-making old splices safely and mounting an accessible box takes longer than it looks, especially in attics and crawls.",
+    "bom": [
+      {
+        "sku": "BOX-4SQ",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-4SQ-COVER",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["attic_run", "crawlspace", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_cover_replace",
+    "name": "Panel cover (dead-front) replacement",
+    "description": "Replace a missing or damaged panel dead-front cover with a correct-fit replacement.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Sourcing the right cover is the hard part (handled at quote time); on-site fit and screw-up is quick.",
+    "bom": [
+      {
+        "sku": "PNL-COVER-200A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete"],
+    "option_tiers": null
+  },
+  {
+    "code": "double_tap_correction",
+    "name": "Double-tap breaker correction",
+    "description": "Correct a double-tapped breaker by adding a properly rated tandem breaker or pigtail so each conductor lands correctly.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "One of the most common inspection findings; corrected with a tandem (where the panel allows) or a listed pigtail splice.",
+    "bom": [
+      {
+        "sku": "BRK-TANDEM-15A",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "smoke_co_detector_replace_first",
+    "name": "Hardwired smoke/CO detector replacement (first)",
+    "description": "Replace a hardwired smoke/CO detector with a new combination unit with battery backup (first unit).",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "First unit includes verifying the interconnect signal works across the system after replacement.",
+    "bom": [
+      {
+        "sku": "SMOKE-CO-HW",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "smoke_co_detector_replace_additional",
+    "name": "Hardwired smoke/CO detector replacement (each additional)",
+    "description": "Each additional hardwired smoke/CO detector replaced during the same visit.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 0.4,
+    "helper_hours": 0.0,
+    "labor_notes": "Marginal time per unit; whole-house replacements are common since detectors age out together.",
+    "bom": [
+      {
+        "sku": "SMOKE-CO-HW",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "doorbell_transformer_replace",
+    "name": "Doorbell transformer replacement",
+    "description": "Replace a failed or undersized doorbell transformer (common for video doorbell upgrades).",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Locating the existing transformer is often the longest step — they hide in panels, attics, and closets.",
+    "bom": [
+      {
+        "sku": "DBELL-XFMR-16V",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["attic_run", "occupied_home", "tight_workspace"],
+    "option_tiers": null
+  }
+]

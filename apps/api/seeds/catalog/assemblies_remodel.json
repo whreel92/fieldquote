@@ -1,0 +1,369 @@
+[
+  {
+    "code": "rough_in_receptacle_opening",
+    "name": "Rough-in: receptacle opening",
+    "description": "Rough-in wiring and box for one receptacle opening during open-wall construction (per opening).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Open framing makes this fast: box set, cable staple-run from the nearest daisy point, nail plates where required.",
+    "bom": [
+      {
+        "sku": "BOX-1G-NEW",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 20
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 0.2
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_switch_opening",
+    "name": "Rough-in: switch opening",
+    "description": "Rough-in wiring and box for one switch opening during open-wall construction (per opening).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Comparable to a receptacle opening; multi-gang locations should count one opening per gang.",
+    "bom": [
+      {
+        "sku": "BOX-1G-NEW",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 20
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 2
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 0.2
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_lighting_opening",
+    "name": "Rough-in: lighting opening",
+    "description": "Rough-in wiring and ceiling box for one lighting outlet during open construction (per opening).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.6,
+    "helper_hours": 0.0,
+    "labor_notes": "Ceiling boxes take slightly longer than wall boxes for blocking and overhead cable dressing.",
+    "bom": [
+      {
+        "sku": "BOX-CEIL-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 20
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 0.2
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_home_run_circuit",
+    "name": "Rough-in: home-run circuit (per circuit)",
+    "description": "Home-run cable from the panel to the first opening of a new circuit, including breaker (installed at trim).",
+    "job_type_codes": ["remodel"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Per-circuit price for the panel-to-first-box run and later breaker landing; distance beyond a typical run should use the long-run modifier.",
+    "bom": [
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 40
+      },
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 0.5
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "two_story",
+      "tight_workspace",
+      "long_run_over_50ft",
+      "attic_run",
+      "crawlspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_kitchen_package",
+    "name": "Kitchen remodel rough-in package",
+    "description": "Complete electrical rough-in for a typical kitchen remodel: small-appliance circuits, dedicated appliance circuits, lighting, and range feed.",
+    "job_type_codes": ["remodel"],
+    "unit": "ea",
+    "labor_hours": 16.0,
+    "helper_hours": 8.0,
+    "labor_notes": "A code-compliant kitchen carries 7-9 circuits plus lighting layout; two days with a helper covers boxes, home runs, and inspection prep. Larger kitchens should add per-opening lines.",
+    "bom": [
+      {
+        "sku": "BOX-1G-NEW",
+        "qty": 10
+      },
+      {
+        "sku": "BOX-2G-NEW",
+        "qty": 2
+      },
+      {
+        "sku": "BOX-CEIL-STD",
+        "qty": 6
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 300
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 150
+      },
+      {
+        "sku": "WIRE-NMB-14-3",
+        "qty": 50
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 40
+      },
+      {
+        "sku": "WIRE-NMB-10-3",
+        "qty": 30
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 2
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 20
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_bath_package",
+    "name": "Bath remodel rough-in package",
+    "description": "Complete electrical rough-in for a bathroom remodel: 20A GFCI-protected receptacle circuit, lighting, fan/heater wiring.",
+    "job_type_codes": ["remodel"],
+    "unit": "ea",
+    "labor_hours": 8.0,
+    "helper_hours": 4.0,
+    "labor_notes": "Dedicated bath circuit, vanity and shower-rated lighting boxes, and fan wiring; a focused day with helper support for the fan duct path.",
+    "bom": [
+      {
+        "sku": "BOX-1G-NEW",
+        "qty": 4
+      },
+      {
+        "sku": "BOX-CEIL-STD",
+        "qty": 3
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 80
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 60
+      },
+      {
+        "sku": "WIRE-NMB-14-3",
+        "qty": 25
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 8
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "trim_out_receptacle_opening",
+    "name": "Trim-out: receptacle opening",
+    "description": "Install device and plate at one roughed-in receptacle opening (per opening).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Straight production work at trim: make up, terminate, plate, and test each opening.",
+    "bom": [
+      {
+        "sku": "REC-15A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "trim_out_switch_opening",
+    "name": "Trim-out: switch opening",
+    "description": "Install switch and plate at one roughed-in switch opening (per opening).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Same production rate as receptacle trim; dimmers or smart devices should use their own assemblies.",
+    "bom": [
+      {
+        "sku": "SW-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "trim_out_lighting_opening",
+    "name": "Trim-out: lighting opening",
+    "description": "Connect and hang the fixture at one roughed-in lighting opening (per opening, standard fixtures).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.4,
+    "helper_hours": 0.0,
+    "labor_notes": "Covers connection and mounting of typical customer-selected fixtures; heavy or high fixtures move to their specific assemblies.",
+    "bom": [
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 0.1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_smoke_detector_opening",
+    "name": "Rough-in: smoke/CO detector opening",
+    "description": "Rough-in a ceiling box and interconnect wiring for one hardwired smoke/CO location (per opening).",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 0.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Interconnect (14/3) between detector locations is what separates this from a plain lighting opening.",
+    "bom": [
+      {
+        "sku": "BOX-CEIL-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-3",
+        "qty": 25
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 0.2
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "rough_in_240v_appliance_opening",
+    "name": "Rough-in: 240V appliance opening",
+    "description": "Rough-in wiring and box for one 240V appliance location (range, dryer, or similar) during open construction.",
+    "job_type_codes": ["remodel"],
+    "unit": "opening",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Heavy-gauge cable handling and a two-gang box; per-opening price assumes the panel run is counted as its own home-run line.",
+    "bom": [
+      {
+        "sku": "BOX-2G-NEW",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 30
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 0.3
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "two_story", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "remodel_panel_make_ready",
+    "name": "Remodel panel make-ready",
+    "description": "Land new remodel circuits in the panel with correct AFCI/GFCI protection, re-label the directory, and prep for inspection.",
+    "job_type_codes": ["remodel", "panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Batch-landing several new circuits with the right protective breakers and a clean directory; inspection-day availability is included in the allowance of time.",
+    "bom": [
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-AFCI-1P-20A",
+        "qty": 2
+      },
+      {
+        "sku": "BRK-1P-20A",
+        "qty": 2
+      },
+      {
+        "sku": "BRK-DF-1P-15A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace", "permit_handling"],
+    "option_tiers": null
+  }
+]

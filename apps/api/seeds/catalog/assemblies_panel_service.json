@@ -1,0 +1,1141 @@
+[
+  {
+    "code": "panel_upgrade_100_200_overhead",
+    "name": "100A to 200A panel upgrade (overhead service)",
+    "description": "Replace the existing 100A panel and meter socket with new 200A equipment, including a new service mast, weatherhead, service entrance cable, and code-required grounding. Utility coordination for disconnect/reconnect included.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 10.0,
+    "helper_hours": 6.0,
+    "labor_notes": "Full service change on an overhead drop: demo, mast and SE cable replacement, re-landing 20+ branch circuits, and grounding typically fill a long day for two. Helper handles mast, cable pulls, and circuit re-termination.",
+    "bom": [
+      {
+        "sku": "PNL-200A-MB-40SP",
+        "qty": 1
+      },
+      {
+        "sku": "MTR-SOCKET-200A",
+        "qty": 1
+      },
+      {
+        "sku": "MAST-RIGID-200-2IN",
+        "qty": 1
+      },
+      {
+        "sku": "WEATHERHEAD-200",
+        "qty": 1
+      },
+      {
+        "sku": "HUB-MAST-200",
+        "qty": 1
+      },
+      {
+        "sku": "ROOF-FLASH-MAST",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-4-0-AL",
+        "qty": 15
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_upgrade_100_200_underground",
+    "name": "100A to 200A panel upgrade (underground service)",
+    "description": "Replace the existing 100A panel and meter socket with new 200A equipment on an underground (lateral) service, including new grounding electrodes and full re-termination of branch circuits.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 9.0,
+    "helper_hours": 5.0,
+    "labor_notes": "Underground lateral avoids mast/roof work, saving roughly an hour versus overhead, but demo, re-landing circuits, and grounding remain. Utility handles the lateral; we terminate at the new socket.",
+    "bom": [
+      {
+        "sku": "PNL-200A-MB-40SP",
+        "qty": 1
+      },
+      {
+        "sku": "MTR-SOCKET-200A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-4-0-AL",
+        "qty": 10
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_upgrade_100_200_meter_main_overhead",
+    "name": "100A to 200A meter-main combo upgrade (overhead)",
+    "description": "Replace the existing service with a 200A all-in-one meter-main combination panel on an overhead service, including new mast, weatherhead, riser cable, and grounding electrode system.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 12.0,
+    "helper_hours": 8.0,
+    "labor_notes": "Meter-main combos require relocating all interior circuit terminations into the new exterior can plus complete mast work — the longest standard service change we do. Two-person job for cable pulls and panel setting.",
+    "bom": [
+      {
+        "sku": "MM-200A-COMBO",
+        "qty": 1
+      },
+      {
+        "sku": "MAST-RIGID-200-2IN",
+        "qty": 1
+      },
+      {
+        "sku": "WEATHERHEAD-200",
+        "qty": 1
+      },
+      {
+        "sku": "HUB-MAST-200",
+        "qty": 1
+      },
+      {
+        "sku": "ROOF-FLASH-MAST",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-4-0-AL",
+        "qty": 20
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_upgrade_100_200_meter_main_underground",
+    "name": "100A to 200A meter-main combo upgrade (underground)",
+    "description": "Replace the existing service with a 200A all-in-one meter-main combination panel on an underground service, including grounding electrode system and full branch circuit re-termination.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 11.0,
+    "helper_hours": 7.0,
+    "labor_notes": "Same combo-panel scope as the overhead variant minus mast and roof penetration work. Circuit extension into the new can is the dominant time cost.",
+    "bom": [
+      {
+        "sku": "MM-200A-COMBO",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-4-0-AL",
+        "qty": 12
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_swap_100a_like_for_like",
+    "name": "100A panel replacement (same amperage)",
+    "description": "Replace a failed or obsolete 100A panel with a new 100A load center in the same location, re-landing all existing circuits with new breakers where required.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 6.0,
+    "helper_hours": 3.0,
+    "labor_notes": "No service conductor or meter work — demo, mount, and re-land up to 20 circuits. Six hours reflects careful conductor labeling and re-termination; helper speeds demo and cleanup.",
+    "bom": [
+      {
+        "sku": "PNL-100A-MB-20SP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-THHN-12",
+        "qty": 20
+      },
+      {
+        "sku": "MISC-GRN-SCREW-PK",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_swap_200a_like_for_like",
+    "name": "200A panel replacement (same amperage)",
+    "description": "Replace an existing 200A panel with a new 200A load center in the same location, re-landing all existing circuits.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 7.0,
+    "helper_hours": 4.0,
+    "labor_notes": "Same scope as the 100A swap but 30-40 circuits to label and re-land, which adds about an hour of termination time plus more helper support.",
+    "bom": [
+      {
+        "sku": "PNL-200A-MB-40SP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-THHN-12",
+        "qty": 30
+      },
+      {
+        "sku": "MISC-GRN-SCREW-PK",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_upgrade_100_125",
+    "name": "100A to 125A panel upgrade",
+    "description": "Upgrade the existing 100A panel to a 125A load center, including feeder check, new grounding as required, and full circuit re-termination.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 7.0,
+    "helper_hours": 4.0,
+    "labor_notes": "Modest capacity bump usually reuses the meter and service conductors after verification, so time centers on the panel swap plus grounding updates.",
+    "bom": [
+      {
+        "sku": "PNL-125A-MB-24SP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-2-AL",
+        "qty": 15
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_upgrade_100_150",
+    "name": "100A to 150A panel upgrade",
+    "description": "Upgrade the existing 100A service to 150A, including new panel, service entrance conductors, and grounding electrode system.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 8.0,
+    "helper_hours": 4.0,
+    "labor_notes": "150A requires new SE conductors unlike the 125A bump, adding cable replacement time on top of the panel swap and grounding work.",
+    "bom": [
+      {
+        "sku": "PNL-150A-MB-30SP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-4-0-AL",
+        "qty": 15
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "subpanel_60a_within_10ft",
+    "name": "60A sub-panel add (within 10 ft of main)",
+    "description": "Install a 60A sub-panel adjacent to the main panel to add breaker capacity, fed by a new 60A 2-pole breaker.",
+    "job_type_codes": ["panel_upgrade", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Short feeder in the same room keeps this a half-day solo task: mount, feed, bond correctly (isolated neutral), and label.",
+    "bom": [
+      {
+        "sku": "PNL-SUB-60A-8SP",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 15
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "tight_workspace", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "subpanel_60a_10_30ft",
+    "name": "60A sub-panel add (10-30 ft feeder)",
+    "description": "Install a 60A sub-panel up to 30 ft from the main panel, including feeder routing through the structure.",
+    "job_type_codes": ["panel_upgrade", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 4.5,
+    "helper_hours": 1.0,
+    "labor_notes": "The longer feeder adds drilling and routing time through joists or walls; an hour of helper time covers the cable pull.",
+    "bom": [
+      {
+        "sku": "PNL-SUB-60A-8SP",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 35
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "tight_workspace",
+      "permit_handling",
+      "finished_walls",
+      "attic_run",
+      "crawlspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "subpanel_100a_within_10ft",
+    "name": "100A sub-panel add (within 10 ft of main)",
+    "description": "Install a 100A sub-panel adjacent to the main panel for major capacity expansion (shop, addition, EV-ready).",
+    "job_type_codes": ["panel_upgrade", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 1.0,
+    "labor_notes": "Heavier feeder terminations and a larger can than the 60A version; still a same-room install with a short SER whip.",
+    "bom": [
+      {
+        "sku": "PNL-SUB-100A-12SP",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-100A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-2-AL",
+        "qty": 15
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "tight_workspace", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "subpanel_100a_10_30ft",
+    "name": "100A sub-panel add (10-30 ft feeder)",
+    "description": "Install a 100A sub-panel up to 30 ft from the main panel, including SER feeder routing.",
+    "job_type_codes": ["panel_upgrade", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 5.0,
+    "helper_hours": 1.5,
+    "labor_notes": "Routing 2 AWG SER through framing is slow and two-handed; helper time covers the pull and securing.",
+    "bom": [
+      {
+        "sku": "PNL-SUB-100A-12SP",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-100A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-2-AL",
+        "qty": 35
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 6
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "tight_workspace",
+      "permit_handling",
+      "finished_walls",
+      "attic_run",
+      "crawlspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "subpanel_100a_30_60ft",
+    "name": "100A sub-panel add (30-60 ft feeder)",
+    "description": "Install a 100A sub-panel 30-60 ft from the main panel, including long SER feeder routing through the structure.",
+    "job_type_codes": ["panel_upgrade", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 6.5,
+    "helper_hours": 2.0,
+    "labor_notes": "Long heavy-gauge feeder dominates the time: multiple drill paths, two-person pull, and support every 4.5 ft.",
+    "bom": [
+      {
+        "sku": "PNL-SUB-100A-12SP",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-100A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-2-AL",
+        "qty": 70
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 10
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "tight_workspace",
+      "permit_handling",
+      "finished_walls",
+      "attic_run",
+      "crawlspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "subpanel_100a_detached_garage",
+    "name": "100A sub-panel to detached garage (underground)",
+    "description": "Install a 100A sub-panel in a detached garage fed by underground conduit from the main panel, including grounding electrodes at the detached structure.",
+    "job_type_codes": ["panel_upgrade", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 10.0,
+    "helper_hours": 6.0,
+    "labor_notes": "Underground feeder to a detached structure: conduit assembly, conductor pull, separate grounding electrode system, and panel setting. Trenching billed via modifier since depth/length vary by site.",
+    "bom": [
+      {
+        "sku": "PNL-SUB-100A-12SP",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-100A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-PVC-200",
+        "qty": 80
+      },
+      {
+        "sku": "FIT-PVC-ELL-200",
+        "qty": 4
+      },
+      {
+        "sku": "FIT-PVC-MA-200",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-PVC-COUP-200",
+        "qty": 8
+      },
+      {
+        "sku": "WIRE-XHHW-2-AL",
+        "qty": 270
+      },
+      {
+        "sku": "WIRE-THHN-8",
+        "qty": 90
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 15
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["trench_required", "permit_handling", "occupied_home", "stucco_exterior"],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_relocation_same_wall",
+    "name": "Panel relocation (same wall/room)",
+    "description": "Relocate the existing panel a short distance on the same wall, extending all branch circuits into the new location with junctions as required.",
+    "job_type_codes": ["panel_upgrade", "remodel"],
+    "unit": "ea",
+    "labor_hours": 8.0,
+    "helper_hours": 4.0,
+    "labor_notes": "Every branch circuit must be extended and re-landed even for a short move; splice boxes and circuit tracing consume most of the day.",
+    "bom": [
+      {
+        "sku": "PNL-200A-MB-40SP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 50
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 100
+      },
+      {
+        "sku": "BOX-4SQ",
+        "qty": 6
+      },
+      {
+        "sku": "BOX-4SQ-COVER",
+        "qty": 6
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 2
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace",
+      "finished_walls"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_relocation_new_location",
+    "name": "Panel relocation (new location)",
+    "description": "Relocate the panel to a different wall or room, including service conductor extension, branch circuit extensions, and junction boxes.",
+    "job_type_codes": ["panel_upgrade", "remodel"],
+    "unit": "ea",
+    "labor_hours": 12.0,
+    "helper_hours": 6.0,
+    "labor_notes": "A full relocation combines a service-length change with extending every branch circuit across the structure — plan on a long two-person day plus finish work.",
+    "bom": [
+      {
+        "sku": "PNL-200A-MB-40SP",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-SER-4-0-AL",
+        "qty": 25
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 100
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 150
+      },
+      {
+        "sku": "BOX-4SQ",
+        "qty": 10
+      },
+      {
+        "sku": "BOX-4SQ-COVER",
+        "qty": 10
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 2
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 2
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 12
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "stucco_exterior",
+      "panel_brand_obsolete",
+      "permit_handling",
+      "tight_workspace",
+      "finished_walls",
+      "attic_run",
+      "crawlspace"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "service_mast_replacement",
+    "name": "Service mast replacement",
+    "description": "Replace a damaged or undersized service mast including weatherhead, roof flashing, and meter hub, coordinated with utility disconnect.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 2.0,
+    "labor_notes": "Roof work with rigid conduit is a two-person task for safety; four hours covers demo, new mast set, flashing, and re-termination at the weatherhead.",
+    "bom": [
+      {
+        "sku": "MAST-RIGID-200-2IN",
+        "qty": 1
+      },
+      {
+        "sku": "WEATHERHEAD-200",
+        "qty": 1
+      },
+      {
+        "sku": "HUB-MAST-200",
+        "qty": 1
+      },
+      {
+        "sku": "ROOF-FLASH-MAST",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["two_story", "stucco_exterior", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "weatherhead_replacement",
+    "name": "Weatherhead replacement",
+    "description": "Replace a damaged service weatherhead and re-secure service drop conductors.",
+    "job_type_codes": ["service_call", "panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 1.0,
+    "labor_notes": "Ladder work at the service point with utility coordination; the hardware swap itself is quick once safely set up.",
+    "bom": [
+      {
+        "sku": "WEATHERHEAD-200",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["two_story", "stucco_exterior"],
+    "option_tiers": null
+  },
+  {
+    "code": "meter_socket_replacement_200a",
+    "name": "Meter socket replacement (200A)",
+    "description": "Replace a corroded or damaged 200A meter socket, coordinated with utility disconnect and reconnect.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 2.0,
+    "labor_notes": "Utility coordination bounds the day; the socket swap, re-termination of line and load conductors, and sealing take about four focused hours.",
+    "bom": [
+      {
+        "sku": "MTR-SOCKET-200A",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "permit_handling", "panel_brand_obsolete"],
+    "option_tiers": null
+  },
+  {
+    "code": "grounding_electrode_upgrade",
+    "name": "Grounding electrode system upgrade",
+    "description": "Bring the grounding electrode system to current code: two driven ground rods, grounding electrode conductor, and water pipe bond.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Driving two rods, routing #6 copper, and making up clamps runs about 2.5 hours in normal soil; rocky soil is a site condition to flag.",
+    "bom": [
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 30
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "water_pipe_bond_add",
+    "name": "Water pipe / metallic system bonding",
+    "description": "Add code-required bonding to metallic water piping (and gas piping where applicable) back to the service grounding system.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Routing #4 copper from the panel area to the water service entry with clamps at both ends; access under the house is the main variable.",
+    "bom": [
+      {
+        "sku": "WIRE-BARE-CU-4",
+        "qty": 20
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": ["crawlspace", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "main_breaker_replacement_200a",
+    "name": "Main breaker replacement (200A)",
+    "description": "Replace a failed 200A main breaker, including utility coordination for a safe dead panel.",
+    "job_type_codes": ["service_call", "panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "The swap itself is under an hour; utility pull/reconnect coordination and verification testing round it to two.",
+    "bom": [
+      {
+        "sku": "BRK-MAIN-200A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_bonding_correction",
+    "name": "Panel grounding/bonding correction",
+    "description": "Correct improper neutral-ground bonding, missing bonding screws, or double-lugged grounds found in an existing panel.",
+    "job_type_codes": ["service_call", "panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Separating neutrals and grounds and re-landing conductors one at a time in a live-adjacent panel is deliberate, methodical work.",
+    "bom": [
+      {
+        "sku": "MISC-GRN-SCREW-PK",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 10
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "whole_home_surge_protector",
+    "name": "Whole-home surge protector install",
+    "description": "Install a Type 2 surge protective device at the panel on a dedicated 2-pole breaker to protect the whole home.",
+    "job_type_codes": ["panel_upgrade", "service_call"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "With open spaces available this is a one-hour task: mount SPD, land on a 2-pole breaker, label. Full panels take longer and should be flagged.",
+    "bom": [
+      {
+        "sku": "SPD-2P-TYPE2",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-30A",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["tight_workspace", "panel_brand_obsolete"],
+    "option_tiers": null
+  },
+  {
+    "code": "overhead_to_underground_conversion",
+    "name": "Overhead to underground service conversion",
+    "description": "Convert an overhead service drop to an underground lateral: new conduit riser and trench run, new meter socket, and utility coordination.",
+    "job_type_codes": ["panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 14.0,
+    "helper_hours": 8.0,
+    "labor_notes": "Combines service-change labor with underground conduit assembly and utility scheduling; trenching itself is billed via modifier because run length varies widely.",
+    "bom": [
+      {
+        "sku": "MTR-SOCKET-200A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-PVC-200",
+        "qty": 40
+      },
+      {
+        "sku": "FIT-PVC-ELL-200",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-PVC-MA-200",
+        "qty": 2
+      },
+      {
+        "sku": "FIT-PVC-COUP-200",
+        "qty": 4
+      },
+      {
+        "sku": "WIRE-XHHW-4-0-AL",
+        "qty": 130
+      },
+      {
+        "sku": "GRD-ROD-8FT",
+        "qty": 2
+      },
+      {
+        "sku": "GRD-CLAMP-ACORN",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 25
+      },
+      {
+        "sku": "GRD-CLAMP-WATERPIPE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      },
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "TAPE-ELEC",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": ["trench_required", "permit_handling", "stucco_exterior", "occupied_home"],
+    "option_tiers": null
+  }
+]

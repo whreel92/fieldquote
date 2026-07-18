@@ -1,0 +1,677 @@
+[
+  {
+    "code": "recessed_led_6in_first_can",
+    "name": "6 in recessed LED (first light incl. switch leg)",
+    "description": "Install the first 6 in canless recessed LED light including the switch leg and wall switch.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "First light carries layout, the switch leg fish, and circuit tie-in; subsequent lights on the run are much faster.",
+    "bom": [
+      {
+        "sku": "LED-RC-6-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 20
+      },
+      {
+        "sku": "SW-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "recessed_led_6in_additional_can",
+    "name": "6 in recessed LED (each additional)",
+    "description": "Each additional 6 in canless recessed LED on the same switch leg.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Hole saw, jumper to the previous light, connect and set — 45 minutes each in an accessible ceiling.",
+    "bom": [
+      {
+        "sku": "LED-RC-6-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 10
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "recessed_led_4in_first_can",
+    "name": "4 in recessed LED (first light incl. switch leg)",
+    "description": "Install the first 4 in canless recessed LED light including the switch leg and wall switch.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Same first-light setup cost as the 6 in version; the smaller aperture doesn't change the electrical work.",
+    "bom": [
+      {
+        "sku": "LED-RC-4-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 20
+      },
+      {
+        "sku": "SW-1P-15A",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "recessed_led_4in_additional_can",
+    "name": "4 in recessed LED (each additional)",
+    "description": "Each additional 4 in canless recessed LED on the same switch leg.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Marginal per-light time matches the 6 in version.",
+    "bom": [
+      {
+        "sku": "LED-RC-4-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 10
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "recessed_led_6in_per_can_tiered",
+    "name": "6 in recessed LED per light (good/better/best)",
+    "description": "Per-light recessed LED pricing with selectable trim tiers: standard selectable-CCT, adjustable gimbal, or smart RGBW with app/voice control.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Install labor is nearly identical across tiers; smart lights add a few minutes of pairing each, reflected in the best tier.",
+    "bom": [
+      {
+        "sku": "LED-RC-6-STD",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 10
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run", "finished_walls"],
+    "option_tiers": [
+      {
+        "tier": "good",
+        "label": "Standard selectable-CCT LED",
+        "labor_hours": 0.75,
+        "helper_hours": 0.0,
+        "bom": [
+          {
+            "sku": "LED-RC-6-STD",
+            "qty": 1
+          },
+          {
+            "sku": "WIRE-NMB-14-2",
+            "qty": 10
+          }
+        ]
+      },
+      {
+        "tier": "better",
+        "label": "Adjustable gimbal LED",
+        "labor_hours": 0.8,
+        "helper_hours": 0.0,
+        "bom": [
+          {
+            "sku": "LED-RC-6-GIM",
+            "qty": 1
+          },
+          {
+            "sku": "WIRE-NMB-14-2",
+            "qty": 10
+          }
+        ]
+      },
+      {
+        "tier": "best",
+        "label": "Smart RGBW LED w/ app control",
+        "labor_hours": 1.0,
+        "helper_hours": 0.0,
+        "bom": [
+          {
+            "sku": "LED-RC-6-SMART",
+            "qty": 1
+          },
+          {
+            "sku": "WIRE-NMB-14-2",
+            "qty": 10
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "code": "recessed_conversion_existing_box",
+    "name": "Recessed conversion from existing ceiling box",
+    "description": "Convert an existing ceiling fixture box to a recessed LED using a canless retrofit connection.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Uses the existing switched box, so no new wiring — enlarging the opening cleanly is the main task.",
+    "bom": [
+      {
+        "sku": "LED-RC-6-STD",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "ceiling_fan_install_existing_box",
+    "name": "Ceiling fan install (existing fan-rated box)",
+    "description": "Install a ceiling fan with light kit on an existing fan-rated box and existing switching.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Assembly and balanced hanging take most of the time when the box and switching already exist; includes wobble check.",
+    "bom": [
+      {
+        "sku": "FAN-CEIL-52",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "ceiling_fan_install_new_fan_box",
+    "name": "Ceiling fan install (new fan-rated brace box)",
+    "description": "Install a ceiling fan where the existing box is not fan-rated, using an old-work brace box between joists.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Removing the old box and setting a brace bar through the ceiling opening doubles the job versus a fan-ready location.",
+    "bom": [
+      {
+        "sku": "FAN-CEIL-52",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-CEIL-FAN-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run"],
+    "option_tiers": null
+  },
+  {
+    "code": "ceiling_fan_new_switch_leg",
+    "name": "Ceiling fan install with new switched wiring",
+    "description": "Install a ceiling fan including a new fan-rated box and new 3-conductor switch wiring for separate fan/light control.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Adds a 14/3 fish from the switch location to the brace-box install; finished-ceiling routing is the wildcard.",
+    "bom": [
+      {
+        "sku": "FAN-CEIL-52",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-CEIL-FAN-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-3",
+        "qty": 25
+      },
+      {
+        "sku": "SW-1P-15A",
+        "qty": 2
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft", "attic_run", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "ceiling_fixture_replace",
+    "name": "Ceiling fixture replacement (customer-supplied)",
+    "description": "Remove an existing ceiling fixture and install a customer-supplied replacement on the existing box.",
+    "job_type_codes": ["fixtures_fans", "service_call"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Standard swap on an existing box; heavy or high fixtures move to the chandelier assemblies.",
+    "bom": [
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "flush_mount_led_install",
+    "name": "LED flush-mount fixture install",
+    "description": "Install a supplied LED flush-mount ceiling fixture on an existing box.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Quick swap including our supplied fixture; integrated-LED units skip lamping time.",
+    "bom": [
+      {
+        "sku": "FIX-FLUSH-LED",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "exterior_wall_fixture_install",
+    "name": "Exterior wall fixture install",
+    "description": "Install an exterior wall lantern on an existing exterior box, sealed to the wall surface.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Weather sealing and mounting-block fit on siding or stucco add time over an interior swap.",
+    "bom": [
+      {
+        "sku": "FIX-EXT-WALL",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "two_story", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "exterior_flood_motion_install",
+    "name": "Exterior motion flood install",
+    "description": "Install a motion-sensor LED flood light at an eave or gable location, including aiming and sensitivity setup.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Ladder height and sensor adjustment walk-testing set the time; second-story eaves should carry the two-story modifier.",
+    "bom": [
+      {
+        "sku": "FIX-EXT-FLOOD-LED",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["two_story", "stucco_exterior", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "chandelier_install_standard",
+    "name": "Chandelier install (standard ceiling)",
+    "description": "Install a customer-supplied chandelier on a ceiling up to 10 ft, including a fan-rated support box for the weight.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Assembly, chain/wire dressing, and a rated box swap for weight support; two hours for a typical dining fixture.",
+    "bom": [
+      {
+        "sku": "BOX-CEIL-FAN-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "chandelier_install_high_ceiling",
+    "name": "Chandelier install (high ceiling)",
+    "description": "Install a customer-supplied chandelier on a ceiling over 10 ft (foyer/great room), including staging and rated support box.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 1.0,
+    "labor_notes": "Tall-ladder or scaffold staging plus a second set of hands to lift and steady the fixture; slow, careful work by design.",
+    "bom": [
+      {
+        "sku": "BOX-CEIL-FAN-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["ceiling_over_10ft", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "pendant_install_single",
+    "name": "Pendant install (first)",
+    "description": "Install a pendant fixture, typically over an island or counter, on existing switched wiring.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Includes cord/stem length adjustment and level alignment — the visible details that take the extra minutes.",
+    "bom": [
+      {
+        "sku": "FIX-PEND",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "pendant_install_additional",
+    "name": "Pendant install (each additional)",
+    "description": "Each additional pendant hung and aligned during the same visit.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.6,
+    "helper_hours": 0.0,
+    "labor_notes": "Marginal time per pendant once staged, mostly spent matching hang heights exactly.",
+    "bom": [
+      {
+        "sku": "FIX-PEND",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "under_cabinet_lighting_per_ft",
+    "name": "Under-cabinet LED lighting (per ft)",
+    "description": "Install linkable hardwired under-cabinet LED lighting, priced per linear foot including wiring between sections.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ft",
+    "labor_hours": 0.15,
+    "helper_hours": 0.0,
+    "labor_notes": "Per-foot rate covers mounting, linking, and concealed feed wiring; the switch leg (if new) should be added as a separate line.",
+    "bom": [
+      {
+        "sku": "FIX-UC-LED",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 1.5
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls"],
+    "option_tiers": null
+  },
+  {
+    "code": "vanity_light_replace",
+    "name": "Vanity light replacement",
+    "description": "Replace a bathroom vanity fixture with a supplied 3-lamp LED bar, centered over the mirror.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Common swap; off-center existing boxes that need a re-strap add time and should be noted on site.",
+    "bom": [
+      {
+        "sku": "FIX-VANITY-3L",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "track_lighting_install",
+    "name": "Track lighting install (4 ft kit)",
+    "description": "Install a 4 ft LED track kit with three heads on an existing ceiling box, aimed to the customer's preference.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Track leveling and head aiming after the electrical connection take the time beyond a plain fixture swap.",
+    "bom": [
+      {
+        "sku": "FIX-TRACK-4FT",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "ceiling_over_10ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "bath_fan_replace_same_duct",
+    "name": "Bath fan replacement (existing duct)",
+    "description": "Replace a bathroom exhaust fan using the existing duct and switching.",
+    "job_type_codes": ["fixtures_fans", "service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Housing swap from below with duct reconnection; matching the old housing footprint avoids ceiling patching.",
+    "bom": [
+      {
+        "sku": "FAN-BATH-110CFM",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "attic_run"],
+    "option_tiers": null
+  },
+  {
+    "code": "bath_fan_new_install_with_duct",
+    "name": "Bath fan new install with duct run",
+    "description": "Install a bath fan where none exists, including ceiling cut-in, new duct run to a roof or wall cap, wiring, and timer switch.",
+    "job_type_codes": ["fixtures_fans", "remodel"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 1.0,
+    "labor_notes": "New duct to the exterior is the big cost: attic routing, cap installation, and sealing. Helper handles attic-side duct work.",
+    "bom": [
+      {
+        "sku": "FAN-BATH-110CFM",
+        "qty": 1
+      },
+      {
+        "sku": "DUCT-4-FLEX",
+        "qty": 10
+      },
+      {
+        "sku": "DUCT-4-ROOFCAP",
+        "qty": 1
+      },
+      {
+        "sku": "SW-TIMER-BATH",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-14-2",
+        "qty": 25
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["attic_run", "two_story", "occupied_home", "stucco_exterior"],
+    "option_tiers": null
+  },
+  {
+    "code": "bath_fan_light_combo_replace",
+    "name": "Bath fan/light combo replacement",
+    "description": "Replace an existing bath fan with a fan/light combination unit using existing duct and wiring.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 1.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Combo units often need a second switched conductor check; slightly longer than a plain fan swap.",
+    "bom": [
+      {
+        "sku": "FAN-BATH-LIGHT",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "attic_run"],
+    "option_tiers": null
+  },
+  {
+    "code": "occupancy_sensor_switch_install",
+    "name": "Occupancy sensor switch install",
+    "description": "Replace a standard switch with an occupancy/vacancy sensor switch, configured to the customer's preference.",
+    "job_type_codes": ["fixtures_fans", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 0.6,
+    "helper_hours": 0.0,
+    "labor_notes": "Swap plus sensor mode/timeout configuration and a walk-test of the coverage area.",
+    "bom": [
+      {
+        "sku": "SW-OCC-SENSOR",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "shop_light_led_install",
+    "name": "LED shop light install (garage/workshop)",
+    "description": "Install a linkable 4 ft LED shop light on an existing ceiling box or receptacle-fed location.",
+    "job_type_codes": ["fixtures_fans"],
+    "unit": "ea",
+    "labor_hours": 0.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Chain-hung or surface-mounted on existing power; linking additional units is quick and can repeat this line.",
+    "bom": [
+      {
+        "sku": "FIX-SHOP-LED-4FT",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["ceiling_over_10ft", "occupied_home"],
+    "option_tiers": null
+  }
+]

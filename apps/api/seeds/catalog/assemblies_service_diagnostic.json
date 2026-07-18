@@ -1,0 +1,151 @@
+[
+  {
+    "code": "diagnostic_first_hour",
+    "name": "Diagnostic / troubleshooting (first hour)",
+    "description": "On-site electrical troubleshooting: systematic diagnosis of the reported problem with findings explained and a repair quote provided.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "First hour covers arrival, interview, and systematic testing; most single-symptom issues are identified within it.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "diagnostic_additional_hour",
+    "name": "Diagnostic / troubleshooting (each additional hour)",
+    "description": "Continued troubleshooting beyond the first hour for complex or intermittent problems.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Billed per additional hour; intermittent faults and multi-circuit interactions are the usual reason to go past hour one.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "breaker_trip_diagnosis",
+    "name": "Breaker trip diagnosis",
+    "description": "Diagnose a repeatedly tripping breaker: isolate the fault to device, wiring, or load, with a written finding.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Splitting the circuit and load-testing sections typically brackets the fault within 90 minutes; repair is quoted separately.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "dead_outlet_trace",
+    "name": "Dead outlet / dead circuit trace",
+    "description": "Trace and identify the cause of dead receptacles or a dead circuit section.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Most dead-outlet calls resolve to a failed device, tripped GFCI, or open splice found by methodical tracing; includes minor re-termination.",
+    "bom": [
+      {
+        "sku": "MISC-WIRENUT-100",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "panel_brand_obsolete",
+      "tight_workspace",
+      "finished_walls"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "whole_home_inspection",
+    "name": "Whole-home electrical inspection",
+    "description": "Room-by-room electrical inspection: panel condition, GFCI/AFCI coverage, device sampling, visible wiring, and a written prioritized report.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "A thorough walk of a typical single-family home with panel dead-front off, device sampling, and report write-up runs about three hours.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace", "two_story"],
+    "option_tiers": null
+  },
+  {
+    "code": "panel_tune_up",
+    "name": "Panel tune-up (torque, thermal check, label)",
+    "description": "Preventive panel service: re-torque terminations to spec, thermal scan under load, cleanup, and a fresh circuit directory.",
+    "job_type_codes": ["service_call", "panel_upgrade"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "A disciplined pass over every termination plus labeling; catches loose lugs before they become burn-ups.",
+    "bom": [
+      {
+        "sku": "LBL-PANEL-KIT",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-GRN-SCREW-PK",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "insurance_inspection_report",
+    "name": "Insurance / 4-point electrical report",
+    "description": "Electrical inspection and written report formatted for insurance requirements (panel brand/condition, wiring types, protection coverage).",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Insurer checklists require specific photos and declarations; two hours covers inspection plus the formatted report.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "flicker_dimming_diagnosis",
+    "name": "Flickering / dimming lights diagnosis",
+    "description": "Diagnose whole-home or circuit-level flickering and dimming, including service connection and neutral integrity checks.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Flicker complaints require monitoring under load steps and checking service terminations — utility-side findings are documented for referral.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "gfci_nuisance_trip_diagnosis",
+    "name": "GFCI nuisance trip diagnosis",
+    "description": "Diagnose repeated GFCI tripping: isolate leakage source across downstream devices, appliances, or wiring.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 1.25,
+    "helper_hours": 0.0,
+    "labor_notes": "Downstream splitting with a leakage tester usually isolates the culprit appliance or damp box within the allotted time.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "pre_purchase_walkthrough",
+    "name": "Pre-purchase electrical walkthrough",
+    "description": "Electrical walkthrough during a home-purchase window with a same-day verbal summary and follow-up written estimate of needed corrections.",
+    "job_type_codes": ["service_call"],
+    "unit": "ea",
+    "labor_hours": 2.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Buyers need fast turnaround: a focused two-hour assessment of panel, wiring era, and safety items, with repair pricing to follow.",
+    "bom": [],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete", "tight_workspace", "two_story"],
+    "option_tiers": null
+  }
+]

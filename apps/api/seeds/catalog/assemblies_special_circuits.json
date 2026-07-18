@@ -1,0 +1,476 @@
+[
+  {
+    "code": "hot_tub_50a_gfci_up_to_25ft",
+    "name": "Hot tub 50A GFCI circuit (up to 25 ft)",
+    "description": "Install a 50A GFCI-protected hot tub circuit within 25 ft of the panel, including code-required spa disconnect panel and liquidtight connection to the equipment.",
+    "job_type_codes": ["other"],
+    "unit": "ea",
+    "labor_hours": 5.0,
+    "helper_hours": 1.0,
+    "labor_notes": "Spa panel mounting, in-sight disconnect placement rules, and liquidtight make-up to the tub pack a lot into a short run; includes GFCI function test.",
+    "bom": [
+      {
+        "sku": "HTB-SPA-PANEL-50A",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 20
+      },
+      {
+        "sku": "CND-LFMC-075",
+        "qty": 6
+      },
+      {
+        "sku": "FIT-LFMC-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-8",
+        "qty": 30
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "permit_handling", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "hot_tub_50a_gfci_25_50ft",
+    "name": "Hot tub 50A GFCI circuit (25-50 ft)",
+    "description": "Install a 50A GFCI-protected hot tub circuit 25-50 ft from the panel, including spa disconnect panel and exterior-rated routing.",
+    "job_type_codes": ["other"],
+    "unit": "ea",
+    "labor_hours": 6.5,
+    "helper_hours": 1.0,
+    "labor_notes": "The longer run typically transitions to exterior PVC along the house; conduit assembly adds the extra hours.",
+    "bom": [
+      {
+        "sku": "HTB-SPA-PANEL-50A",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 20
+      },
+      {
+        "sku": "CND-PVC-075",
+        "qty": 40
+      },
+      {
+        "sku": "FIT-PVC-MA-100",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-8",
+        "qty": 130
+      },
+      {
+        "sku": "CND-LFMC-075",
+        "qty": 6
+      },
+      {
+        "sku": "FIT-LFMC-CONN-075",
+        "qty": 2
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "permit_handling", "trench_required"],
+    "option_tiers": null
+  },
+  {
+    "code": "hot_tub_50a_gfci_50_100ft",
+    "name": "Hot tub 50A GFCI circuit (50-100 ft, underground)",
+    "description": "Install a 50A GFCI-protected hot tub circuit 50-100 ft from the panel via underground conduit to a remote pad location.",
+    "job_type_codes": ["other"],
+    "unit": "ea",
+    "labor_hours": 9.0,
+    "helper_hours": 3.0,
+    "labor_notes": "Underground PVC with upsized conductors for voltage drop; excavation is billed via the trench modifier since length and soil vary.",
+    "bom": [
+      {
+        "sku": "HTB-SPA-PANEL-50A",
+        "qty": 1
+      },
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-PVC-100",
+        "qty": 90
+      },
+      {
+        "sku": "FIT-PVC-ELL-100",
+        "qty": 4
+      },
+      {
+        "sku": "FIT-PVC-MA-100",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-6",
+        "qty": 290
+      },
+      {
+        "sku": "WIRE-THHN-10",
+        "qty": 90
+      },
+      {
+        "sku": "CND-LFMC-075",
+        "qty": 6
+      },
+      {
+        "sku": "FIT-LFMC-CONN-075",
+        "qty": 2
+      }
+    ],
+    "modifiers_allowed": ["trench_required", "stucco_exterior", "permit_handling", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "mini_split_circuit_disconnect",
+    "name": "Mini-split circuit with disconnect",
+    "description": "Install a dedicated 240V circuit for a mini-split heat pump, including exterior disconnect and liquidtight whip to the condenser.",
+    "job_type_codes": ["other", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 3.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Circuit run plus the exterior disconnect and whip make-up; sized here for typical single-zone units on a 20A 2-pole breaker.",
+    "bom": [
+      {
+        "sku": "BRK-2P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 40
+      },
+      {
+        "sku": "DISC-60A-NF",
+        "qty": 1
+      },
+      {
+        "sku": "WHIP-AC-6FT",
+        "qty": 1
+      },
+      {
+        "sku": "CLK-SILICONE",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["stucco_exterior", "occupied_home", "finished_walls", "crawlspace"],
+    "option_tiers": null
+  },
+  {
+    "code": "range_circuit_upgrade_40_50",
+    "name": "Range circuit upgrade 40A to 50A",
+    "description": "Upgrade an existing 40A range circuit to 50A: new breaker and NEMA 14-50 receptacle, with conductor verification.",
+    "job_type_codes": ["circuits_outlets", "other"],
+    "unit": "ea",
+    "labor_hours": 2.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Assumes existing conductors verify for 50A; if the cable must be replaced, use the new-circuit assembly instead.",
+    "bom": [
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "REC-14-50",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 5
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "panel_brand_obsolete"],
+    "option_tiers": null
+  },
+  {
+    "code": "range_circuit_new_50a",
+    "name": "New 50A range circuit",
+    "description": "Install a new 50A range circuit from the panel to the kitchen, including NEMA 14-50 receptacle.",
+    "job_type_codes": ["circuits_outlets", "other", "remodel"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Routing 6/3 to a kitchen wall in an existing home is the main effort; box placement behind the range is verified against the appliance spec.",
+    "bom": [
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 40
+      },
+      {
+        "sku": "REC-14-50",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-2G-NEW",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      },
+      {
+        "sku": "STRP-NAILPLATE",
+        "qty": 4
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "dryer_circuit_new_30a",
+    "name": "New 30A dryer circuit",
+    "description": "Install a new 30A dryer circuit with NEMA 14-30 receptacle at the laundry location.",
+    "job_type_codes": ["circuits_outlets", "other", "remodel"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Standard heavy-appliance run with 10/3; laundry locations near the panel finish faster and this assumes a typical mid-house run.",
+    "bom": [
+      {
+        "sku": "BRK-2P-30A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-10-3",
+        "qty": 40
+      },
+      {
+        "sku": "REC-14-30",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-2G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": [
+      "occupied_home",
+      "finished_walls",
+      "attic_run",
+      "crawlspace",
+      "two_story",
+      "long_run_over_50ft"
+    ],
+    "option_tiers": null
+  },
+  {
+    "code": "welder_circuit_50a",
+    "name": "Welder circuit 50A (garage/shop)",
+    "description": "Install a 50A welder circuit with NEMA 6-50 receptacle in a garage or shop.",
+    "job_type_codes": ["circuits_outlets", "other"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Garage runs are usually accessible; 6-50 termination and a duty-cycle conversation with the owner wrap it up.",
+    "bom": [
+      {
+        "sku": "BRK-2P-50A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-8-3",
+        "qty": 35
+      },
+      {
+        "sku": "REC-6-50",
+        "qty": 1
+      },
+      {
+        "sku": "BOX-2G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-2G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "attic_run", "long_run_over_50ft"],
+    "option_tiers": null
+  },
+  {
+    "code": "sauna_circuit_60a",
+    "name": "Sauna heater circuit 60A",
+    "description": "Install a dedicated 60A circuit for a sauna heater, including local disconnect per manufacturer requirements.",
+    "job_type_codes": ["other"],
+    "unit": "ea",
+    "labor_hours": 4.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Heavy-gauge run plus the disconnect and manufacturer-specified termination at the heater controls; includes heat-up test.",
+    "bom": [
+      {
+        "sku": "BRK-2P-60A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-6-3",
+        "qty": 45
+      },
+      {
+        "sku": "DISC-60A-NF",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["occupied_home", "finished_walls", "crawlspace", "permit_handling"],
+    "option_tiers": null
+  },
+  {
+    "code": "pool_pump_circuit_20a_gfci",
+    "name": "Pool pump circuit 20A GFCI",
+    "description": "Install a GFCI-protected 240V pool pump circuit in exterior conduit with a local disconnect at the equipment pad.",
+    "job_type_codes": ["other"],
+    "unit": "ea",
+    "labor_hours": 4.0,
+    "helper_hours": 0.0,
+    "labor_notes": "Pool equipment work is conduit-and-bonding heavy; includes GFCI breaker, weatherproof routing, and disconnect at the pad.",
+    "bom": [
+      {
+        "sku": "BRK-GFCI-2P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "CND-PVC-075",
+        "qty": 40
+      },
+      {
+        "sku": "FIT-PVC-MA-100",
+        "qty": 2
+      },
+      {
+        "sku": "WIRE-THHN-12",
+        "qty": 130
+      },
+      {
+        "sku": "DISC-60A-NF",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-BARE-CU-6",
+        "qty": 20
+      }
+    ],
+    "modifiers_allowed": ["trench_required", "stucco_exterior", "permit_handling", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "well_pump_circuit_240v",
+    "name": "Well pump circuit 240V",
+    "description": "Install a dedicated 240V well pump circuit from the panel to the pressure switch/controller location with local disconnect.",
+    "job_type_codes": ["other"],
+    "unit": "ea",
+    "labor_hours": 3.5,
+    "helper_hours": 0.0,
+    "labor_notes": "Run to the well equipment location plus disconnect; pump controller terminations follow the manufacturer diagram.",
+    "bom": [
+      {
+        "sku": "BRK-2P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 50
+      },
+      {
+        "sku": "DISC-60A-NF",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["crawlspace", "long_run_over_50ft", "trench_required", "occupied_home"],
+    "option_tiers": null
+  },
+  {
+    "code": "sump_pump_dedicated_circuit",
+    "name": "Sump pump dedicated circuit (GFCI)",
+    "description": "Install a dedicated GFCI-protected receptacle circuit for a sump pump in a basement or crawlspace.",
+    "job_type_codes": ["other", "circuits_outlets"],
+    "unit": "ea",
+    "labor_hours": 2.75,
+    "helper_hours": 0.0,
+    "labor_notes": "Short dedicated run with GFCI breaker protection so the pump receptacle itself stays simple and dry-located.",
+    "bom": [
+      {
+        "sku": "BRK-GFCI-1P-20A",
+        "qty": 1
+      },
+      {
+        "sku": "WIRE-NMB-12-2",
+        "qty": 35
+      },
+      {
+        "sku": "BOX-1G-OLDWORK",
+        "qty": 1
+      },
+      {
+        "sku": "REC-20A-DUP",
+        "qty": 1
+      },
+      {
+        "sku": "PLT-1G",
+        "qty": 1
+      },
+      {
+        "sku": "MISC-STAPLE-NM",
+        "qty": 1
+      }
+    ],
+    "modifiers_allowed": ["crawlspace", "occupied_home", "finished_walls"],
+    "option_tiers": null
+  }
+]
