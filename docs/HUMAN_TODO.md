@@ -25,8 +25,18 @@ Running list. Items are appended by phase; nothing is deleted, only checked off.
       Needed Phase 3.
 - [ ] **Stripe account** (dashboard.stripe.com) — activate test mode now; live activation needs
       business details. Create a **Connect platform application** (Settings → Connect) and copy
-      `STRIPE_SECRET_KEY`, `STRIPE_CONNECT_CLIENT_ID`. Webhook secret comes when we register the
-      endpoint (Phase 6). Needed Phase 6.
+      `STRIPE_SECRET_KEY`, `STRIPE_CONNECT_CLIENT_ID`. **Phase 6 backend is built and tested
+      against a fake** — to go live: (1) set `STRIPE_SECRET_KEY`; (2) register a webhook endpoint
+      at `{API_URL}/webhooks/stripe` subscribed to `account.updated`,
+      `checkout.session.completed`, `payment_intent.succeeded`, `payment_intent.payment_failed`,
+      and copy the signing secret → `STRIPE_WEBHOOK_SECRET`; (3) confirm the platform take —
+      `PLATFORM_FEE_BPS` defaults to 250 (2.5%). Until `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET`
+      are both set, the API uses an in-memory fake and online payments are disabled (the hosted
+      proposal shows "your contractor will follow up for the deposit"). Needed Phase 6 live.
+- [ ] **PDF rendering (Playwright)** — proposal PDFs render via Playwright Chromium in the arq
+      worker. Install on the worker host: `uv run playwright install chromium` (not in CI; the
+      worker falls back to the stored HTML snapshot if the browser is absent). Needed before
+      sending real proposal PDFs.
 - [ ] ⏰ **Twilio account + A2P 10DLC registration** — REGISTER THE BRAND AND CAMPAIGN NOW; carrier
       vetting takes 2–6 weeks. twilio.com → Messaging → Regulatory compliance → A2P 10DLC.
       You'll need business EIN, website, sample messages ("Your proposal from {company} is ready:
