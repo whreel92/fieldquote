@@ -74,6 +74,7 @@ function RootNavigator() {
       <Stack.Screen name="capture/[jobId]" />
       <Stack.Screen name="job/new" options={{ headerShown: true, title: 'New job' }} />
       <Stack.Screen name="job/[id]" options={{ headerShown: true, title: 'Job' }} />
+      <Stack.Screen name="invoice/[id]" options={{ headerShown: true, title: 'Invoice' }} />
       <Stack.Screen name="settings/rates" options={{ headerShown: true, title: 'Rates' }} />
       <Stack.Screen name="settings/branding" options={{ headerShown: true, title: 'Branding' }} />
       <Stack.Screen name="settings/legal" options={{ headerShown: true, title: 'Legal' }} />

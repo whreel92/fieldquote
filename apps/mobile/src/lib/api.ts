@@ -208,4 +208,111 @@ export const api = {
         items: { code: string; name: string; description: string | null }[];
       }>(`/catalog/modifiers`),
   },
+  proposals: {
+    get: (id: string) => request<ProposalWithDocument>(`/proposals/${id}`),
+    listForEstimate: (estimateId: string) =>
+      request<Proposal[]>(`/estimates/${estimateId}/proposals`),
+    listForJob: (jobId: string) => request<Proposal[]>(`/jobs/${jobId}/proposals`),
+    updateConfig: (id: string, config: ProposalConfig) =>
+      request<ProposalWithDocument>(`/proposals/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(config),
+      }),
+    send: (id: string) =>
+      request<ProposalWithDocument>(`/proposals/${id}/send`, { method: 'POST' }),
+    newVersion: (estimateId: string) =>
+      request<Proposal>(`/estimates/${estimateId}/duplicate-proposal`, { method: 'POST' }),
+  },
+  stripeConnect: {
+    status: () =>
+      request<{
+        connected: boolean;
+        charges_enabled: boolean;
+        details_submitted: boolean;
+        payouts_enabled: boolean;
+        account_id: string | null;
+      }>(`/stripe/connect/status`),
+    onboard: () => request<{ url: string }>(`/stripe/connect/onboard`, { method: 'POST' }),
+  },
+  money: {
+    summary: () => request<MoneySummary>(`/money/summary`),
+  },
+  invoices: {
+    detail: (id: string) => request<InvoiceDetail>(`/invoices/${id}`),
+    remind: (id: string) => request<Invoice>(`/invoices/${id}/remind`, { method: 'POST' }),
+    refund: (id: string, amount?: string) =>
+      request<InvoiceDetail>(`/invoices/${id}/refund`, {
+        method: 'POST',
+        body: JSON.stringify(amount ? { amount } : {}),
+      }),
+    send: (id: string) => request<Invoice>(`/invoices/${id}/send`, { method: 'POST' }),
+  },
+};
+
+export interface ProposalConfig {
+  title?: string;
+  cover_photo_url?: string | null;
+  intro_message?: string;
+  inclusions?: string[];
+  exclusions?: string[];
+  deposit?: { kind: 'percent' | 'flat'; value: string };
+  validity_days?: number;
+  company_terms?: string;
+}
+
+export type Proposal = {
+  id: string;
+  estimate_id: string;
+  version: number;
+  status: string;
+  public_token: string;
+  content_hash: string | null;
+  config: Record<string, unknown>;
+  sent_at: string | null;
+  first_viewed_at: string | null;
+  view_count: number;
+  expires_at: string | null;
+};
+
+export type ProposalWithDocument = Proposal & {
+  document: Record<string, unknown>;
+  signature: { signer_name: string; signed_at: string; signature_hash: string } | null;
+};
+
+export type Invoice = {
+  id: string;
+  job_id: string;
+  job_title: string | null;
+  kind: 'deposit' | 'progress' | 'final';
+  number: string;
+  status: string;
+  line_items: { description?: string; amount?: string }[];
+  subtotal: string;
+  tax: string;
+  total: string;
+  amount_paid: string;
+  balance_due: string;
+  due_at: string | null;
+  public_token: string | null;
+  sent_at: string | null;
+  paid_at: string | null;
+  created_at: string;
+};
+
+export type PaymentRow = {
+  id: string;
+  amount: string;
+  fee: string | null;
+  net: string | null;
+  status: string;
+  created_at: string;
+};
+
+export type InvoiceDetail = Invoice & { payments: PaymentRow[] };
+
+export type MoneySummary = {
+  outstanding: string;
+  paid_this_month: string;
+  in_transit: string;
+  invoices: Invoice[];
 };
