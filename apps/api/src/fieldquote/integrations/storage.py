@@ -24,6 +24,8 @@ class SignedUpload:
 class StorageService(Protocol):
     def create_signed_upload(self, bucket: str, path: str) -> SignedUpload: ...
 
+    def download(self, bucket: str, path: str) -> bytes: ...
+
 
 class SupabaseStorage:
     def __init__(self, supabase_url: str, service_role_key: str) -> None:
@@ -45,10 +47,31 @@ class SupabaseStorage:
             url=f"{self._base}/storage/v1{body['url']}",
         )
 
+    def download(self, bucket: str, path: str) -> bytes:
+        res = httpx.get(
+            f"{self._base}/storage/v1/object/{bucket}/{path}",
+            headers={"Authorization": f"Bearer {self._key}", "apikey": self._key},
+            timeout=60,
+        )
+        res.raise_for_status()
+        return res.content
+
 
 class FakeStorage:
+    """In-memory storage for tests; `seed(path, data)` stages downloadable
+    bytes."""
+
+    def __init__(self) -> None:
+        self.objects: dict[str, bytes] = {}
+
+    def seed(self, bucket: str, path: str, data: bytes) -> None:
+        self.objects[f"{bucket}/{path}"] = data
+
     def create_signed_upload(self, bucket: str, path: str) -> SignedUpload:
         return SignedUpload(path=path, token="fake-token", url=f"fake://{bucket}/{path}")
+
+    def download(self, bucket: str, path: str) -> bytes:
+        return self.objects.get(f"{bucket}/{path}", b"")
 
 
 def get_storage() -> StorageService:
