@@ -53,6 +53,17 @@ Running list. Items are appended by phase; nothing is deleted, only checked off.
       staging.
 - [ ] **PostHog project** → `POSTHOG_KEY`. Optional until staging.
 
+## Phase 7
+
+- [ ] **Enable ACH (US bank account) payments in Stripe** — the hosted invoice pay page
+      offers "Bank transfer (ACH) — lower fees". In the Stripe dashboard: Settings →
+      Payment methods → enable **US bank accounts (ACH Direct Debit)** for the platform,
+      and confirm it's available for Connect Express accounts (Connect → Payment methods).
+      Card works out of the box; until ACH is enabled, an ACH checkout attempt will fail at
+      Stripe with a clear error. Test-mode ACH uses routing 110000000 / account 000123456789.
+- [ ] **Webhook events** — when registering the Stripe webhook endpoint (Phase 6 item above),
+      also subscribe to **`charge.refunded`** (added in Phase 7 for refund reconciliation).
+
 ## Standing (from Phase 2 onward)
 
 - [ ] **Recruit 2–3 licensed electrician advisors** to validate the assembly catalog.
