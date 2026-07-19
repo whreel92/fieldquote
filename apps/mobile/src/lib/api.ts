@@ -105,5 +105,107 @@ export const api = {
       }),
     listForJob: (jobId: string) => request<EstimateSummary[]>(`/jobs/${jobId}/estimates`),
     get: (estimateId: string) => request<EstimateDetail>(`/estimates/${estimateId}`),
+    createManual: (jobId: string, scopeProse = '') =>
+      request<EstimateDetail>(`/jobs/${jobId}/estimates`, {
+        method: 'POST',
+        body: JSON.stringify({ scope_prose: scopeProse }),
+      }),
+    patch: (id: string, body: { margin_override_pct?: string; scope_prose?: string }) =>
+      request<EstimateDetail>(`/estimates/${id}`, {
+        method: 'PATCH',
+        body: JSON.stringify(body),
+      }),
+    addLine: (
+      id: string,
+      body: {
+        assembly_code?: string | null;
+        qty?: string | number;
+        modifiers?: string[];
+        description?: string;
+        unit_price?: string;
+        line_type?: 'standard' | 'allowance' | 'verify';
+        editable_note?: string;
+      },
+    ) =>
+      request<EstimateDetail>(`/estimates/${id}/lines`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+      }),
+    patchLine: (
+      id: string,
+      lineId: string,
+      body: {
+        qty?: string;
+        modifiers?: string[];
+        description?: string;
+        unit_price?: string;
+        labor_hours?: string;
+        material_cost?: string;
+        editable_note?: string;
+      },
+    ) =>
+      request<EstimateDetail>(`/estimates/${id}/lines/${lineId}`, {
+        method: 'PATCH',
+        body: JSON.stringify(body),
+      }),
+    deleteLine: (id: string, lineId: string) =>
+      request<EstimateDetail>(`/estimates/${id}/lines/${lineId}`, { method: 'DELETE' }),
+    convertAllowance: (id: string, lineId: string, amount: string) =>
+      request<EstimateDetail>(`/estimates/${id}/lines/${lineId}/convert`, {
+        method: 'POST',
+        body: JSON.stringify({ amount }),
+      }),
+    buildOptions: (
+      id: string,
+      lineId: string,
+      body: {
+        tiers: { tier: 'good' | 'better' | 'best'; label: string; total: string }[];
+        selected: 'good' | 'better' | 'best';
+      },
+    ) =>
+      request<EstimateDetail>(`/estimates/${id}/lines/${lineId}/options`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+      }),
+    approve: (id: string, confirmations: Record<string, boolean>) =>
+      request<EstimateDetail>(`/estimates/${id}/approve`, {
+        method: 'POST',
+        body: JSON.stringify({ confirmations }),
+      }),
+    fork: (id: string) => request<EstimateDetail>(`/estimates/${id}/fork`, { method: 'POST' }),
+    diff: (id: string, otherId: string) =>
+      request<Record<string, unknown>>(`/estimates/${id}/diff/${otherId}`),
+    suggestions: (id: string) =>
+      request<{
+        suggestions: { assembly_code: string | null; description: string; reason: string }[];
+      }>(`/estimates/${id}/suggestions`, { method: 'POST' }),
+    createProposal: (id: string) =>
+      request<{ id: string; status: string; public_token: string }>(`/estimates/${id}/proposals`, {
+        method: 'POST',
+      }),
+  },
+  catalog: {
+    searchAssemblies: (q: string, jobType?: string) =>
+      request<{
+        items: {
+          code: string;
+          name: string;
+          unit: string;
+          labor_hours: string;
+          job_type_codes: string[];
+          modifiers_allowed: string[];
+          option_tiers: unknown[] | null;
+          status: string;
+        }[];
+      }>(
+        `/catalog/assemblies?${new URLSearchParams({
+          ...(q ? { q } : {}),
+          ...(jobType ? { job_type: jobType } : {}),
+        }).toString()}`,
+      ),
+    modifiers: () =>
+      request<{
+        items: { code: string; name: string; description: string | null }[];
+      }>(`/catalog/modifiers`),
   },
 };

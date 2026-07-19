@@ -2,7 +2,7 @@ import { colors, radii, spacing, typography, type JobStatus } from '@fieldquote/
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { useLocalSearchParams, useRouter, type Href } from 'expo-router';
 import { useMemo } from 'react';
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Card, ErrorText } from '@/components/ui';
 import { api, ApiError } from '@/lib/api';
@@ -10,6 +10,20 @@ import { selectJobSummary, useQueueStore } from '@/lib/captureQueue';
 
 /** Capture/generation routes are dynamic and not yet in the generated route typings. */
 const href = (path: string) => path as Href;
+
+const ESTIMATE_STATUS: Record<string, { label: string; color: string }> = {
+  draft: { label: 'DRAFT', color: colors.warning },
+  approved: { label: 'APPROVED', color: colors.success },
+  superseded: { label: 'SUPERSEDED', color: colors.textMuted },
+  generation_failed: { label: 'FAILED', color: colors.danger },
+};
+
+function estimateTotal(totals: Record<string, unknown> | null): string {
+  const raw = totals?.['total'];
+  const n = typeof raw === 'number' ? raw : typeof raw === 'string' ? Number(raw) : NaN;
+  if (!Number.isFinite(n)) return '—';
+  return `$${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+}
 
 const STATUS_LABEL: Record<string, string> = {
   lead: 'Lead',
@@ -36,6 +50,11 @@ export default function JobDetailScreen() {
   const capturesQuery = useQuery({
     queryKey: ['captures', id],
     queryFn: () => api.captures.list(id),
+    enabled: Boolean(id),
+  });
+  const estimatesQuery = useQuery({
+    queryKey: ['estimates', id],
+    queryFn: () => api.estimates.listForJob(id),
     enabled: Boolean(id),
   });
   const queueItems = useQueueStore((state) => state.items);
@@ -153,9 +172,43 @@ export default function JobDetailScreen() {
         />
       </Card>
 
+      <Card>
+        <Text style={styles.cardLabel}>Estimates</Text>
+        {(estimatesQuery.data ?? []).length === 0 ? (
+          <Text style={styles.muted}>
+            {estimatesQuery.isPending
+              ? 'Loading estimates…'
+              : 'No estimates yet. Capture the site, then generate one.'}
+          </Text>
+        ) : (
+          (estimatesQuery.data ?? []).map((estimate) => {
+            const chip = ESTIMATE_STATUS[estimate.status] ?? {
+              label: estimate.status.toUpperCase(),
+              color: colors.textMuted,
+            };
+            return (
+              <Pressable
+                key={estimate.id}
+                onPress={() => router.push(href(`/estimate/${estimate.id}`))}
+                accessibilityRole="button"
+                accessibilityLabel={`Open estimate version ${estimate.version}`}
+                style={({ pressed }) => [styles.estimateRow, pressed && { opacity: 0.7 }]}
+              >
+                <Text style={styles.estimateVersion}>v{estimate.version}</Text>
+                <View style={[styles.estimateChip, { borderColor: chip.color }]}>
+                  <Text style={[styles.estimateChipText, { color: chip.color }]}>{chip.label}</Text>
+                </View>
+                <Text style={styles.estimateTotal}>
+                  {estimateTotal(estimate.totals as Record<string, unknown> | null)}
+                </Text>
+              </Pressable>
+            );
+          })
+        )}
+      </Card>
+
       {(
         [
-          ['Estimates', 'AI-drafted estimates arrive in Phase 3–5.'],
           ['Proposals', 'Send, e-sign & deposits arrive in Phase 6.'],
           ['Invoices', 'Invoicing arrives in Phase 7.'],
         ] as const
@@ -207,4 +260,36 @@ const styles = StyleSheet.create({
     marginTop: spacing.xs,
   },
   captureActionButton: { flexGrow: 1, minWidth: 140 },
+  estimateRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: spacing.sm,
+    minHeight: 44,
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    borderBottomColor: colors.border,
+  },
+  estimateVersion: {
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.mono,
+    color: colors.text,
+    minWidth: 32,
+  },
+  estimateChip: {
+    borderWidth: 1.5,
+    borderRadius: radii.full,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 2,
+  },
+  estimateChipText: {
+    fontSize: 10,
+    fontFamily: typography.family.semibold,
+    letterSpacing: 1,
+  },
+  estimateTotal: {
+    flex: 1,
+    textAlign: 'right',
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.mono,
+    color: colors.text,
+  },
 });

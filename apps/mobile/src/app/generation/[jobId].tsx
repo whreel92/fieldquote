@@ -10,7 +10,7 @@
  */
 
 import { colors, radii, spacing, typography } from '@fieldquote/ui';
-import { useLocalSearchParams, useRouter } from 'expo-router';
+import { useLocalSearchParams, useRouter, type Href } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { AlertTriangle } from 'lucide-react-native';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -235,9 +235,16 @@ export default function GenerationScreen() {
   }, [jobId, settleFailed]);
 
   const exitToJob = useCallback(() => {
-    // Phase 5: route to estimate editor
     router.replace(`/job/${jobId}`);
   }, [router, jobId]);
+
+  /** Ready path lands in the Phase 5 estimate editor (replace: no back into this screen). */
+  const openEditor = useCallback(
+    (estimateId: string) => {
+      router.replace(`/estimate/${estimateId}` as Href);
+    },
+    [router],
+  );
 
   // ── Failure card ─────────────────────────────────────────────────────────
   if (phase === 'failed') {
@@ -292,7 +299,7 @@ export default function GenerationScreen() {
               <Text style={styles.totalValue}>—</Text>
             )}
           </View>
-          <Button title="Review estimate" onPress={exitToJob} />
+          <Button title="Review estimate" onPress={() => openEditor(estimate.id)} />
           <Text style={styles.draftNote}>
             This is a draft. Nothing goes to the customer until you review and approve it.
           </Text>
