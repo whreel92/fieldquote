@@ -18,6 +18,7 @@ from fieldquote.routers import (
     jobs,
     me,
     pricing,
+    proposals,
 )
 
 
@@ -53,6 +54,7 @@ def create_app() -> FastAPI:
     app.include_router(pricing.router)
     app.include_router(captures.router)
     app.include_router(estimates.router)
+    app.include_router(proposals.router)
     return app
 
 

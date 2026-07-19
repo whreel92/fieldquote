@@ -223,6 +223,15 @@ def _store_estimate(
     output: ScopingOutput,
     priced: PricedEstimate | None,
 ) -> Estimate:
+    rates = load_company_rates(db, db.get(Company, job.company_id) or Company(name=""))
+    pricing_context = {
+        "pct": _decimal_str(rates.target_margin_pct),
+        "tax_rate_pct": _decimal_str(rates.tax_rate_pct),
+        "markup_model": rates.markup_model,
+        "labor_rate": _decimal_str(rates.labor_rate),
+        "margin_floor_pct": _decimal_str(rates.margin_floor_pct),
+        "region": company_region(db.get(Company, job.company_id) or Company(name="")),
+    }
     estimate = Estimate(
         company_id=job.company_id,
         job_id=job.id,
@@ -240,9 +249,10 @@ def _store_estimate(
                 "total": _decimal_str(priced.total),
                 "margin_check": json.loads(priced.margin_check.model_dump_json()),
                 "engine_version": priced.engine_version,
+                "pricing_context": pricing_context,
             }
             if priced
-            else {"subtotal": "0", "tax": "0", "total": "0"}
+            else {"subtotal": "0", "tax": "0", "total": "0", "pricing_context": pricing_context}
         ),
     )
     db.add(estimate)

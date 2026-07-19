@@ -191,6 +191,28 @@ class EstimateLine(Base):
     estimate: Mapped[Estimate] = relationship(back_populates="lines")
 
 
+class Proposal(Base):
+    __tablename__ = "proposals"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    estimate_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("estimates.id", ondelete="CASCADE")
+    )
+    version: Mapped[int] = mapped_column(default=1)
+    public_token: Mapped[str] = mapped_column(Text, unique=True)
+    status: Mapped[str] = mapped_column(Text, default="draft")
+    pdf_path: Mapped[str | None] = mapped_column(Text)
+    html_snapshot_path: Mapped[str | None] = mapped_column(Text)
+    content_hash: Mapped[str | None] = mapped_column(Text)
+    terms_version: Mapped[str | None] = mapped_column(Text)
+    sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    first_viewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    view_count: Mapped[int] = mapped_column(default=0)
+
+
 class MaterialItem(Base):
     """Global pricing catalog — not tenant-scoped."""
 

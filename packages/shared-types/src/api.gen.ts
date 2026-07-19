@@ -329,7 +329,8 @@ export interface paths {
     /** List Estimates */
     get: operations['list_estimates_jobs__job_id__estimates_get'];
     put?: never;
-    post?: never;
+    /** Create Manual Estimate */
+    post: operations['create_manual_estimate_jobs__job_id__estimates_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -350,6 +351,161 @@ export interface paths {
     delete?: never;
     options?: never;
     head?: never;
+    /** Patch Estimate */
+    patch: operations['patch_estimate_estimates__estimate_id__patch'];
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/lines': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Add Line */
+    post: operations['add_line_estimates__estimate_id__lines_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/lines/{line_id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    post?: never;
+    /** Delete Line */
+    delete: operations['delete_line_estimates__estimate_id__lines__line_id__delete'];
+    options?: never;
+    head?: never;
+    /** Patch Line */
+    patch: operations['patch_line_estimates__estimate_id__lines__line_id__patch'];
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/lines/{line_id}/convert': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Convert Allowance */
+    post: operations['convert_allowance_estimates__estimate_id__lines__line_id__convert_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/lines/{line_id}/options': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Build Options */
+    post: operations['build_options_estimates__estimate_id__lines__line_id__options_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/approve': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Approve */
+    post: operations['approve_estimates__estimate_id__approve_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/fork': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Fork */
+    post: operations['fork_estimates__estimate_id__fork_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/diff/{other_id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Diff */
+    get: operations['diff_estimates__estimate_id__diff__other_id__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/suggestions': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Suggestions */
+    post: operations['suggestions_estimates__estimate_id__suggestions_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/proposals': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Create Proposal */
+    post: operations['create_proposal_estimates__estimate_id__proposals_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
     patch?: never;
     trace?: never;
   };
@@ -357,6 +513,13 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** ApproveIn */
+    ApproveIn: {
+      /** Confirmations */
+      confirmations: {
+        [key: string]: boolean;
+      };
+    };
     /** AssemblyList */
     AssemblyList: {
       /** Items */
@@ -570,6 +733,11 @@ export interface components {
         [key: string]: unknown;
       } | null;
     };
+    /** ConvertAllowanceIn */
+    ConvertAllowanceIn: {
+      /** Amount */
+      amount: number | string;
+    };
     /** EstimateDetail */
     EstimateDetail: {
       /**
@@ -641,6 +809,13 @@ export interface components {
       totals: {
         [key: string]: unknown;
       } | null;
+    };
+    /** EstimatePatch */
+    EstimatePatch: {
+      /** Margin Override Pct */
+      margin_override_pct?: number | string | null;
+      /** Scope Prose */
+      scope_prose?: string | null;
     };
     /** EstimateSummary */
     EstimateSummary: {
@@ -744,6 +919,37 @@ export interface components {
       /** Address */
       address?: string | null;
     };
+    /** LineAdd */
+    LineAdd: {
+      /** Assembly Code */
+      assembly_code?: string | null;
+      /**
+       * Qty
+       * @default 1
+       */
+      qty: number | string;
+      /** Modifiers */
+      modifiers?: string[];
+      /** Selected Tier */
+      selected_tier?: ('good' | 'better' | 'best') | null;
+      /** Description */
+      description?: string | null;
+      /**
+       * Unit
+       * @default ea
+       */
+      unit: string;
+      /** Unit Price */
+      unit_price?: number | string | null;
+      /**
+       * Line Type
+       * @default standard
+       * @enum {string}
+       */
+      line_type: 'standard' | 'allowance' | 'verify';
+      /** Editable Note */
+      editable_note?: string | null;
+    };
     /**
      * LineBreakdown
      * @description The 'show the math' payload for the estimate editor.
@@ -783,6 +989,23 @@ export interface components {
       /** Pct Applied */
       pct_applied: string;
     };
+    /** LinePatch */
+    LinePatch: {
+      /** Qty */
+      qty?: number | string | null;
+      /** Modifiers */
+      modifiers?: string[] | null;
+      /** Description */
+      description?: string | null;
+      /** Unit Price */
+      unit_price?: number | string | null;
+      /** Labor Hours */
+      labor_hours?: number | string | null;
+      /** Material Cost */
+      material_cost?: number | string | null;
+      /** Editable Note */
+      editable_note?: string | null;
+    };
     /** LogoUploadOut */
     LogoUploadOut: {
       /** Upload Url */
@@ -791,6 +1014,14 @@ export interface components {
       token: string;
       /** Storage Path */
       storage_path: string;
+    };
+    /** ManualEstimateIn */
+    ManualEstimateIn: {
+      /**
+       * Scope Prose
+       * @default
+       */
+      scope_prose: string;
     };
     /** MarginCheck */
     MarginCheck: {
@@ -889,6 +1120,29 @@ export interface components {
       };
       /** Version */
       version: number;
+    };
+    /** OptionTierIn */
+    OptionTierIn: {
+      /**
+       * Tier
+       * @enum {string}
+       */
+      tier: 'good' | 'better' | 'best';
+      /** Label */
+      label: string;
+      /** Total */
+      total: number | string;
+    };
+    /** OptionsIn */
+    OptionsIn: {
+      /** Tiers */
+      tiers: components['schemas']['OptionTierIn'][];
+      /**
+       * Selected
+       * @default good
+       * @enum {string}
+       */
+      selected: 'good' | 'better' | 'best';
     };
     /** PreviewAdjustments */
     PreviewAdjustments: {
@@ -1015,6 +1269,27 @@ export interface components {
       editable_note: string;
       breakdown?: components['schemas']['LineBreakdown'] | null;
     };
+    /** ProposalOut */
+    ProposalOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Estimate Id
+       * Format: uuid
+       */
+      estimate_id: string;
+      /** Version */
+      version: number;
+      /** Status */
+      status: string;
+      /** Public Token */
+      public_token: string;
+      /** Created At */
+      created_at?: string | null;
+    };
     /** RatesOut */
     RatesOut: {
       /** Labor Rate */
@@ -1047,6 +1322,20 @@ export interface components {
        * @default true
        */
       confirmed: boolean;
+    };
+    /** SuggestionOut */
+    SuggestionOut: {
+      /** Assembly Code */
+      assembly_code: string | null;
+      /** Description */
+      description: string;
+      /** Reason */
+      reason: string;
+    };
+    /** SuggestionsOut */
+    SuggestionsOut: {
+      /** Suggestions */
+      suggestions: components['schemas']['SuggestionOut'][];
     };
     /** TransitionIn */
     TransitionIn: {
@@ -1921,6 +2210,41 @@ export interface operations {
       };
     };
   };
+  create_manual_estimate_jobs__job_id__estimates_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ManualEstimateIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
   get_estimate_estimates__estimate_id__get: {
     parameters: {
       query?: never;
@@ -1939,6 +2263,378 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  patch_estimate_estimates__estimate_id__patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['EstimatePatch'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  add_line_estimates__estimate_id__lines_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['LineAdd'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  delete_line_estimates__estimate_id__lines__line_id__delete: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+        line_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  patch_line_estimates__estimate_id__lines__line_id__patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+        line_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['LinePatch'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  convert_allowance_estimates__estimate_id__lines__line_id__convert_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+        line_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ConvertAllowanceIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  build_options_estimates__estimate_id__lines__line_id__options_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+        line_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['OptionsIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  approve_estimates__estimate_id__approve_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ApproveIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  fork_estimates__estimate_id__fork_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  diff_estimates__estimate_id__diff__other_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+        other_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': {
+            [key: string]: unknown;
+          };
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  suggestions_estimates__estimate_id__suggestions_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['SuggestionsOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  create_proposal_estimates__estimate_id__proposals_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalOut'];
         };
       };
       /** @description Validation Error */
