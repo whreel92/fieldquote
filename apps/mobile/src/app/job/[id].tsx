@@ -1,10 +1,15 @@
 import { colors, radii, spacing, typography, type JobStatus } from '@fieldquote/ui';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, useRouter, type Href } from 'expo-router';
+import { useMemo } from 'react';
 import { ScrollView, StyleSheet, Text, View } from 'react-native';
 
 import { Button, Card, ErrorText } from '@/components/ui';
 import { api, ApiError } from '@/lib/api';
+import { selectJobSummary, useQueueStore } from '@/lib/captureQueue';
+
+/** Capture/generation routes are dynamic and not yet in the generated route typings. */
+const href = (path: string) => path as Href;
 
 const STATUS_LABEL: Record<string, string> = {
   lead: 'Lead',
@@ -19,12 +24,29 @@ const STATUS_LABEL: Record<string, string> = {
 
 export default function JobDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   const jobQuery = useQuery({
     queryKey: ['job', id],
     queryFn: () => api.jobs.get(id),
     enabled: Boolean(id),
+  });
+
+  const capturesQuery = useQuery({
+    queryKey: ['captures', id],
+    queryFn: () => api.captures.list(id),
+    enabled: Boolean(id),
+  });
+  const queueItems = useQueueStore((state) => state.items);
+  const queueSummary = useMemo(() => selectJobSummary(queueItems, id ?? ''), [queueItems, id]);
+  const uploadedCount = (capturesQuery.data ?? []).filter(
+    (capture) => capture.upload_state === 'uploaded',
+  ).length;
+
+  const generate = useMutation({
+    mutationFn: () => api.estimates.generate(id),
+    onSuccess: () => router.push(href(`/generation/${id}`)),
   });
 
   const transition = useMutation({
@@ -90,9 +112,49 @@ export default function JobDetailScreen() {
         </Card>
       ) : null}
 
+      <Card>
+        <Text style={styles.cardLabel}>Captures</Text>
+        <Text style={styles.cardValue}>
+          {uploadedCount === 0 && queueSummary.total === 0
+            ? 'No captures yet'
+            : `${uploadedCount} synced`}
+        </Text>
+        {queueSummary.label ? <Text style={styles.queueLabel}>{queueSummary.label}</Text> : null}
+        {uploadedCount === 0 && queueSummary.total === 0 ? (
+          <Text style={styles.muted}>
+            Photos and a voice note from the site become the estimate.
+          </Text>
+        ) : null}
+        <View style={styles.captureActions}>
+          <View style={styles.captureActionButton}>
+            <Button title="Capture" onPress={() => router.push(href(`/capture/${id}`))} />
+          </View>
+          {uploadedCount >= 1 ? (
+            <View style={styles.captureActionButton}>
+              <Button
+                title="Generate estimate"
+                variant="secondary"
+                loading={generate.isPending}
+                onPress={() => generate.mutate()}
+              />
+            </View>
+          ) : null}
+        </View>
+        <ErrorText
+          message={
+            generate.isError
+              ? generate.error instanceof ApiError && generate.error.status === 409
+                ? 'Captures are still syncing — they upload automatically when you’re back online. Try again once they land.'
+                : generate.error instanceof ApiError
+                  ? generate.error.message
+                  : 'Could not start generation. Try again.'
+              : null
+          }
+        />
+      </Card>
+
       {(
         [
-          ['Captures', 'Photos & dictation land here in Phase 4.'],
           ['Estimates', 'AI-drafted estimates arrive in Phase 3–5.'],
           ['Proposals', 'Send, e-sign & deposits arrive in Phase 6.'],
           ['Invoices', 'Invoicing arrives in Phase 7.'],
@@ -133,4 +195,16 @@ const styles = StyleSheet.create({
   transitionRow: { flexDirection: 'row', flexWrap: 'wrap', gap: spacing.sm },
   transitionButton: { minWidth: 130, borderRadius: radii.md },
   muted: { fontSize: typography.size.sm, color: colors.textMuted },
+  queueLabel: {
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.mono,
+    color: colors.textSecondary,
+  },
+  captureActions: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: spacing.sm,
+    marginTop: spacing.xs,
+  },
+  captureActionButton: { flexGrow: 1, minWidth: 140 },
 });

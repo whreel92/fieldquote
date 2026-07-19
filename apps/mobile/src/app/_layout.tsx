@@ -14,6 +14,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import { useEffect, useState } from 'react';
 
 import { api } from '@/lib/api';
+import { startSyncLoop } from '@/lib/captureQueue';
 import { initObservability } from '@/lib/observability';
 import { useAuth } from '@/state/auth';
 
@@ -70,6 +71,7 @@ function RootNavigator() {
       <Stack.Screen name="(auth)" />
       <Stack.Screen name="(onboarding)" />
       <Stack.Screen name="(tabs)" />
+      <Stack.Screen name="capture/[jobId]" />
       <Stack.Screen name="job/new" options={{ headerShown: true, title: 'New job' }} />
       <Stack.Screen name="job/[id]" options={{ headerShown: true, title: 'Job' }} />
       <Stack.Screen name="settings/rates" options={{ headerShown: true, title: 'Rates' }} />
@@ -92,6 +94,12 @@ export default function RootLayout() {
   useEffect(() => {
     if (fontsLoaded) void SplashScreen.hideAsync().catch(() => undefined);
   }, [fontsLoaded]);
+
+  // Offline capture queue: kick the sync loop once on mount (idempotent;
+  // re-kicks itself whenever connectivity returns).
+  useEffect(() => {
+    startSyncLoop();
+  }, []);
 
   if (!fontsLoaded) return null;
 
