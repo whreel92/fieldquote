@@ -45,13 +45,20 @@ Respond with ONE JSON object, no fences, matching exactly:
 ```json
 {
   "job_type_code": "one of the provided job type codes",
-  "assemblies": [{"code": "...", "qty": 1, "modifiers": ["..."],
-                   "selected_tier": null, "evidence": "transcript: '...'"}],
-  "allowances": [{"description": "...",
-                   "suggested_amount_basis": "labor_only|verify",
-                   "reason": "..."}],
-  "verify_flags": [{"item": "...", "action": "..."}],
-  "code_notes": [{"note": "...", "customer_visible": true}],
+  "assemblies": [
+    {
+      "code": "...",
+      "qty": 1,
+      "modifiers": ["..."],
+      "selected_tier": null,
+      "evidence": "transcript: '...'"
+    }
+  ],
+  "allowances": [
+    { "description": "...", "suggested_amount_basis": "labor_only|verify", "reason": "..." }
+  ],
+  "verify_flags": [{ "item": "...", "action": "..." }],
+  "code_notes": [{ "note": "...", "customer_visible": true }],
   "scope_prose": "...",
   "questions_for_contractor": ["..."],
   "outside_supported_scope": false,

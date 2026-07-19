@@ -20,7 +20,7 @@ For each assembly (and each good/better/best tier):
    stucco exterior, attic run, obsolete panel brand…) make sense for this
    assembly, and are the multipliers fair?
 4. **Anything unsafe or code-relevant we've framed as fact** — flag it. Code
-   requirements must surface as *notes for the licensed contractor to confirm*,
+   requirements must surface as _notes for the licensed contractor to confirm_,
    never as assertions.
 
 ## How to review
@@ -39,19 +39,19 @@ For each assembly (and each good/better/best tier):
 
 ## Modifier reference
 
-| Code | Effect |
-|---|---|
-| occupied_home | labor ×1.15 |
-| stucco_exterior | labor ×1.25 |
-| two_story | labor ×1.2 |
-| attic_run | +0.75 h |
-| finished_walls | labor ×1.35 |
-| crawlspace | +0.5 h |
-| permit_handling | +1.0 h |
-| panel_brand_obsolete | +1.5 h |
-| long_run_over_50ft | material ×1.5, +0.5 h |
-| tight_workspace | labor ×1.15 |
-| ceiling_over_10ft | +0.5 h |
-| trench_required | +3.0 h, material ×1.2 |
+| Code                 | Effect                |
+| -------------------- | --------------------- |
+| occupied_home        | labor ×1.15           |
+| stucco_exterior      | labor ×1.25           |
+| two_story            | labor ×1.2            |
+| attic_run            | +0.75 h               |
+| finished_walls       | labor ×1.35           |
+| crawlspace           | +0.5 h                |
+| permit_handling      | +1.0 h                |
+| panel_brand_obsolete | +1.5 h                |
+| long_run_over_50ft   | material ×1.5, +0.5 h |
+| tight_workspace      | labor ×1.15           |
+| ceiling_over_10ft    | +0.5 h                |
+| trench_required      | +3.0 h, material ×1.2 |
 
 Multiplicative effects apply before additive ones (ADR-0005).

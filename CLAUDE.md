@@ -25,21 +25,21 @@ You are building this **start to finish in phases**. You own architecture, code,
 
 ### 0.2 Locked stack (do not relitigate)
 
-| Layer | Choice |
-|---|---|
-| Monorepo | pnpm workspaces + Turborepo; Python backend managed with `uv` |
-| Backend API | **Python 3.12, FastAPI**, Pydantic v2, SQLAlchemy 2 + Alembic |
-| DB / Auth / Storage / Realtime | **Supabase** (Postgres 15, Supabase Auth JWT, Storage buckets, Realtime channels) |
-| Mobile | **React Native + Expo (SDK latest stable), TypeScript, expo-router**, Zustand state, TanStack Query, react-hook-form + zod |
-| Web (marketing + checkout + account portal + hosted proposals) | **Next.js 15 (App Router), TypeScript, Tailwind** |
-| AI | Anthropic API (Claude — scoping + vision), Deepgram (ASR primary) with Whisper fallback interface |
-| Payments (B2C invoices/deposits) | **Stripe Connect Express** |
-| Subscriptions | Stripe Billing (web) + RevenueCat (iOS/Android IAP), unified entitlements service |
-| Messaging | Twilio SMS (A2P 10DLC), Resend email |
-| PDF | Playwright HTML→PDF render service (shared templates with hosted web proposal) |
-| Jobs/queue | Redis + `arq` workers |
-| Observability | Sentry (API + mobile + web), structured JSON logs, PostHog product analytics |
-| CI/CD | GitHub Actions; Fly.io (API + workers) or Railway; Vercel (web); EAS (mobile builds) |
+| Layer                                                          | Choice                                                                                                                     |
+| -------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Monorepo                                                       | pnpm workspaces + Turborepo; Python backend managed with `uv`                                                              |
+| Backend API                                                    | **Python 3.12, FastAPI**, Pydantic v2, SQLAlchemy 2 + Alembic                                                              |
+| DB / Auth / Storage / Realtime                                 | **Supabase** (Postgres 15, Supabase Auth JWT, Storage buckets, Realtime channels)                                          |
+| Mobile                                                         | **React Native + Expo (SDK latest stable), TypeScript, expo-router**, Zustand state, TanStack Query, react-hook-form + zod |
+| Web (marketing + checkout + account portal + hosted proposals) | **Next.js 15 (App Router), TypeScript, Tailwind**                                                                          |
+| AI                                                             | Anthropic API (Claude — scoping + vision), Deepgram (ASR primary) with Whisper fallback interface                          |
+| Payments (B2C invoices/deposits)                               | **Stripe Connect Express**                                                                                                 |
+| Subscriptions                                                  | Stripe Billing (web) + RevenueCat (iOS/Android IAP), unified entitlements service                                          |
+| Messaging                                                      | Twilio SMS (A2P 10DLC), Resend email                                                                                       |
+| PDF                                                            | Playwright HTML→PDF render service (shared templates with hosted web proposal)                                             |
+| Jobs/queue                                                     | Redis + `arq` workers                                                                                                      |
+| Observability                                                  | Sentry (API + mobile + web), structured JSON logs, PostHog product analytics                                               |
+| CI/CD                                                          | GitHub Actions; Fly.io (API + workers) or Railway; Vercel (web); EAS (mobile builds)                                       |
 
 ### 0.3 Repository layout (create exactly this in Phase 0)
 
@@ -90,6 +90,7 @@ Produce `docs/PHASE_REPORTS/phase-N.md` containing: (1) checklist of deliverable
 **Objective:** Running skeleton of all three apps, DB migrated, CI green, one authenticated round-trip working end to end.
 
 **Deliverables**
+
 1. Monorepo per §0.3 with tooling: `ruff` + `mypy --strict` (api), `eslint` + `prettier` + `tsc --noEmit` (mobile/web), Turborepo pipelines, pre-commit hooks.
 2. Supabase project config as code (`infra/supabase/`): initial migration applying the **core schema** (below), RLS enabled on every tenant table, storage buckets `job-photos`, `job-audio`, `documents`, `receipts` (private; signed URL access only).
 3. FastAPI app: health route, Supabase JWT verification middleware, tenancy dependency (`get_current_company`), error envelope, structured logging, Sentry, OpenAPI export script → generates typed client into `packages/shared-types`.
@@ -151,6 +152,7 @@ subscriptions(company_id, tier: trial|solo|pro|team, seats, source:
 ```
 
 **Verification block**
+
 ```bash
 pnpm turbo lint typecheck test
 cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
@@ -166,6 +168,7 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 **Objective:** A contractor can onboard, brand the company, set rates, create clients and jobs — on mobile.
 
 **Deliverables**
+
 1. API CRUD (+tests): companies (update/branding upload), clients (search-as-you-type), jobs (status machine with guarded transitions; log every transition to `audit_log`).
 2. **Onboarding wizard (mobile)** — max 4 screens, < 3 minutes: company + logo + license # → labor rate / helper rate / target margin (with plain-English explainer of margin vs markup and a live example: "a job costing $1,000 will price at $X") → tax + service ZIP → done. Every field skippable with safe defaults; defaults flagged in Settings until confirmed.
 3. Jobs tab: list grouped by status, pull-to-refresh, job detail screen (captures/estimates/proposals/invoices sections stubbed), create-job flow (client picker with inline create, address autocomplete via a stubbed geocode interface).
@@ -179,11 +182,12 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 **Objective:** The heart of the product: pure, tested, versioned pricing. **No AI in this phase.**
 
 **Deliverables**
+
 1. `apps/api/src/fieldquote/pricing/` as a **pure module** (no I/O): input = `PricingRequest {assemblies:[{code, qty, modifiers[]}], company_rates, region, adjustments}` → output = `PricedEstimate {lines[], subtotal_material, subtotal_labor, tax, total, margin_check}`. Deterministic: same input → identical output, property-tested.
 2. Rules implemented + unit-tested: BOM expansion → material cost × region multiplier; labor_hours × modifiers (multiplicative and additive, applied in documented order) × rate; helper-rate splits where assembly specifies; margin vs markup models; rounding policy (line-level, half-up, documented); minimums (company-configurable job minimum); allowance lines (fixed amount, clearly typed); good/better/best expansion when an assembly defines `option_tiers`.
 3. **Golden-file test suite:** ≥ 40 scenarios in `tests/pricing/golden/*.json` (input + expected output). Any engine change that alters a golden file requires an explicit snapshot update commit with rationale.
 4. **Seed catalog v0 (PLACEHOLDER DATA — mark every record `status: draft`):** author ~**150 residential electrical assemblies** across: panel/service upgrades (100A→200A variants, meter-main combos, overhead vs underground, relocation), EV chargers (48A/60A, distance tiers, load-calc allowance, panel-full → load-management option), circuits & receptacles (15/20A adds, dedicated appliance, GFCI/AFCI retrofits), fixtures/fans (recessed tiers, fan w/ or w/o existing box), remodel rough-in per-opening units, generator inlets/interlocks, hot tub/mini-split circuits, troubleshooting/service-call diagnostic assemblies, common repairs. Each: BOM (invented-but-plausible SKUs into `material_items` with placeholder prices), labor_hours with a `labor_notes` rationale, allowed modifiers (`occupied_home`, `stucco_exterior`, `two_story`, `attic_run`, `finished_walls`, `crawlspace`, `permit_handling`, `panel_brand_obsolete`…).
-5. **`docs/ASSEMBLY_VALIDATION.md`** + CSV export: the exact review packet for Will's licensed-electrician advisors (columns: assembly, labor hours, BOM, notes, approve/adjust). Add to `HUMAN_TODO.md`: *"No production launch until advisors flip assemblies to `advisor_approved`. Placeholder prices must never reach a real customer."* Enforce in code: companies with `env=production` can only price against `advisor_approved` assemblies unless a `dev_mode` flag is set.
+5. **`docs/ASSEMBLY_VALIDATION.md`** + CSV export: the exact review packet for Will's licensed-electrician advisors (columns: assembly, labor hours, BOM, notes, approve/adjust). Add to `HUMAN_TODO.md`: _"No production launch until advisors flip assemblies to `advisor_approved`. Placeholder prices must never reach a real customer."_ Enforce in code: companies with `env=production` can only price against `advisor_approved` assemblies unless a `dev_mode` flag is set.
 6. Internal admin endpoint + simple web page (`/app/admin/assemblies`, role-gated) to browse/edit catalog with version bump on change.
 
 **Verification:** `uv run pytest tests/pricing -q` → 100% branch coverage on pricing module (enforce in CI via coverage config); golden suite green; property test (hypothesis) for determinism + no negative totals. → Gate → STOP.
@@ -195,22 +199,35 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 **Objective:** Speech + photos → validated structured scope that feeds the Phase 2 engine. All providers behind interfaces; recorded fixtures for CI.
 
 **Deliverables**
+
 1. **Interfaces:** `ASRProvider` (Deepgram impl + local Whisper fallback impl), `VisionAnalyzer`, `ScopingModel` — each with a `FakeProvider` reading fixtures for tests.
 2. **ASR worker:** on audio upload complete → transcribe (electrical vocabulary boost list: "AFCI, GFCI, Zinsco, FPE, meter main, EMT, romex/NM-B, megger, ampacity…") → store transcript on `captures`.
 3. **Vision pass (Claude vision):** per photo → structured findings: `{panel: {brand?, amperage?, breaker_spaces?, condition_flags[]}, hazards[], equipment[], environment: {exterior_type?, stories?}, ocr_text[], confidence}`. Prompted to answer **only what is visible**; unknowns are null, never guessed. Store on `captures.vision_findings`.
 4. **Scoping model call** (single structured-output call, streaming): system prompt (write it, commit it to `apps/api/src/fieldquote/ai/scoping/prompts/` with version numbers) instructs: map transcript + vision findings + job_type + contractor context onto the **assembly catalog only** (catalog summary provided via tool/context); quantities and modifiers must be justified from the input; anything not inferable → `allowance` or `verify_flag` with a customer-readable reason; produce `scope_prose` in professional, trade-correct, homeowner-readable language; **output schema (zod/Pydantic-validated):**
+
 ```json
-{ "job_type_code": "...",
-  "assemblies": [{"code":"...","qty":1,"modifiers":["stucco_exterior"],
-                  "evidence":"transcript: 'stucco outside'"}],
-  "allowances": [{"description":"...","suggested_amount_basis":"labor_only|verify",
-                  "reason":"..."}],
-  "verify_flags": [{"item":"ground rod not visible","action":"verify on site"}],
-  "code_notes": [{"note":"Zinsco panel flagged — insurer/inspection note",
-                  "customer_visible": true}],
+{
+  "job_type_code": "...",
+  "assemblies": [
+    {
+      "code": "...",
+      "qty": 1,
+      "modifiers": ["stucco_exterior"],
+      "evidence": "transcript: 'stucco outside'"
+    }
+  ],
+  "allowances": [
+    { "description": "...", "suggested_amount_basis": "labor_only|verify", "reason": "..." }
+  ],
+  "verify_flags": [{ "item": "ground rod not visible", "action": "verify on site" }],
+  "code_notes": [
+    { "note": "Zinsco panel flagged — insurer/inspection note", "customer_visible": true }
+  ],
   "scope_prose": "...",
-  "questions_for_contractor": ["..."] }
+  "questions_for_contractor": ["..."]
+}
 ```
+
 5. **Validation + repair loop:** schema-validate model output; unknown assembly codes → one repair retry with the error; still invalid → mark estimate `generation_failed` with a human-readable reason (never surface raw model errors to users).
 6. **Generation orchestrator (arq):** `job_id` → gather captures → ASR (if pending) → vision → scoping → **pricing engine** → create `estimates` v1 (`status: draft`, full `ai_output` stored) → Realtime event `estimate.ready` → progressive events (`scope.partial` streamed) for the mobile UX.
 7. **Fixture library:** ≥ 12 end-to-end fixtures (synthetic transcripts + photo-findings JSON you author: panel swap, EV charger long run, service call breaker trip, remodel rough-in, hot tub, fan install, ambiguous rambling dictation, non-English snippet, wrong-trade request → graceful "outside supported job types" path, empty audio, photo-only, voice-only). Contract tests assert: valid schema, all codes exist in catalog, allowances used when info is missing, evidence strings map to input.
@@ -226,7 +243,8 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 **Objective:** The 90-second on-site capture experience. This is the product's front door — polish it.
 
 **Deliverables**
-1. **Capture screen** (from Job or the center tab): job-type chips (Panel Upgrade, EV Charger, Service Call, Circuits/Outlets, Fixtures/Fans, Remodel, Generator, Other) → **guided shot list per job type** (e.g., Panel Upgrade: panel exterior, panel interior/dead-front off *with safety note*, meter, service entrance, main bonding, surroundings) — skippable, progress dots, thumbnails with retake.
+
+1. **Capture screen** (from Job or the center tab): job-type chips (Panel Upgrade, EV Charger, Service Call, Circuits/Outlets, Fixtures/Fans, Remodel, Generator, Other) → **guided shot list per job type** (e.g., Panel Upgrade: panel exterior, panel interior/dead-front off _with safety note_, meter, service entrance, main bonding, surroundings) — skippable, progress dots, thumbnails with retake.
 2. **Dictation:** hold-to-talk AND tap-to-toggle; live waveform; pause/resume; multiple takes appended; on-device duration cap 5 min with warning at 4; playback + delete.
 3. **Offline queue:** captures persisted to device storage instantly (expo-file-system + SQLite queue); background upload with retry/backoff; visible sync state per item ("3 photos syncing…"); kill-and-relaunch test must not lose data.
 4. **Generation UX:** "Generate Estimate" → streaming screen: scope prose streams in → line items populate with subtle count-up totals → lands on the (Phase 5) editor. Failure path: friendly retry + "build manually" escape hatch.
@@ -242,11 +260,12 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 **Objective:** The most important screen in the app. A contractor must be able to review, trust, and adjust every number in under 3 minutes.
 
 **Deliverables**
+
 1. **Line list:** grouped (Labor & Materials / Allowances / Verify-on-site / Options); each row: description, qty stepper, unit price, line total; tap → detail sheet showing **the math** ("2.5 hrs × $145 — base 2.0 for 200A meter-main + 0.5 stucco modifier" and BOM with material prices) with per-field override; overridden fields visibly badged `edited` and logged to `audit_log`.
 2. **Add line:** search assemblies (fuzzy), recent lines, or free-form manual line (typed `manual`, price_source `manual`).
 3. **Confidence UI:** `verify` and `allowance` lines visually distinct with the AI's reason; one-tap convert allowance→priced line after contractor confirms details.
 4. **Margin panel:** collapsible footer — cost basis, price, effective margin %, slider to adjust target margin for this estimate only, live total updates. Warning state when margin < company floor.
-5. **"What am I forgetting?" action:** re-invokes scoping model in *checklist mode* against the current line set → returns up to 5 suggestions with reasons; contractor taps to add. (New prompt file, fixtures, tests.)
+5. **"What am I forgetting?" action:** re-invokes scoping model in _checklist mode_ against the current line set → returns up to 5 suggestions with reasons; contractor taps to add. (New prompt file, fixtures, tests.)
 6. **Options builder:** promote any line/assembly with `option_tiers` into good/better/best; editor for tier labels + prices; proposal renders tiers as selectable.
 7. **Approval flow (the legal control):** "Review & Approve" walks section-by-section (scope prose → lines → totals → terms) with per-section confirm; only then `status: approved` and Send unlocks. Approver + timestamp stored. **There must be no code path to send an unapproved estimate — write a test that proves it.**
 8. Versioning: editing an approved estimate forks v(n+1) draft; prior versions read-only with diff view (added/removed/changed lines).
@@ -261,6 +280,7 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 **Objective:** Approved estimate → branded proposal → viewed → signed → deposit paid. The revenue moment.
 
 **Deliverables**
+
 1. **Proposal composer (mobile):** cover photo (job photo picker), intro message (AI-drafted from scope, editable), included/excluded sections, deposit config (% or flat, default from company settings), validity period, terms (company terms + **the platform estimate disclaimer — see Legal block below — always appended, non-removable**).
 2. **Hosted proposal (`web /p/[token]`):** mobile-first page: branding, scope, line items (options selectable with live total), photos, terms, **Accept & Sign** (typed name + checkbox consent; capture IP/UA/timestamp; store `signature_hash = sha256(content_hash + signer + ts)`), then immediate **Pay Deposit** (Stripe Checkout / Payment Element on the connected account, `application_fee_amount` = platform take, configurable bps). Decline path with optional reason. View tracking (first view, count) → events feed follow-ups.
 3. **PDF render worker:** same HTML template → Playwright PDF; stored to `documents`; attached to send email.
@@ -270,7 +290,8 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 7. Status timeline on job detail: sent → viewed (n) → signed → deposit paid, with timestamps.
 
 **Legal block (commit to `docs/LEGAL_COPY.md`, render on every proposal):**
-> *This proposal is an estimate prepared and approved by [Company], a licensed contractor, using FieldQuote software. Final pricing may vary based on site conditions discovered during work; changes will be documented in a written change order. Allowance items are budgetary placeholders. FieldQuote provides drafting software only and is not a party to this agreement.*
+
+> _This proposal is an estimate prepared and approved by [Company], a licensed contractor, using FieldQuote software. Final pricing may vary based on site conditions discovered during work; changes will be documented in a written change order. Allowance items are budgetary placeholders. FieldQuote provides drafting software only and is not a party to this agreement._
 > Flag in HUMAN_TODO: **attorney review before launch.**
 
 **Acceptance:** full loop on Stripe test mode: approve → send → open on a second device → sign → pay test deposit → job auto-advances → notification received; webhook signature verification tested; replayed webhooks idempotent. → Gate → STOP.
@@ -280,6 +301,7 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 ## PHASE 7 — INVOICING & PAYMENTS COMPLETION (1–2 sessions)
 
 **Deliverables**
+
 1. Invoice generation from won jobs: deposit (auto-created on signature), progress (% or amount), final (remaining balance auto-computed); numbering `INV-{company_seq}`; edit before send only; immutable after.
 2. Hosted pay page (`/i/[token]`) + PDF; card + ACH (ACH fee advantage surfaced to payer); partial payments supported; receipts emailed.
 3. Money tab (mobile): outstanding / paid this month / in transit; per-invoice status; nudge action ("remind") that queues a polite SMS/email.
@@ -293,6 +315,7 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 ## PHASE 8 — FOLLOW-UP AUTOMATION + TEAM SEATS (2 sessions)
 
 **Deliverables**
+
 1. **Sequences engine (arq scheduled):** triggers per schema (`proposal_unopened_24h`, `viewed_not_signed_48h`, `signed_no_deposit_24h`, `invoice_overdue_3d`, `job_complete_review`); steps = ordered `{delay, channel, template}` with merge fields; **auto-stop on any terminal event** (signed/paid/declined/manual stop) — test this hard, a follow-up after signing is embarrassing, one after declining is worse.
 2. Default sequence library (3 sequences, friendly-professional tone, editable per company); per-job sequence on/off; quiet hours (company timezone, default 8am–7pm) enforced at send time; SMS opt-out handling (STOP) compliant.
 3. AI-drafted variants: "rewrite in my voice" using company's prior sent messages as style context (feature-flagged).
@@ -306,10 +329,11 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 ## PHASE 9 — JOB COSTING & PROFITABILITY (1–2 sessions)
 
 **Deliverables**
+
 1. Receipt capture: photo → OCR extraction (vendor, total, date, line guesses) via vision model → confirm/edit → `job_actuals`; multi-receipt; mileage/manual expense entry.
 2. Time log: start/stop or manual entry per user per job.
 3. **Job P&L:** quoted vs actual (materials, labor hrs × loaded rate), gross margin, variance flags ("materials ran 22% over estimate — biggest line: wire"), shown on job completion + Money tab rollup (monthly margin trend).
-4. **Feedback loop v0:** per-assembly variance aggregation *within a company* ("your actual hours on EV charger installs average 1.3× estimate — adjust?") with one-tap company-level labor override (stored in `company_rates.overrides`, applied by pricing engine — extend engine + goldens). **Cross-company aggregation: schema + opt-in consent flag only, no product surface yet** (this is the future moat; get the data rights UX correct now: explicit toggle, plain-language explanation, off by default).
+4. **Feedback loop v0:** per-assembly variance aggregation _within a company_ ("your actual hours on EV charger installs average 1.3× estimate — adjust?") with one-tap company-level labor override (stored in `company_rates.overrides`, applied by pricing engine — extend engine + goldens). **Cross-company aggregation: schema + opt-in consent flag only, no product surface yet** (this is the future moat; get the data rights UX correct now: explicit toggle, plain-language explanation, off by default).
 
 **Acceptance:** golden tests for override application; P&L math property-tested; OCR fixture suite. → Gate → STOP.
 
@@ -318,6 +342,7 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 ## PHASE 10 — MONETIZATION: TRIALS, SUBSCRIPTIONS, ENTITLEMENTS (2 sessions)
 
 **Deliverables**
+
 1. **Entitlements service (single source of truth):** `subscriptions` table fed by Stripe Billing webhooks (web checkout) AND RevenueCat webhooks (IAP); tier → feature map in code (`solo: 1 seat, core loop; pro: +options, +job costing, +sequences editor, +QBO(flagged), 2 seats; team: seats param, +roles/approvals, +company reporting`); API middleware + mobile gating hooks; graceful downgrade behavior defined (data retained read-only, sending blocked).
 2. **Trial:** 14-day full-Pro on signup, no card (web variant with card A/B-ready); in-app trial status; paywall screens (mobile: RevenueCat paywall; web: Stripe Checkout at $59/$119/$249 monthly + annual with 2-months-free) — pricing values in config, not hardcoded.
 3. Post-trial hard paywall: read-only access + one-tap subscribe; winback email at day 3/10 post-expiry (Resend).
@@ -331,6 +356,7 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 ## PHASE 11 — MARKETING SITE, HARDENING, LAUNCH PREP (2–3 sessions)
 
 **Deliverables**
+
 1. **Marketing site (Next.js):** hero ("Price the job before you leave the driveway"), 60-second demo section (video placeholder + scripted storyboard file for Will), feature walk (capture → estimate → signed deposit), pricing table, electrician-specific proof section (assembly depth, code flags), FAQ incl. "Is the AI setting my prices?" (answer: no — your rates, your approval, every line editable), founder note, waitlist→trial CTA. SEO: target "electrical estimating app", "electrician quote app", "AI estimate app for electricians"; OG images; sitemap.
 2. **Hardening sweep:** rate limiting (per-IP public routes, per-company API), signed-URL expiry audit, webhook signature verification audit, RLS penetration test suite (attempt cross-tenant on every table), dependency audit, load test: 50 concurrent generations (queue depth + latency report), PDF worker concurrency guard, backup/restore runbook (`docs/RUNBOOKS/`).
 3. **Store readiness:** EAS production profiles, app icons/splash from `packages/ui`, privacy manifests, App Store/Play listing copy drafts, screenshots plan (6 per platform, storyboarded), TestFlight/internal-track pipeline in CI. (Submission itself → HUMAN_TODO with a step-by-step checklist.)
@@ -342,10 +368,13 @@ cd apps/api && uv run pytest -q && uv run alembic upgrade head --sql | head -5
 ---
 
 ## APPENDIX A — DEFINITION OF DONE (applies to every task)
+
 Typed end to end (mypy strict / tsc) · tested per §0.1.7 · RLS respected · errors mapped to the error envelope with user-safe messages · loading/empty/error states designed, not defaulted · audit-logged if it mutates money, estimates, or documents · analytics event named per `docs/ANALYTICS_EVENTS.md` (create in Phase 0) · no TODO without a linked HUMAN_TODO or debt entry.
 
 ## APPENDIX B — THINGS YOU MUST NEVER DO
+
 Emit model-generated prices · send unapproved estimates · mutate sent documents · store card data · guess at electrical code requirements as fact (flag as notes for the licensed contractor to confirm) · ship placeholder pricing to production · silently swallow webhook failures · add scheduling/dispatch/accounting features "while you're in there."
 
 ## APPENDIX C — SESSION PROTOCOL
+
 Start of session: read this file + latest phase report + `HUMAN_TODO.md`; state the phase, the plan for this session, and any blockers. End of session: commit, update phase report progress, list exact next steps. If context runs long, prefer finishing a verifiable slice over starting a new one.

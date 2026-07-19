@@ -24,6 +24,5 @@ but is missing from the estimate.
 One JSON object, no fences:
 
 ```json
-{"suggestions": [{"assembly_code": "code_or_null", "description": "...",
-                   "reason": "..."}]}
+{ "suggestions": [{ "assembly_code": "code_or_null", "description": "...", "reason": "..." }] }
 ```

@@ -4,17 +4,17 @@
 
 ## 1. Deliverables
 
-| # | Deliverable | Status |
-|---|---|---|
-| 1 | Grouped line list + "show the math" detail sheet with per-field overrides, `edited` badges, audit log | ✅ API: engine reprice vs manual override paths, per-field override badges in `totals.overrides`, every mutation audited. Mobile: FlashList grouped sections + breakdown sheet |
-| 2 | Add line: fuzzy assembly search, manual free-form | ✅ `/catalog/assemblies?q=` search + `POST /estimates/{id}/lines` (engine-priced or manual) |
-| 3 | Confidence UI: allowance/verify distinct with AI reason; one-tap convert | ✅ badges + editable_note reasons; `POST .../convert` prices the allowance |
-| 4 | Margin panel: cost basis, price, effective %, per-estimate margin adjust, floor warning | ✅ `PATCH /estimates/{id}` margin_override_pct reprices engine lines only; margin_check recomputed server-side; mobile collapsible footer |
-| 5 | "What am I forgetting?" checklist mode | ✅ `checklist_v1` prompt + ClaudeChecklist/FakeChecklist; ≤5 suggestions, invalid codes filtered, tested |
-| 6 | Options builder: good/better/best with editable labels/prices | ✅ `POST .../options` replaces line with tier lines; only selected tier totals; mobile builder screen |
-| 7 | **Approval flow — the legal control** | ✅ section-by-section confirmations (all 4 required), owner/admin/office role, approver+timestamp stored, **red-team suite proves no code path sends/proposes a draft** |
-| 8 | Versioning: approved edits fork v(n+1); prior versions read-only; diff view | ✅ fork endpoint + `fork_required` 409 on approved-estimate mutations; approval supersedes prior approved; diff endpoint + versions screen |
-| 9 | Performance: FlashList, optimistic edits with rollback | ✅ (mobile) FlashList line list; optimistic qty stepper reconciled against server response |
+| #   | Deliverable                                                                                           | Status                                                                                                                                                                         |
+| --- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | Grouped line list + "show the math" detail sheet with per-field overrides, `edited` badges, audit log | ✅ API: engine reprice vs manual override paths, per-field override badges in `totals.overrides`, every mutation audited. Mobile: FlashList grouped sections + breakdown sheet |
+| 2   | Add line: fuzzy assembly search, manual free-form                                                     | ✅ `/catalog/assemblies?q=` search + `POST /estimates/{id}/lines` (engine-priced or manual)                                                                                    |
+| 3   | Confidence UI: allowance/verify distinct with AI reason; one-tap convert                              | ✅ badges + editable_note reasons; `POST .../convert` prices the allowance                                                                                                     |
+| 4   | Margin panel: cost basis, price, effective %, per-estimate margin adjust, floor warning               | ✅ `PATCH /estimates/{id}` margin_override_pct reprices engine lines only; margin_check recomputed server-side; mobile collapsible footer                                      |
+| 5   | "What am I forgetting?" checklist mode                                                                | ✅ `checklist_v1` prompt + ClaudeChecklist/FakeChecklist; ≤5 suggestions, invalid codes filtered, tested                                                                       |
+| 6   | Options builder: good/better/best with editable labels/prices                                         | ✅ `POST .../options` replaces line with tier lines; only selected tier totals; mobile builder screen                                                                          |
+| 7   | **Approval flow — the legal control**                                                                 | ✅ section-by-section confirmations (all 4 required), owner/admin/office role, approver+timestamp stored, **red-team suite proves no code path sends/proposes a draft**        |
+| 8   | Versioning: approved edits fork v(n+1); prior versions read-only; diff view                           | ✅ fork endpoint + `fork_required` 409 on approved-estimate mutations; approval supersedes prior approved; diff endpoint + versions screen                                     |
+| 9   | Performance: FlashList, optimistic edits with rollback                                                | ✅ (mobile) FlashList line list; optimistic qty stepper reconciled against server response                                                                                     |
 
 ## 2. Verification
 
@@ -42,11 +42,11 @@ report) — extend it with this script.
 
 ## 4. Known debt
 
-| ID | Item |
-|---|---|
-| FQ-D019 | Margin adjust is stepper/track-based (no native slider dep); revisit with a designed slider |
+| ID      | Item                                                                                                                           |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| FQ-D019 | Margin adjust is stepper/track-based (no native slider dep); revisit with a designed slider                                    |
 | FQ-D020 | Options builder totals are manual (engine option_tiers assemblies price automatically, ad-hoc promotions don't carry BOM math) |
-| FQ-D021 | Suggestions context sends transcripts but not vision findings (kept small); revisit after live eval |
+| FQ-D021 | Suggestions context sends transcripts but not vision findings (kept small); revisit after live eval                            |
 
 ## 5. GO / NO-GO
 

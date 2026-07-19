@@ -4,14 +4,14 @@
 
 ## 1. Deliverables
 
-| # | Deliverable | Status |
-|---|---|---|
-| 1 | `fieldquote/pricing` pure module: `price(PricingRequest, Catalog) → PricedEstimate`, no I/O, Decimal-only, deterministic | ✅ |
-| 2 | Rules: BOM×region, labor×modifiers (mult-then-add, documented), helper splits, margin vs markup, line-level HALF_UP rounding, job minimums, allowances, good/better/best `option_tiers` | ✅ |
-| 3 | Golden-file suite ≥ 40 scenarios | ✅ 46 scenarios (`tests/pricing/golden/`), byte-pinned; regeneration protocol in ADR-0005 |
-| 4 | Seed catalog v0 ~150 draft assemblies | ✅ 150 assemblies / 147 SKUs / 12 modifiers across 9 category files + stdlib validator |
-| 5 | `docs/ASSEMBLY_VALIDATION.md` + CSV export + HUMAN_TODO entry + production enforcement | ✅ 156-row CSV at `docs/validation/assemblies_v0.csv`; `approved_only()` guard: production companies without `dev_mode` can only see/price `advisor_approved` |
-| 6 | Admin endpoint + `/app/admin/assemblies` page (role-gated) | ✅ PATCH owner/admin-only, version bump + audit log; web page with search/filter/edit/status flip |
+| #   | Deliverable                                                                                                                                                                             | Status                                                                                                                                                        |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1   | `fieldquote/pricing` pure module: `price(PricingRequest, Catalog) → PricedEstimate`, no I/O, Decimal-only, deterministic                                                                | ✅                                                                                                                                                            |
+| 2   | Rules: BOM×region, labor×modifiers (mult-then-add, documented), helper splits, margin vs markup, line-level HALF_UP rounding, job minimums, allowances, good/better/best `option_tiers` | ✅                                                                                                                                                            |
+| 3   | Golden-file suite ≥ 40 scenarios                                                                                                                                                        | ✅ 46 scenarios (`tests/pricing/golden/`), byte-pinned; regeneration protocol in ADR-0005                                                                     |
+| 4   | Seed catalog v0 ~150 draft assemblies                                                                                                                                                   | ✅ 150 assemblies / 147 SKUs / 12 modifiers across 9 category files + stdlib validator                                                                        |
+| 5   | `docs/ASSEMBLY_VALIDATION.md` + CSV export + HUMAN_TODO entry + production enforcement                                                                                                  | ✅ 156-row CSV at `docs/validation/assemblies_v0.csv`; `approved_only()` guard: production companies without `dev_mode` can only see/price `advisor_approved` |
+| 6   | Admin endpoint + `/app/admin/assemblies` page (role-gated)                                                                                                                              | ✅ PATCH owner/admin-only, version bump + audit log; web page with search/filter/edit/status flip                                                             |
 
 Extras: `/pricing/preview` endpoint (Phase 5 editor will reuse), hypothesis property tests, Phase 9 hook (`assembly_labor_overrides`) already applied by the engine, ADR-0005.
 
@@ -48,12 +48,12 @@ margin exactly 50.0%.
 
 ## 5. Known debt
 
-| ID | Item |
-|---|---|
-| FQ-D009 | `alembic --sql` needs `PYTHONIOENCODING=utf-8` on Windows consoles (0001 has Unicode comments). CI (Ubuntu) unaffected. |
+| ID      | Item                                                                                                                            |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| FQ-D009 | `alembic --sql` needs `PYTHONIOENCODING=utf-8` on Windows consoles (0001 has Unicode comments). CI (Ubuntu) unaffected.         |
 | FQ-D010 | Golden regeneration script requires a follow-up `prettier --write` to satisfy the pre-commit hook — fold into the script later. |
-| FQ-D011 | Catalog materials list/search endpoint has no pagination (147 rows today; fine until the catalog grows). |
-| FQ-D004 | (carried) pre-commit runs ruff+prettier but not eslint. |
+| FQ-D011 | Catalog materials list/search endpoint has no pagination (147 rows today; fine until the catalog grows).                        |
+| FQ-D004 | (carried) pre-commit runs ruff+prettier but not eslint.                                                                         |
 
 ## 6. GO / NO-GO
 
