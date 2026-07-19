@@ -40,6 +40,30 @@ def record_provider_call(stage: str, provider: str, *, duration_s: float) -> Non
     )
 
 
+def record_payment_collected(
+    *,
+    invoice_id: str,
+    kind: str,
+    amount: str,
+    fee: str | None,
+    net: str | None,
+    platform_fee: str | None,
+) -> None:
+    """The revenue line: every collected payment, with the platform take
+    reported separately from processing fees."""
+    _capture(
+        "payment_collected",
+        {
+            "invoice_id": invoice_id,
+            "invoice_kind": kind,
+            "amount": amount,
+            "fee": fee,
+            "net": net,
+            "platform_fee": platform_fee,
+        },
+    )
+
+
 def record_generation(
     *, job_id: str, duration_s: float, assemblies: int, outside_scope: bool
 ) -> None:

@@ -106,8 +106,8 @@ def test_rls_enabled_on_every_tenant_table(admin: Connection) -> None:
             where n.nspname = 'public' and c.relkind = 'r'
             """
         )
-    ).all()
-    security = dict(rows)
+    ).tuples()
+    security: dict[str, bool] = {str(name): bool(enabled) for name, enabled in rows}
     missing = [t for t in TENANT_TABLES if not security.get(t)]
     assert not missing, f"RLS not enabled on: {missing}"
 

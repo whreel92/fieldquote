@@ -11,6 +11,7 @@ import os
 import uuid
 from collections.abc import Iterator
 from decimal import Decimal
+from typing import Any
 
 import pytest
 from fastapi import FastAPI
@@ -102,7 +103,7 @@ def _approved_estimate(client: TestClient) -> tuple[str, str]:
     return job_id, estimate["id"]
 
 
-def _proposal(client: TestClient) -> tuple[str, dict]:
+def _proposal(client: TestClient) -> tuple[str, dict[str, Any]]:
     _, estimate_id = _approved_estimate(client)
     proposal = client.post(f"/estimates/{estimate_id}/proposals").json()
     return estimate_id, proposal

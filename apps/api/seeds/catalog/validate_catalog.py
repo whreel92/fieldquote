@@ -63,7 +63,11 @@ def check_bom(bom, skus: set[str], where: str, errors: list[str]) -> None:
             continue
         if item["sku"] not in skus:
             errors.append(f"{where}: bom sku {item['sku']!r} not found in materials.json")
-        if not isinstance(item["qty"], (int, float)) or isinstance(item["qty"], bool) or item["qty"] <= 0:
+        if (
+            not isinstance(item["qty"], (int, float))
+            or isinstance(item["qty"], bool)
+            or item["qty"] <= 0
+        ):
             errors.append(f"{where}: bom[{i}] qty must be a positive number")
 
 
@@ -127,7 +131,9 @@ def main() -> int:
                 errors.append(f"{where}: missing/invalid code")
                 continue
             if code in asm_codes:
-                errors.append(f"{where}: duplicate assembly code {code!r} (must be unique across all files)")
+                errors.append(
+                    f"{where}: duplicate assembly code {code!r} (must be unique across all files)"
+                )
             asm_codes.add(code)
 
             jts = a.get("job_type_codes")
@@ -159,7 +165,9 @@ def main() -> int:
             else:
                 for mc in mods:
                     if mc not in mod_codes:
-                        errors.append(f"{where}: modifiers_allowed code {mc!r} not in modifiers.json")
+                        errors.append(
+                            f"{where}: modifiers_allowed code {mc!r} not in modifiers.json"
+                        )
 
             tiers = a.get("option_tiers")
             if tiers is not None:
@@ -188,7 +196,9 @@ def main() -> int:
                         errors.append(f"{where}: option_tiers contains duplicate tier names")
 
     if not (TOTAL_MIN <= total <= TOTAL_MAX):
-        errors.append(f"total assembly count {total} outside required range {TOTAL_MIN}-{TOTAL_MAX}")
+        errors.append(
+            f"total assembly count {total} outside required range {TOTAL_MIN}-{TOTAL_MAX}"
+        )
 
     # ---- summary ---------------------------------------------------------
     print("Catalog summary")

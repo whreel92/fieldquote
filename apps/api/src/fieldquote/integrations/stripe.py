@@ -48,6 +48,16 @@ class CheckoutSession:
     payment_intent_id: str | None
 
 
+@dataclass(frozen=True)
+class PaymentBreakdown:
+    """Actual processing economics from the Stripe balance transaction on the
+    connected account (fee includes the platform application fee for direct
+    charges)."""
+
+    fee_cents: int
+    net_cents: int
+
+
 class StripeGateway(Protocol):
     def create_connect_account(self, *, company_id: str, email: str | None) -> str: ...
 
@@ -69,6 +79,28 @@ class StripeGateway(Protocol):
         description: str,
         metadata: dict[str, str],
     ) -> CheckoutSession: ...
+
+    def create_invoice_checkout(
+        self,
+        *,
+        account_id: str,
+        amount_cents: int,
+        application_fee_cents: int,
+        currency: str,
+        success_url: str,
+        cancel_url: str,
+        description: str,
+        metadata: dict[str, str],
+        payment_method_types: list[str],
+    ) -> CheckoutSession: ...
+
+    def create_refund(
+        self, *, account_id: str, payment_intent_id: str, amount_cents: int | None
+    ) -> str: ...
+
+    def get_payment_breakdown(
+        self, *, account_id: str, payment_intent_id: str
+    ) -> PaymentBreakdown | None: ...
 
     def verify_webhook(self, payload: bytes, sig_header: str) -> dict[str, Any]: ...
 
@@ -118,10 +150,17 @@ class HttpStripeGateway:
             raise StripeError(f"Stripe request failed: {exc}") from exc
         return dict(response.json())
 
-    def _get(self, path: str) -> dict[str, Any]:
+    def _get(
+        self, path: str, *, params: dict[str, Any] | None = None, account: str | None = None
+    ) -> dict[str, Any]:
+        headers = {} if account is None else {"Stripe-Account": account}
         try:
             response = httpx.get(
-                f"{STRIPE_API}{path}", auth=(self._key, ""), timeout=20
+                f"{STRIPE_API}{path}",
+                params=params,
+                headers=headers,
+                auth=(self._key, ""),
+                timeout=20,
             )
             response.raise_for_status()
         except httpx.HTTPError as exc:
@@ -191,6 +230,66 @@ class HttpStripeGateway:
             payment_intent_id=session.get("payment_intent"),
         )
 
+    def create_invoice_checkout(
+        self,
+        *,
+        account_id: str,
+        amount_cents: int,
+        application_fee_cents: int,
+        currency: str,
+        success_url: str,
+        cancel_url: str,
+        description: str,
+        metadata: dict[str, str],
+        payment_method_types: list[str],
+    ) -> CheckoutSession:
+        data: dict[str, Any] = {
+            "mode": "payment",
+            "success_url": success_url,
+            "cancel_url": cancel_url,
+            "line_items[0][price_data][currency]": currency,
+            "line_items[0][price_data][product_data][name]": description,
+            "line_items[0][price_data][unit_amount]": amount_cents,
+            "line_items[0][quantity]": 1,
+            "payment_intent_data[application_fee_amount]": application_fee_cents,
+        }
+        for i, method in enumerate(payment_method_types):
+            data[f"payment_method_types[{i}]"] = method
+        for key, value in metadata.items():
+            data[f"metadata[{key}]"] = value
+            data[f"payment_intent_data[metadata][{key}]"] = value
+        session = self._post("/checkout/sessions", data, account=account_id)
+        return CheckoutSession(
+            session_id=str(session["id"]),
+            url=str(session["url"]),
+            payment_intent_id=session.get("payment_intent"),
+        )
+
+    def create_refund(
+        self, *, account_id: str, payment_intent_id: str, amount_cents: int | None
+    ) -> str:
+        data: dict[str, Any] = {
+            "payment_intent": payment_intent_id,
+            "refund_application_fee": "true",
+        }
+        if amount_cents is not None:
+            data["amount"] = amount_cents
+        return str(self._post("/refunds", data, account=account_id)["id"])
+
+    def get_payment_breakdown(
+        self, *, account_id: str, payment_intent_id: str
+    ) -> PaymentBreakdown | None:
+        payload = self._get(
+            f"/payment_intents/{payment_intent_id}",
+            params={"expand[]": "latest_charge.balance_transaction"},
+            account=account_id,
+        )
+        charge = payload.get("latest_charge") or {}
+        txn = charge.get("balance_transaction") if isinstance(charge, dict) else None
+        if not isinstance(txn, dict) or "fee" not in txn:
+            return None
+        return PaymentBreakdown(fee_cents=int(txn["fee"]), net_cents=int(txn["net"]))
+
     def verify_webhook(self, payload: bytes, sig_header: str) -> dict[str, Any]:
         _verify_signature(payload, sig_header, self._webhook_secret)
         return dict(json.loads(payload))
@@ -204,6 +303,10 @@ class FakeStripe:
         self.webhook_secret = webhook_secret
         self.accounts: dict[str, ConnectAccount] = {}
         self.sessions: list[CheckoutSession] = []
+        # payment_intent_id → (amount_cents, application_fee_cents) for
+        # deterministic get_payment_breakdown answers.
+        self.intents: dict[str, tuple[int, int]] = {}
+        self.refunds: list[dict[str, Any]] = []
 
     def _next(self, prefix: str) -> str:
         # uuid suffix so ids are globally unique — Stripe ids are, and it keeps
@@ -245,7 +348,59 @@ class FakeStripe:
             payment_intent_id=self._next("pi"),
         )
         self.sessions.append(session)
+        if session.payment_intent_id:
+            self.intents[session.payment_intent_id] = (amount_cents, application_fee_cents)
         return session
+
+    def create_invoice_checkout(
+        self,
+        *,
+        account_id: str,
+        amount_cents: int,
+        application_fee_cents: int,
+        currency: str,
+        success_url: str,
+        cancel_url: str,
+        description: str,
+        metadata: dict[str, str],
+        payment_method_types: list[str],
+    ) -> CheckoutSession:
+        return self.create_deposit_checkout(
+            account_id=account_id,
+            amount_cents=amount_cents,
+            application_fee_cents=application_fee_cents,
+            currency=currency,
+            success_url=success_url,
+            cancel_url=cancel_url,
+            description=description,
+            metadata=metadata,
+        )
+
+    def create_refund(
+        self, *, account_id: str, payment_intent_id: str, amount_cents: int | None
+    ) -> str:
+        refund_id = self._next("re")
+        self.refunds.append(
+            {
+                "id": refund_id,
+                "account_id": account_id,
+                "payment_intent": payment_intent_id,
+                "amount": amount_cents,
+            }
+        )
+        return refund_id
+
+    def get_payment_breakdown(
+        self, *, account_id: str, payment_intent_id: str
+    ) -> PaymentBreakdown | None:
+        known = self.intents.get(payment_intent_id)
+        if known is None:
+            return None
+        amount_cents, app_fee_cents = known
+        # Card-like processing fee: 2.9% + 30¢, plus the platform application fee.
+        processing = round(amount_cents * 29 / 1000) + 30
+        fee = processing + app_fee_cents
+        return PaymentBreakdown(fee_cents=fee, net_cents=amount_cents - fee)
 
     def sign(self, payload: bytes, timestamp: int | None = None) -> str:
         ts = timestamp if timestamp is not None else int(time.time())

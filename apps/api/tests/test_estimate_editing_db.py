@@ -6,6 +6,7 @@ import os
 import uuid
 from collections.abc import Iterator
 from decimal import Decimal
+from typing import Any
 
 import pytest
 from fastapi import FastAPI
@@ -106,7 +107,7 @@ def db() -> Iterator[Session]:
 
 
 @pytest.fixture
-def estimate(client: TestClient) -> dict[str, object]:
+def estimate(client: TestClient) -> dict[str, Any]:
     client.put(
         "/company/rates",
         json={
@@ -121,7 +122,7 @@ def estimate(client: TestClient) -> dict[str, object]:
     return est  # type: ignore[no-any-return]
 
 
-def _add_engine_line(client: TestClient, estimate_id: str) -> dict[str, object]:
+def _add_engine_line(client: TestClient, estimate_id: str) -> dict[str, Any]:
     detail = client.post(
         f"/estimates/{estimate_id}/lines",
         json={"assembly_code": "t5ed_circuit", "qty": 1},
@@ -129,7 +130,9 @@ def _add_engine_line(client: TestClient, estimate_id: str) -> dict[str, object]:
     return detail["lines"][-1]  # type: ignore[no-any-return]
 
 
-def test_add_engine_line_prices_via_engine(client: TestClient, estimate: dict) -> None:
+def test_add_engine_line_prices_via_engine(
+    client: TestClient, estimate: dict[str, Any]
+) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     # materials 50 x 1.00 = 50; labor 2h x 100 = 200; cost 250 -> 500 at 50%
     assert Decimal(str(line["totals"]["total"])) == Decimal("500.00")
@@ -139,7 +142,9 @@ def test_add_engine_line_prices_via_engine(client: TestClient, estimate: dict) -
     assert Decimal(str(detail["totals"]["total"])) == Decimal("500.00")
 
 
-def test_qty_change_repricies_through_engine(client: TestClient, estimate: dict) -> None:
+def test_qty_change_repricies_through_engine(
+    client: TestClient, estimate: dict[str, Any]
+) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     detail = client.patch(
         f"/estimates/{estimate['id']}/lines/{line['id']}", json={"qty": "3"}
@@ -150,7 +155,7 @@ def test_qty_change_repricies_through_engine(client: TestClient, estimate: dict)
     assert updated["totals"]["overrides"] == {}
 
 
-def test_modifier_change_repricies(client: TestClient, estimate: dict) -> None:
+def test_modifier_change_repricies(client: TestClient, estimate: dict[str, Any]) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     detail = client.patch(
         f"/estimates/{estimate['id']}/lines/{line['id']}",
@@ -162,7 +167,7 @@ def test_modifier_change_repricies(client: TestClient, estimate: dict) -> None:
 
 
 def test_manual_override_badges_and_audits(
-    client: TestClient, estimate: dict, db: Session
+    client: TestClient, estimate: dict[str, Any], db: Session
 ) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     detail = client.patch(
@@ -183,7 +188,7 @@ def test_manual_override_badges_and_audits(
 
 
 def test_labor_hours_override_recomputes_deterministically(
-    client: TestClient, estimate: dict
+    client: TestClient, estimate: dict[str, Any]
 ) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     detail = client.patch(
@@ -195,7 +200,9 @@ def test_labor_hours_override_recomputes_deterministically(
     assert updated["totals"]["overrides"]["labor_hours"] is True
 
 
-def test_margin_slider_reprices_engine_lines_only(client: TestClient, estimate: dict) -> None:
+def test_margin_slider_reprices_engine_lines_only(
+    client: TestClient, estimate: dict[str, Any]
+) -> None:
     engine_line = _add_engine_line(client, str(estimate["id"]))
     client.post(
         f"/estimates/{estimate['id']}/lines",
@@ -213,7 +220,7 @@ def test_margin_slider_reprices_engine_lines_only(client: TestClient, estimate: 
     assert detail["totals"]["margin_check"]["target_margin_pct"] == "60"
 
 
-def test_allowance_convert(client: TestClient, estimate: dict) -> None:
+def test_allowance_convert(client: TestClient, estimate: dict[str, Any]) -> None:
     detail = client.post(
         f"/estimates/{estimate['id']}/lines",
         json={"description": "Load calc", "line_type": "allowance"},
@@ -229,7 +236,9 @@ def test_allowance_convert(client: TestClient, estimate: dict) -> None:
     assert Decimal(str(updated["totals"]["total"])) == Decimal("350.00")
 
 
-def test_options_builder_replaces_line_with_tiers(client: TestClient, estimate: dict) -> None:
+def test_options_builder_replaces_line_with_tiers(
+    client: TestClient, estimate: dict[str, Any]
+) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     detail = client.post(
         f"/estimates/{estimate['id']}/lines/{line['id']}/options",
@@ -256,14 +265,16 @@ def test_options_builder_replaces_line_with_tiers(client: TestClient, estimate: 
     assert Decimal(str(detail["totals"]["total"])) == Decimal("700.00")
 
 
-def test_delete_line_recomputes(client: TestClient, estimate: dict) -> None:
+def test_delete_line_recomputes(client: TestClient, estimate: dict[str, Any]) -> None:
     line = _add_engine_line(client, str(estimate["id"]))
     detail = client.delete(f"/estimates/{estimate['id']}/lines/{line['id']}").json()
     assert all(entry["id"] != line["id"] for entry in detail["lines"])
     assert Decimal(str(detail["totals"]["total"])) == Decimal("0.00")
 
 
-def test_suggestions_filters_invalid_codes(client: TestClient, estimate: dict) -> None:
+def test_suggestions_filters_invalid_codes(
+    client: TestClient, estimate: dict[str, Any]
+) -> None:
     res = client.post(f"/estimates/{estimate['id']}/suggestions")
     assert res.status_code == 200
     suggestions = res.json()["suggestions"]

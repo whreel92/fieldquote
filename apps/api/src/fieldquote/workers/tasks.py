@@ -72,8 +72,77 @@ async def deliver_proposal(ctx: dict[str, Any], proposal_id: str) -> str:
         engine.dispose()
 
 
+async def deliver_invoice(ctx: dict[str, Any], invoice_id: str) -> str:
+    """Render the invoice PDF and email/SMS the pay link."""
+    from fieldquote.domain.models import Invoice
+    from fieldquote.integrations.messaging import get_email_sender, get_sms_sender
+    from fieldquote.integrations.pdf import get_pdf_renderer
+    from fieldquote.services.invoice_delivery import deliver_invoice as run_delivery
+
+    engine = create_engine(get_settings().database_url)
+    try:
+        with Session(engine) as db:
+            invoice = db.get(Invoice, uuid.UUID(invoice_id))
+            if invoice is None:
+                return "missing"
+            run_delivery(
+                db,
+                invoice,
+                get_storage(),
+                get_pdf_renderer(),
+                get_email_sender(),
+                get_sms_sender(),
+            )
+            return str(invoice.id)
+    finally:
+        engine.dispose()
+
+
+async def remind_invoice(ctx: dict[str, Any], invoice_id: str) -> str:
+    """Send a polite payment nudge. Skips invoices that are no longer payable
+    (paid/refunded between enqueue and send)."""
+    from fieldquote.domain.models import Invoice
+    from fieldquote.integrations.messaging import get_email_sender, get_sms_sender
+    from fieldquote.services.invoice_delivery import remind_client
+
+    engine = create_engine(get_settings().database_url)
+    try:
+        with Session(engine) as db:
+            invoice = db.get(Invoice, uuid.UUID(invoice_id))
+            if invoice is None:
+                return "missing"
+            remind_client(db, invoice, get_email_sender(), get_sms_sender())
+            return str(invoice.id)
+    finally:
+        engine.dispose()
+
+
+async def send_receipt(ctx: dict[str, Any], payment_id: str) -> str:
+    """Email the payer a receipt for a settled payment."""
+    from fieldquote.domain.models import Payment
+    from fieldquote.integrations.messaging import get_email_sender
+    from fieldquote.services.invoice_delivery import send_receipt as run_receipt
+
+    engine = create_engine(get_settings().database_url)
+    try:
+        with Session(engine) as db:
+            payment = db.get(Payment, uuid.UUID(payment_id))
+            if payment is None:
+                return "missing"
+            run_receipt(db, payment, get_email_sender())
+            return str(payment.id)
+    finally:
+        engine.dispose()
+
+
 class WorkerSettings:
-    functions: ClassVar[list[Any]] = [generate_estimate, deliver_proposal]
+    functions: ClassVar[list[Any]] = [
+        generate_estimate,
+        deliver_proposal,
+        deliver_invoice,
+        remind_invoice,
+        send_receipt,
+    ]
     max_tries = MAX_TRIES
     retry_delay = 5.0
 

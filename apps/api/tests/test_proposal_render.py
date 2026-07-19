@@ -4,9 +4,11 @@ signature verification — no DB, no network."""
 import json
 import uuid
 from decimal import Decimal
+from typing import Any, cast
 
 import pytest
 
+from fieldquote.domain.models import Client, Company, Estimate, Proposal
 from fieldquote.integrations.stripe import (
     FakeStripe,
     WebhookVerificationError,
@@ -21,8 +23,18 @@ from fieldquote.services.proposal_render import (
 
 
 class _Line:
-    def __init__(self, position, description, line_type, total, qty="1", unit="ea",
-                 confidence="known", included=True, note=None):
+    def __init__(
+        self,
+        position: int,
+        description: str,
+        line_type: str,
+        total: str,
+        qty: str = "1",
+        unit: str = "ea",
+        confidence: str = "known",
+        included: bool = True,
+        note: str | None = None,
+    ) -> None:
         self.position = position
         self.description = description
         self.line_type = line_type
@@ -34,16 +46,22 @@ class _Line:
 
 
 class _Estimate:
-    def __init__(self, lines, total="1000", subtotal="920", tax="80"):
+    def __init__(
+        self,
+        lines: list[_Line],
+        total: str = "1000",
+        subtotal: str = "920",
+        tax: str = "80",
+    ) -> None:
         self.scope_prose = "We will upgrade the panel."
         self.lines = lines
         self.totals = {"total": total, "subtotal": subtotal, "tax": tax}
 
 
 class _Company:
-    id = uuid.uuid4()
+    id: uuid.UUID = uuid.uuid4()
     name = "Reel Electric"
-    logo_url = None
+    logo_url: str | None = None
     license_number = "AZ-ROC-12345"
     phone = "480-555-0100"
     email = "will@reel.example"
@@ -57,11 +75,11 @@ class _Client:
 
 
 class _Proposal:
-    def __init__(self, config):
+    def __init__(self, config: dict[str, Any]) -> None:
         self.config = config
 
 
-def _doc(config=None):
+def _doc(config: dict[str, Any] | None = None) -> ProposalDocument:
     lines = [
         _Line(0, "200A panel upgrade", "standard", "800.00"),
         _Line(1, "Load calc", "allowance", "0.00", confidence="allowance",
@@ -71,10 +89,10 @@ def _doc(config=None):
         _Line(4, "Recessed LED — Smart", "option_best", "400.00", included=False),
     ]
     return build_document(
-        _Proposal(config or {"deposit": {"kind": "percent", "value": "25"}}),
-        _Estimate(lines),
-        _Company(),
-        _Client(),
+        cast(Proposal, _Proposal(config or {"deposit": {"kind": "percent", "value": "25"}})),
+        cast(Estimate, _Estimate(lines)),
+        cast(Company, _Company()),
+        cast(Client, _Client()),
     )
 
 
