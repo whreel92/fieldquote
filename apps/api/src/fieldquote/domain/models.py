@@ -33,6 +33,8 @@ class Company(Base):
     address: Mapped[str | None] = mapped_column(Text)
     timezone: Mapped[str] = mapped_column(Text, default="America/Los_Angeles")
     settings: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+    stripe_account_id: Mapped[str | None] = mapped_column(Text)
+    stripe_charges_enabled: Mapped[bool] = mapped_column(default=False)
     created_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), server_default=func.now()
     )
@@ -208,9 +210,102 @@ class Proposal(Base):
     html_snapshot_path: Mapped[str | None] = mapped_column(Text)
     content_hash: Mapped[str | None] = mapped_column(Text)
     terms_version: Mapped[str | None] = mapped_column(Text)
+    config: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
+    snapshot: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     first_viewed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     view_count: Mapped[int] = mapped_column(default=0)
+    declined_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    decline_reason: Mapped[str | None] = mapped_column(Text)
+    expires_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+
+
+class Signature(Base):
+    __tablename__ = "signatures"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    proposal_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("proposals.id", ondelete="CASCADE")
+    )
+    signer_name: Mapped[str] = mapped_column(Text)
+    signer_email: Mapped[str | None] = mapped_column(Text)
+    ip: Mapped[str | None] = mapped_column(Text)
+    user_agent: Mapped[str | None] = mapped_column(Text)
+    signed_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    signature_hash: Mapped[str] = mapped_column(Text)
+
+
+class Invoice(Base):
+    __tablename__ = "invoices"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    job_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("jobs.id", ondelete="CASCADE")
+    )
+    proposal_id: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("proposals.id", ondelete="SET NULL")
+    )
+    kind: Mapped[str] = mapped_column(Text)  # deposit | progress | final
+    number: Mapped[str] = mapped_column(Text)
+    status: Mapped[str] = mapped_column(Text, default="draft")
+    line_items: Mapped[list[dict[str, Any]]] = mapped_column(JSONB, default=list)
+    subtotal: Mapped[Decimal] = mapped_column(Numeric, default=Decimal(0))
+    tax: Mapped[Decimal] = mapped_column(Numeric, default=Decimal(0))
+    total: Mapped[Decimal] = mapped_column(Numeric, default=Decimal(0))
+    due_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    stripe_payment_intent_id: Mapped[str | None] = mapped_column(Text)
+    stripe_checkout_session_id: Mapped[str | None] = mapped_column(Text)
+    application_fee: Mapped[Decimal | None] = mapped_column(Numeric)
+    public_token: Mapped[str | None] = mapped_column(Text, unique=True)
+    pdf_path: Mapped[str | None] = mapped_column(Text)
+    sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    paid_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class Payment(Base):
+    __tablename__ = "payments"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    invoice_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("invoices.id", ondelete="CASCADE")
+    )
+    provider: Mapped[str] = mapped_column(Text, default="stripe")
+    amount: Mapped[Decimal] = mapped_column(Numeric)
+    fee: Mapped[Decimal | None] = mapped_column(Numeric)
+    net: Mapped[Decimal | None] = mapped_column(Numeric)
+    status: Mapped[str] = mapped_column(Text)
+    raw: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class WebhookEvent(Base):
+    """Idempotency ledger — one row per processed provider event id."""
+
+    __tablename__ = "webhook_events"
+
+    id: Mapped[str] = mapped_column(Text, primary_key=True)
+    provider: Mapped[str] = mapped_column(Text, default="stripe")
+    type: Mapped[str] = mapped_column(Text)
+    received_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+    processed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
 
 class MaterialItem(Base):

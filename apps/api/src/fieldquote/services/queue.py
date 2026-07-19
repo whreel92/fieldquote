@@ -9,6 +9,8 @@ from fieldquote.core.config import get_settings
 class Queue(Protocol):
     async def enqueue_generate(self, job_id: str) -> None: ...
 
+    async def enqueue_deliver_proposal(self, proposal_id: str) -> None: ...
+
 
 class ArqQueue:
     def __init__(self, redis_url: str) -> None:
@@ -27,13 +29,21 @@ class ArqQueue:
         pool = await self._get_pool()
         await pool.enqueue_job("generate_estimate", job_id)
 
+    async def enqueue_deliver_proposal(self, proposal_id: str) -> None:
+        pool = await self._get_pool()
+        await pool.enqueue_job("deliver_proposal", proposal_id)
+
 
 class FakeQueue:
     def __init__(self) -> None:
         self.enqueued: list[str] = []
+        self.delivered: list[str] = []
 
     async def enqueue_generate(self, job_id: str) -> None:
         self.enqueued.append(job_id)
+
+    async def enqueue_deliver_proposal(self, proposal_id: str) -> None:
+        self.delivered.append(proposal_id)
 
 
 _queue: Queue | None = None

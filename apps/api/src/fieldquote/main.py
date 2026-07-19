@@ -19,6 +19,9 @@ from fieldquote.routers import (
     me,
     pricing,
     proposals,
+    public,
+    stripe_connect,
+    webhooks,
 )
 
 
@@ -55,6 +58,9 @@ def create_app() -> FastAPI:
     app.include_router(captures.router)
     app.include_router(estimates.router)
     app.include_router(proposals.router)
+    app.include_router(public.router)
+    app.include_router(stripe_connect.router)
+    app.include_router(webhooks.router)
     return app
 
 

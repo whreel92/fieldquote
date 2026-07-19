@@ -31,7 +31,12 @@ class Settings(BaseSettings):
     stripe_secret_key: str = ""
     stripe_webhook_secret: str = ""
     stripe_connect_client_id: str = ""
+    # Platform take on connected-account charges, in basis points (2.5% = 250).
+    platform_fee_bps: int = 250
     revenuecat_api_key: str = ""
+
+    # Feature flags for channels blocked on human dependencies (§0.1.10).
+    sms_enabled: bool = False
 
     twilio_account_sid: str = ""
     twilio_auth_token: str = ""

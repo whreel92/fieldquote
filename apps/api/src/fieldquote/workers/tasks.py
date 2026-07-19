@@ -45,8 +45,35 @@ async def generate_estimate(ctx: dict[str, Any], job_id: str) -> str:
         engine.dispose()
 
 
+async def deliver_proposal(ctx: dict[str, Any], proposal_id: str) -> str:
+    """Render the proposal PDF and notify the client. Retries on transient
+    failure; the HTML snapshot already exists so nothing is lost."""
+    from fieldquote.domain.models import Proposal
+    from fieldquote.integrations.messaging import get_email_sender, get_sms_sender
+    from fieldquote.integrations.pdf import get_pdf_renderer
+    from fieldquote.services.proposal_delivery import deliver_proposal as run_delivery
+
+    engine = create_engine(get_settings().database_url)
+    try:
+        with Session(engine) as db:
+            proposal = db.get(Proposal, uuid.UUID(proposal_id))
+            if proposal is None:
+                return "missing"
+            run_delivery(
+                db,
+                proposal,
+                get_storage(),
+                get_pdf_renderer(),
+                get_email_sender(),
+                get_sms_sender(),
+            )
+            return str(proposal.id)
+    finally:
+        engine.dispose()
+
+
 class WorkerSettings:
-    functions: ClassVar[list[Any]] = [generate_estimate]
+    functions: ClassVar[list[Any]] = [generate_estimate, deliver_proposal]
     max_tries = MAX_TRIES
     retry_delay = 5.0
 

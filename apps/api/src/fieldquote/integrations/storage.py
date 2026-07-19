@@ -26,6 +26,8 @@ class StorageService(Protocol):
 
     def download(self, bucket: str, path: str) -> bytes: ...
 
+    def upload(self, bucket: str, path: str, data: bytes, content_type: str) -> str: ...
+
 
 class SupabaseStorage:
     def __init__(self, supabase_url: str, service_role_key: str) -> None:
@@ -56,6 +58,21 @@ class SupabaseStorage:
         res.raise_for_status()
         return res.content
 
+    def upload(self, bucket: str, path: str, data: bytes, content_type: str) -> str:
+        res = httpx.post(
+            f"{self._base}/storage/v1/object/{bucket}/{path}",
+            content=data,
+            headers={
+                "Authorization": f"Bearer {self._key}",
+                "apikey": self._key,
+                "Content-Type": content_type,
+                "x-upsert": "true",
+            },
+            timeout=60,
+        )
+        res.raise_for_status()
+        return path
+
 
 class FakeStorage:
     """In-memory storage for tests; `seed(path, data)` stages downloadable
@@ -72,6 +89,10 @@ class FakeStorage:
 
     def download(self, bucket: str, path: str) -> bytes:
         return self.objects.get(f"{bucket}/{path}", b"")
+
+    def upload(self, bucket: str, path: str, data: bytes, content_type: str) -> str:
+        self.objects[f"{bucket}/{path}"] = data
+        return path
 
 
 def get_storage() -> StorageService:

@@ -499,10 +499,203 @@ export interface paths {
       path?: never;
       cookie?: never;
     };
-    get?: never;
+    /** List Proposals */
+    get: operations['list_proposals_estimates__estimate_id__proposals_get'];
     put?: never;
     /** Create Proposal */
     post: operations['create_proposal_estimates__estimate_id__proposals_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/proposals/{proposal_id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Proposal */
+    get: operations['get_proposal_proposals__proposal_id__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    /** Update Config */
+    patch: operations['update_config_proposals__proposal_id__patch'];
+    trace?: never;
+  };
+  '/proposals/{proposal_id}/send': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Send */
+    post: operations['send_proposals__proposal_id__send_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}/duplicate-proposal': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * New Version
+     * @description Fork a fresh draft proposal (e.g. after editing) copying the last
+     *     config. Sent proposals are never mutated — this is how they change.
+     */
+    post: operations['new_version_estimates__estimate_id__duplicate_proposal_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/jobs/{job_id}/proposals': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Job Proposals */
+    get: operations['list_job_proposals_jobs__job_id__proposals_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/p/{token}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** View Proposal */
+    get: operations['view_proposal_p__token__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/p/{token}/sign': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Sign */
+    post: operations['sign_p__token__sign_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/p/{token}/checkout': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Create Deposit Checkout */
+    post: operations['create_deposit_checkout_p__token__checkout_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/p/{token}/decline': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Decline */
+    post: operations['decline_p__token__decline_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/stripe/connect/status': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Status */
+    get: operations['status_stripe_connect_status_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/stripe/connect/onboard': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Onboard */
+    post: operations['onboard_stripe_connect_onboard_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/webhooks/stripe': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Stripe Webhook */
+    post: operations['stripe_webhook_webhooks_stripe_post'];
     delete?: never;
     options?: never;
     head?: never;
@@ -513,6 +706,11 @@ export interface paths {
 export type webhooks = Record<string, never>;
 export interface components {
   schemas: {
+    /** AccountLink */
+    AccountLink: {
+      /** Url */
+      url: string;
+    };
     /** ApproveIn */
     ApproveIn: {
       /** Confirmations */
@@ -733,10 +931,42 @@ export interface components {
         [key: string]: unknown;
       } | null;
     };
+    /** ConnectStatus */
+    ConnectStatus: {
+      /** Connected */
+      connected: boolean;
+      /** Charges Enabled */
+      charges_enabled: boolean;
+      /** Details Submitted */
+      details_submitted: boolean;
+      /** Payouts Enabled */
+      payouts_enabled: boolean;
+      /** Account Id */
+      account_id: string | null;
+    };
     /** ConvertAllowanceIn */
     ConvertAllowanceIn: {
       /** Amount */
       amount: number | string;
+    };
+    /** DeclineIn */
+    DeclineIn: {
+      /** Reason */
+      reason?: string | null;
+    };
+    /** DepositConfig */
+    DepositConfig: {
+      /**
+       * Kind
+       * @default percent
+       * @enum {string}
+       */
+      kind: 'percent' | 'flat';
+      /**
+       * Value
+       * @default 25
+       */
+      value: number | string;
     };
     /** EstimateDetail */
     EstimateDetail: {
@@ -1269,6 +1499,42 @@ export interface components {
       editable_note: string;
       breakdown?: components['schemas']['LineBreakdown'] | null;
     };
+    /** ProposalConfig */
+    ProposalConfig: {
+      /**
+       * Title
+       * @default Project proposal
+       */
+      title: string;
+      /** Cover Photo Url */
+      cover_photo_url?: string | null;
+      /**
+       * Intro Message
+       * @default
+       */
+      intro_message: string;
+      /** Inclusions */
+      inclusions?: string[];
+      /** Exclusions */
+      exclusions?: string[];
+      /**
+       * @default {
+       *       "kind": "percent",
+       *       "value": "25"
+       *     }
+       */
+      deposit: components['schemas']['DepositConfig'];
+      /**
+       * Validity Days
+       * @default 30
+       */
+      validity_days: number;
+      /**
+       * Company Terms
+       * @default
+       */
+      company_terms: string;
+    };
     /** ProposalOut */
     ProposalOut: {
       /**
@@ -1287,8 +1553,80 @@ export interface components {
       status: string;
       /** Public Token */
       public_token: string;
-      /** Created At */
-      created_at?: string | null;
+      /** Content Hash */
+      content_hash: string | null;
+      /** Config */
+      config: {
+        [key: string]: unknown;
+      };
+      /** Sent At */
+      sent_at: string | null;
+      /** First Viewed At */
+      first_viewed_at: string | null;
+      /** View Count */
+      view_count: number;
+      /** Expires At */
+      expires_at: string | null;
+    };
+    /** ProposalWithDocument */
+    ProposalWithDocument: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Estimate Id
+       * Format: uuid
+       */
+      estimate_id: string;
+      /** Version */
+      version: number;
+      /** Status */
+      status: string;
+      /** Public Token */
+      public_token: string;
+      /** Content Hash */
+      content_hash: string | null;
+      /** Config */
+      config: {
+        [key: string]: unknown;
+      };
+      /** Sent At */
+      sent_at: string | null;
+      /** First Viewed At */
+      first_viewed_at: string | null;
+      /** View Count */
+      view_count: number;
+      /** Expires At */
+      expires_at: string | null;
+      /** Document */
+      document: {
+        [key: string]: unknown;
+      };
+      /** Signature */
+      signature: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** PublicProposal */
+    PublicProposal: {
+      /** Status */
+      status: string;
+      /** Document */
+      document: {
+        [key: string]: unknown;
+      };
+      /** Signed */
+      signed: boolean;
+      /** Signer Name */
+      signer_name: string | null;
+      /** Expires At */
+      expires_at: string | null;
+      /** Payment */
+      payment: {
+        [key: string]: unknown;
+      };
     };
     /** RatesOut */
     RatesOut: {
@@ -1322,6 +1660,15 @@ export interface components {
        * @default true
        */
       confirmed: boolean;
+    };
+    /** SignIn */
+    SignIn: {
+      /** Signer Name */
+      signer_name: string;
+      /** Signer Email */
+      signer_email?: string | null;
+      /** Consent */
+      consent: boolean;
     };
     /** SuggestionOut */
     SuggestionOut: {
@@ -2617,6 +2964,37 @@ export interface operations {
       };
     };
   };
+  list_proposals_estimates__estimate_id__proposals_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalOut'][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
   create_proposal_estimates__estimate_id__proposals_post: {
     parameters: {
       query?: never;
@@ -2644,6 +3022,359 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  get_proposal_proposals__proposal_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        proposal_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalWithDocument'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  update_config_proposals__proposal_id__patch: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        proposal_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['ProposalConfig'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalWithDocument'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  send_proposals__proposal_id__send_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        proposal_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalWithDocument'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  new_version_estimates__estimate_id__duplicate_proposal_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  list_job_proposals_jobs__job_id__proposals_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ProposalOut'][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  view_proposal_p__token__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PublicProposal'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  sign_p__token__sign_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['SignIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PublicProposal'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  create_deposit_checkout_p__token__checkout_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': {
+            [key: string]: string;
+          };
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  decline_p__token__decline_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        token: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['DeclineIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['PublicProposal'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  status_stripe_connect_status_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['ConnectStatus'];
+        };
+      };
+    };
+  };
+  onboard_stripe_connect_onboard_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['AccountLink'];
+        };
+      };
+    };
+  };
+  stripe_webhook_webhooks_stripe_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': unknown;
         };
       };
     };
