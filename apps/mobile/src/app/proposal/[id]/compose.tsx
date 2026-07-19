@@ -19,15 +19,7 @@ import { Image } from 'expo-image';
 import { useLocalSearchParams, useRouter, type Href } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import * as WebBrowser from 'expo-web-browser';
-import {
-  Check,
-  ExternalLink,
-  Link as LinkIcon,
-  Minus,
-  Plus,
-  Share2,
-  X,
-} from 'lucide-react-native';
+import { Check, ExternalLink, Link as LinkIcon, Minus, Plus, Share2, X } from 'lucide-react-native';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   ActivityIndicator,
@@ -262,7 +254,8 @@ export default function ProposalComposeScreen() {
       }
       void queryClient.invalidateQueries({ queryKey: ['jobs'] });
     },
-    onError: (err) => showToast(err instanceof ApiError ? err.message : 'Could not send. Try again.'),
+    onError: (err) =>
+      showToast(err instanceof ApiError ? err.message : 'Could not send. Try again.'),
   });
 
   const confirmSend = useCallback(() => {
@@ -510,11 +503,7 @@ export default function ProposalComposeScreen() {
       </ScrollView>
 
       <View style={[styles.bottomBar, { paddingBottom: insets.bottom + spacing.sm }]}>
-        <Button
-          title="Send proposal"
-          loading={sendMutation.isPending}
-          onPress={confirmSend}
-        />
+        <Button title="Send proposal" loading={sendMutation.isPending} onPress={confirmSend} />
       </View>
 
       {toast ? (
@@ -566,7 +555,11 @@ function SentSummary({
     <View style={styles.screen}>
       <StatusBar style="light" />
       <View style={{ height: insetsTop, backgroundColor: colors.ink }} />
-      <HeaderBand eyebrow={`PROPOSAL / V${proposal.version}`} title="Sent" meta={money(doc['total'])} />
+      <HeaderBand
+        eyebrow={`PROPOSAL / V${proposal.version}`}
+        title="Sent"
+        meta={money(doc['total'])}
+      />
 
       <ScrollView style={styles.body} contentContainerStyle={styles.bodyContent}>
         <View style={styles.sentCard}>
@@ -739,9 +732,7 @@ function PreviewCard({ doc }: { doc: Record<string, unknown> }) {
             );
           })}
 
-          {inclusions.length > 0 ? (
-            <PreviewBullets title="Included" items={inclusions} />
-          ) : null}
+          {inclusions.length > 0 ? <PreviewBullets title="Included" items={inclusions} /> : null}
           {exclusions.length > 0 ? (
             <PreviewBullets title="Not included" items={exclusions} />
           ) : null}
@@ -798,15 +789,7 @@ function PreviewBullets({ title, items }: { title: string; items: string[] }) {
   );
 }
 
-function PreviewTotal({
-  label,
-  value,
-  grand,
-}: {
-  label: string;
-  value: unknown;
-  grand?: boolean;
-}) {
+function PreviewTotal({ label, value, grand }: { label: string; value: unknown; grand?: boolean }) {
   return (
     <View style={[styles.previewTotalRow, grand && styles.previewGrandRow]}>
       <Text style={[styles.previewTotalLabel, grand && styles.previewGrandLabel]}>{label}</Text>
@@ -1138,7 +1121,12 @@ const styles = StyleSheet.create({
     fontFamily: typography.family.mono,
     textAlign: 'right',
   },
-  previewBadgeRow: { flexDirection: 'row', flexWrap: 'wrap', alignItems: 'center', gap: spacing.xs },
+  previewBadgeRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    gap: spacing.xs,
+  },
   previewBadge: { borderRadius: radii.sm, paddingHorizontal: spacing.sm, paddingVertical: 2 },
   badgeAllowance: { backgroundColor: colors.warningBg },
   badgeVerify: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.accentText },
@@ -1174,7 +1162,12 @@ const styles = StyleSheet.create({
   },
   bulletRow: { flexDirection: 'row', gap: spacing.sm },
   bulletDot: { color: colors.primary, fontSize: typography.size.sm },
-  bulletText: { flex: 1, color: colors.textSecondary, fontSize: typography.size.sm, lineHeight: 20 },
+  bulletText: {
+    flex: 1,
+    color: colors.textSecondary,
+    fontSize: typography.size.sm,
+    lineHeight: 20,
+  },
   previewTotals: {
     borderTopWidth: 1,
     borderTopColor: colors.border,
@@ -1268,7 +1261,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  sentTitle: { color: colors.text, fontSize: typography.size.lg, fontFamily: typography.family.bold },
+  sentTitle: {
+    color: colors.text,
+    fontSize: typography.size.lg,
+    fontFamily: typography.family.bold,
+  },
   sentBody: { color: colors.textSecondary, fontSize: typography.size.sm, lineHeight: 20 },
   linkBox: {
     flexDirection: 'row',
@@ -1300,7 +1297,11 @@ const styles = StyleSheet.create({
     borderColor: colors.border,
     backgroundColor: colors.surface,
   },
-  linkBtnText: { color: colors.ink, fontSize: typography.size.sm, fontFamily: typography.family.semibold },
+  linkBtnText: {
+    color: colors.ink,
+    fontSize: typography.size.sm,
+    fontFamily: typography.family.semibold,
+  },
   linkHint: { color: colors.textMuted, fontSize: typography.size.xs },
 
   // bottom bar

@@ -118,7 +118,13 @@ const styles = StyleSheet.create({
   },
   nodeDone: { backgroundColor: colors.ink, borderColor: colors.ink },
   nodePending: { backgroundColor: colors.surface, borderColor: colors.border },
-  connector: { flex: 1, width: 2, minHeight: 18, backgroundColor: colors.border, marginVertical: 2 },
+  connector: {
+    flex: 1,
+    width: 2,
+    minHeight: 18,
+    backgroundColor: colors.border,
+    marginVertical: 2,
+  },
   connectorDone: { backgroundColor: colors.ink },
   stepText: { flex: 1, paddingBottom: spacing.md, gap: 1 },
   stepLabel: {

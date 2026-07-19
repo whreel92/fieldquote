@@ -25,7 +25,10 @@ import {
   type PublicProposal,
 } from '@/lib/proposal';
 
-const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'] });
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+});
 const mono = JetBrains_Mono({ subsets: ['latin'], weight: ['400', '500'] });
 
 type LoadState = 'loading' | 'error' | 'notfound' | 'ready';
@@ -35,9 +38,7 @@ const TIER_FALLBACK: Record<string, string> = { good: 'Good', better: 'Better', 
 /* ------------------------------- primitives ------------------------------ */
 
 function Money({ value, className = '' }: { value: number; className?: string }) {
-  return (
-    <span className={`${mono.className} tabular-nums ${className}`}>{formatUsd(value)}</span>
-  );
+  return <span className={`${mono.className} tabular-nums ${className}`}>{formatUsd(value)}</span>;
 }
 
 function CheckIcon({ className = '' }: { className?: string }) {
@@ -62,9 +63,13 @@ function SectionCard({
   className?: string;
 }) {
   return (
-    <section className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 ${className}`}>
+    <section
+      className={`rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8 ${className}`}
+    >
       {title ? (
-        <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">{title}</h2>
+        <h2 className="mb-4 text-xs font-bold uppercase tracking-[0.18em] text-slate-500">
+          {title}
+        </h2>
       ) : null}
       {children}
     </section>
@@ -134,7 +139,8 @@ function OptionGroup({
       <div className="flex flex-col gap-3">
         {group.tiers.map((tier, i) => {
           const active = i === selectedIndex;
-          const label = tier.tier_label ?? (tier.tier ? TIER_FALLBACK[tier.tier] : `Option ${i + 1}`);
+          const label =
+            tier.tier_label ?? (tier.tier ? TIER_FALLBACK[tier.tier] : `Option ${i + 1}`);
           return (
             <label
               key={i}
@@ -154,7 +160,9 @@ function OptionGroup({
               <span
                 aria-hidden
                 className={`mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border-2 ${
-                  active ? 'border-orange-500 bg-orange-500 text-white' : 'border-slate-300 bg-white'
+                  active
+                    ? 'border-orange-500 bg-orange-500 text-white'
+                    : 'border-slate-300 bg-white'
                 }`}
               >
                 {active ? <CheckIcon className="h-3.5 w-3.5" /> : null}
@@ -314,13 +322,10 @@ export default function ProposalClient({
   const data = load.key === loadKey ? load.data : null;
   const doc = data?.document ?? null;
 
-  const defaultTierIndex = useCallback(
-    (group: DocOptionGroup) => {
-      const idx = group.tiers.findIndex((t) => t.selected);
-      return idx >= 0 ? idx : 0;
-    },
-    [],
-  );
+  const defaultTierIndex = useCallback((group: DocOptionGroup) => {
+    const idx = group.tiers.findIndex((t) => t.selected);
+    return idx >= 0 ? idx : 0;
+  }, []);
 
   // Live total: base already includes each group's default tier; swap in the
   // customer's pick (total = base - defaultTierTotal + chosenTierTotal).
@@ -374,7 +379,9 @@ export default function ProposalClient({
       window.location.href = url; // Redirect to Stripe Checkout (do not clear busy).
     } catch (e) {
       setPaying(false);
-      setPayError(e instanceof ApiError ? e.message : 'Could not start checkout. Please try again.');
+      setPayError(
+        e instanceof ApiError ? e.message : 'Could not start checkout. Please try again.',
+      );
     }
   }, [token]);
 
@@ -679,7 +686,10 @@ export default function ProposalClient({
 
             <div className="mt-5 space-y-4">
               <div>
-                <label htmlFor="signer-name" className="mb-1 block text-sm font-semibold text-slate-700">
+                <label
+                  htmlFor="signer-name"
+                  className="mb-1 block text-sm font-semibold text-slate-700"
+                >
                   Full name
                 </label>
                 <input
@@ -694,8 +704,12 @@ export default function ProposalClient({
                 />
               </div>
               <div>
-                <label htmlFor="signer-email" className="mb-1 block text-sm font-semibold text-slate-700">
-                  Email <span className="font-normal text-slate-400">(optional, for your receipt)</span>
+                <label
+                  htmlFor="signer-email"
+                  className="mb-1 block text-sm font-semibold text-slate-700"
+                >
+                  Email{' '}
+                  <span className="font-normal text-slate-400">(optional, for your receipt)</span>
                 </label>
                 <input
                   id="signer-email"
@@ -775,7 +789,9 @@ export default function ProposalClient({
                     disabled={paying}
                     className="min-h-[52px] w-full cursor-pointer rounded-xl bg-orange-600 px-6 py-3.5 text-base font-bold text-white shadow-sm transition-colors duration-200 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-600/40 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    {paying ? 'Redirecting to secure checkout…' : `Pay ${formatUsd(money(depositAmount))} deposit`}
+                    {paying
+                      ? 'Redirecting to secure checkout…'
+                      : `Pay ${formatUsd(money(depositAmount))} deposit`}
                   </button>
                   <p className="mt-2 text-center text-xs text-slate-500">
                     Secure payment powered by Stripe.
