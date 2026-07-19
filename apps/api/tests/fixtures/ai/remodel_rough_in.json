@@ -1,0 +1,98 @@
+{
+  "name": "remodel_rough_in",
+  "description": "Kitchen remodel rough-in with dictated opening counts",
+  "job": {
+    "title": "Kitchen remodel rough-in — Whitfield",
+    "job_type_code": "remodel",
+    "address": "22 N 40th Pl, Mesa, AZ"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Okay kitchen remodel over at the Whitfield place, walls are open so this is rough-in. Along the counter wall I need six receptacle openings, and three switch openings by the doorway for the disposal, lights, and the pendants. Five lighting openings in the ceiling. They also want a dedicated circuit for the dishwasher and one for the microwave. Two home run circuits back to the panel for the small appliance counters. Panel is a two story house, panel is in the garage below."
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "hazards": [],
+        "equipment": ["open stud walls", "existing romex runs"],
+        "environment": { "exterior_type": null, "stories": 2, "location": "kitchen" },
+        "ocr_text": [],
+        "confidence": "medium"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "remodel",
+    "assemblies": [
+      {
+        "code": "rough_in_receptacle_opening",
+        "qty": 6,
+        "modifiers": ["two_story"],
+        "selected_tier": null,
+        "evidence": "transcript: 'six receptacle openings' along the counter wall; 'two story house'"
+      },
+      {
+        "code": "rough_in_switch_opening",
+        "qty": 3,
+        "modifiers": ["two_story"],
+        "selected_tier": null,
+        "evidence": "transcript: 'three switch openings by the doorway'"
+      },
+      {
+        "code": "rough_in_lighting_opening",
+        "qty": 5,
+        "modifiers": ["two_story"],
+        "selected_tier": null,
+        "evidence": "transcript: 'five lighting openings in the ceiling'"
+      },
+      {
+        "code": "circuit_dedicated_dishwasher",
+        "qty": 1,
+        "modifiers": [],
+        "selected_tier": null,
+        "evidence": "transcript: 'dedicated circuit for the dishwasher'"
+      },
+      {
+        "code": "circuit_dedicated_microwave",
+        "qty": 1,
+        "modifiers": [],
+        "selected_tier": null,
+        "evidence": "transcript: 'one for the microwave'"
+      },
+      {
+        "code": "rough_in_home_run_circuit",
+        "qty": 2,
+        "modifiers": ["two_story"],
+        "selected_tier": null,
+        "evidence": "transcript: 'two home run circuits back to the panel for the small appliance counters'"
+      }
+    ],
+    "allowances": [
+      {
+        "description": "Trim-out (devices, plates, fixtures) after drywall",
+        "suggested_amount_basis": "verify",
+        "reason": "Only rough-in was dictated; trim-out scope and fixture count to be confirmed at the trim stage."
+      }
+    ],
+    "verify_flags": [
+      {
+        "item": "Panel breaker space for two new home-run circuits plus dishwasher and microwave",
+        "action": "Open the garage panel and confirm available spaces before rough-in."
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "Kitchen counter receptacles will be laid out to current spacing and GFCI/AFCI protection requirements — final device protection to be confirmed by the licensed contractor at trim.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "With the kitchen walls open, we will complete the electrical rough-in for your remodel. Along the counter wall we will install six receptacle openings, with three switch openings at the doorway to control the disposal, general lighting, and the pendants, plus five lighting openings in the ceiling.\n\nWe will also rough in a dedicated circuit for the dishwasher and a dedicated circuit for the microwave, and pull two new home-run circuits back to the panel to serve the countertop small-appliance receptacles.\n\nBecause the panel serves a two-story home from the garage, we have flagged a site check to confirm breaker space for the new circuits. Trim-out after drywall is carried as an allowance — to be confirmed once fixtures and device selections are final.",
+    "questions_for_contractor": [
+      "Are the pendants switched separately from the general kitchen lighting?",
+      "Will trim-out be quoted now or after drywall?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

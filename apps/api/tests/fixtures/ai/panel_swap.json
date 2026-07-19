@@ -1,0 +1,86 @@
+{
+  "name": "panel_swap",
+  "description": "100A Zinsco panel upgraded to 200A on an overhead service; stucco exterior, occupied home.",
+  "job": {
+    "title": "Panel upgrade - Alvarez residence",
+    "job_type_code": "panel_upgrade",
+    "address": "1418 Maple Ct, Riverside, CA"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Okay, Alvarez house. They've got an old hundred amp Zinsco panel out on the side of the garage and they want to go to two hundred amps. Service drop comes in overhead off the pole, mast looks original. It's stucco outside so we'll be cutting and patching stucco around the new can. Family is living in the home, furniture everywhere, so plan for protection and cleanup. Breakers inside look tired, couple of them are discolored."
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": {
+          "brand": "Zinsco",
+          "amperage": 100,
+          "breaker_spaces_total": 20,
+          "breaker_spaces_free": 0,
+          "condition_flags": ["discolored breakers", "obsolete brand", "corrosion on bus"]
+        },
+        "hazards": ["known-problem panel brand (Zinsco)"],
+        "equipment": ["load center", "overhead service entrance cable"],
+        "environment": {
+          "exterior_type": null,
+          "stories": null,
+          "location": "garage exterior wall"
+        },
+        "ocr_text": ["ZINSCO", "100"],
+        "confidence": "high"
+      }
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": null,
+        "hazards": [],
+        "equipment": ["service mast", "weatherhead"],
+        "environment": {
+          "exterior_type": "stucco",
+          "stories": 1,
+          "location": "exterior wall"
+        },
+        "ocr_text": [],
+        "confidence": "medium"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "panel_upgrade",
+    "assemblies": [
+      {
+        "code": "panel_upgrade_100_200_overhead",
+        "qty": 1,
+        "modifiers": ["stucco_exterior", "panel_brand_obsolete", "occupied_home"],
+        "selected_tier": null,
+        "evidence": "transcript: 'hundred amp Zinsco panel... want to go to two hundred amps', 'service drop comes in overhead off the pole', 'stucco outside', 'family is living in the home'; photo: Zinsco 100A panel, stucco exterior with overhead mast"
+      }
+    ],
+    "allowances": [],
+    "verify_flags": [
+      {
+        "item": "Grounding electrode system not visible in photos",
+        "action": "Verify ground rods and water pipe bond on site; new electrodes are included in the upgrade but existing conditions should be confirmed"
+      },
+      {
+        "item": "Service mast condition described as 'original'",
+        "action": "Confirm mast and roof flashing condition during the site walk; replacement is included in the overhead upgrade scope"
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "The existing panel is a Zinsco brand, which is widely flagged by inspectors and insurers for breaker and bus reliability problems. Replacing it is strongly recommended and this proposal does exactly that.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "We will replace your existing 100-amp Zinsco electrical panel with a new 200-amp service on the same garage wall. This is a complete service change: a new panel and main breaker, a new meter socket, a new service mast and weatherhead for the overhead utility drop, and a code-compliant grounding system with new ground rods and a water pipe bond. Every existing circuit in the home will be carefully labeled, transferred to the new panel, and re-terminated on new breakers.\n\nYour current panel is a Zinsco, a discontinued brand with a documented history of breakers failing to trip. The discoloration we observed on several breakers is consistent with that pattern, and the upgrade removes this equipment from your home entirely. Because the panel sits on a stucco wall, our scope includes cutting the stucco cleanly around the new equipment and sealing and patching the penetrations when we finish.\n\nSince your family will be home during the work, we will protect the surrounding area, keep the power outage window as short as the utility allows, and leave the workspace clean each day. We coordinate the utility disconnect and reconnect as part of this project, and we will confirm the condition of the grounding system and service mast on site before work begins.",
+    "questions_for_contractor": [
+      "Will the utility require a same-day inspection sign-off before reconnect in this jurisdiction?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

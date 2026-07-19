@@ -1,0 +1,28 @@
+{
+  "name": "wrong_trade",
+  "description": "Plumbing/painting request — graceful outside-supported-scope path",
+  "job": {
+    "title": "Water heater + bathroom",
+    "job_type_code": null,
+    "address": null
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Customer wants their water heater replaced, it's leaking from the bottom, and while we're at it the bathroom repainted, ceiling too. Maybe fix the toilet flapper."
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "other",
+    "assemblies": [],
+    "allowances": [],
+    "verify_flags": [],
+    "code_notes": [],
+    "scope_prose": "The work described — replacing a leaking water heater, repainting the bathroom, and repairing a toilet — is plumbing and painting work, which falls outside the electrical services this company provides. If the water heater replacement ends up needing electrical work, such as a new dedicated circuit or disconnect for an electric unit, we would be glad to quote that portion once the plumber has specified the equipment.",
+    "questions_for_contractor": [
+      "If the replacement heater is electric, should we quote the circuit/disconnect work separately?"
+    ],
+    "outside_supported_scope": true,
+    "outside_reason": "Water heater replacement, painting, and toilet repair are plumbing/painting trades, not electrical work."
+  }
+}

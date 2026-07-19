@@ -1,0 +1,68 @@
+{
+  "name": "ev_charger_long_run",
+  "description": "48A hardwired EV charger with a ~60 ft attic run; panel capacity unconfirmed.",
+  "job": {
+    "title": "EV charger install - Patel",
+    "job_type_code": "ev_charger",
+    "address": "77 Birchwood Dr, Chandler, AZ"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "EV charger for the Patels. They bought a forty-eight amp hardwired unit, want it on the far garage wall by the driveway side. I paced it off, it's about sixty feet from the panel to that wall, and the cleanest path is up and over through the attic. Panel is a two hundred amp with some open spaces but I didn't run the numbers on capacity yet, they've also got AC and an electric range, so we need to check the load before we commit to a sixty amp breaker."
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": {
+          "brand": null,
+          "amperage": 200,
+          "breaker_spaces_total": 40,
+          "breaker_spaces_free": 4,
+          "condition_flags": []
+        },
+        "hazards": [],
+        "equipment": ["load center"],
+        "environment": {
+          "exterior_type": null,
+          "stories": 1,
+          "location": "garage"
+        },
+        "ocr_text": ["200"],
+        "confidence": "medium"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "ev_charger",
+    "assemblies": [
+      {
+        "code": "ev_charger_48a_install_50_100ft",
+        "qty": 1,
+        "modifiers": ["attic_run"],
+        "selected_tier": null,
+        "evidence": "transcript: 'forty-eight amp hardwired unit', 'about sixty feet from the panel to that wall', 'cleanest path is up and over through the attic'"
+      }
+    ],
+    "allowances": [
+      {
+        "description": "Electrical load calculation and panel capacity confirmation before adding the 60-amp EV circuit",
+        "suggested_amount_basis": "labor_only",
+        "reason": "The contractor stated the load calc has not been run yet ('I didn't run the numbers on capacity yet') and the home has AC and an electric range; capacity for the new breaker must be confirmed before installation"
+      }
+    ],
+    "verify_flags": [
+      {
+        "item": "Panel capacity for a 60A EV breaker with existing AC and electric range loads",
+        "action": "Complete the NEC load calculation on site; if capacity falls short, present a load-management option instead of a service upgrade"
+      }
+    ],
+    "code_notes": [],
+    "scope_prose": "We will install your 48-amp hardwired Level 2 EV charger on the far garage wall near the driveway, right where you park. The charger will be fed by its own new 60-amp circuit from your main electrical panel, run approximately sixty feet through the attic so the wiring stays hidden and out of the way. The scope includes the new breaker, the full cable run, mounting and wiring the charger, and testing a complete charging session before we leave.\n\nBecause your home also has air conditioning and an electric range, we will first complete a formal load calculation to confirm your 200-amp panel can safely support the new charger circuit. This is a required step and it protects you: if the numbers show the panel is near its limit, we will walk you through options, such as a load-management device, before any wiring begins.\n\nThe attic route means we work above the ceiling rather than opening walls, which keeps the installation clean. Once the load check is confirmed, this is typically a single-day installation, and your charger will be commissioned and ready to use the same day.",
+    "questions_for_contractor": [
+      "If the load calculation comes back tight, should we quote the load-management device as an add-on option?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

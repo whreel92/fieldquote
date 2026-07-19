@@ -1,0 +1,54 @@
+{
+  "name": "ambiguous_rambling",
+  "description": "Meandering dictation mixing two jobs and chatter — model keeps only evidenced work",
+  "job": {
+    "title": "Chen follow-up — misc electrical",
+    "job_type_code": null,
+    "address": "4112 E Cactus Rd, Phoenix, AZ"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Alright so, uh, at the Chen house — grabbed lunch at that taco place, anyway — she wants the two dead outlets in the den figured out, been dead since the storm she says. Also while I was there she mentioned maybe recessed lights in the living room someday, like six or eight, she wasn't sure, gonna think about it. Oh and her sister might need a panel thing but that's a different house, don't have the address. The den outlets, yeah, trace those out and fix whatever's going on. Might just be a tripped GFCI somewhere honestly. She also asked if we do landscape lighting, told her I'd check. That's it I think."
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "service_call",
+    "assemblies": [
+      {
+        "code": "dead_outlet_trace",
+        "qty": 2,
+        "modifiers": ["occupied_home"],
+        "selected_tier": null,
+        "evidence": "transcript: 'two dead outlets in the den', 'trace those out and fix whatever's going on'"
+      }
+    ],
+    "allowances": [
+      {
+        "description": "Repair parts after dead-outlet diagnosis (device, breaker, or GFCI as found)",
+        "suggested_amount_basis": "verify",
+        "reason": "Root cause unknown until traced — 'might just be a tripped GFCI somewhere honestly'."
+      },
+      {
+        "description": "Living room recessed lighting (6–8 cans) — future option",
+        "suggested_amount_basis": "verify",
+        "reason": "Homeowner is undecided: 'maybe recessed lights in the living room someday, like six or eight, she wasn't sure'."
+      }
+    ],
+    "verify_flags": [
+      {
+        "item": "GFCI and breaker status in the den circuit",
+        "action": "Check GFCI devices and panel breakers feeding the den before opening walls."
+      }
+    ],
+    "code_notes": [],
+    "scope_prose": "We will diagnose the two dead receptacles in the den, tracing the circuit from the panel through any GFCI protection to find where power is being lost, and restore them to safe operation. If the repair needs parts beyond the diagnosis — a failed device, breaker, or GFCI — those are carried as an allowance until we see what the trace turns up.\n\nYou also mentioned possibly adding six to eight recessed lights in the living room. We have noted that as a future option and can price it separately whenever you're ready — no commitment is included in this estimate.",
+    "questions_for_contractor": [
+      "Should the living-room recessed lighting be quoted now as an option, or left out entirely?",
+      "Is the sister's panel job a separate lead to create (no address captured)?",
+      "Do we offer landscape lighting, or should the customer be referred out?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "empty_audio",
+  "description": "Silent/failed recording + one minimal photo — photo-driven with heavy hedging",
+  "job": {
+    "title": "Panel look — Patel",
+    "job_type_code": "panel_upgrade",
+    "address": "9910 S Rural Rd, Tempe, AZ"
+  },
+  "captures": [
+    { "kind": "audio", "transcript": "" },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": {
+          "brand": "Square D",
+          "amperage": null,
+          "breaker_spaces_total": null,
+          "breaker_spaces_free": null,
+          "condition_flags": []
+        },
+        "hazards": [],
+        "equipment": ["panel exterior, door closed"],
+        "environment": { "exterior_type": null, "stories": null, "location": "garage" },
+        "ocr_text": ["SQUARE D"],
+        "confidence": "low"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "panel_upgrade",
+    "assemblies": [
+      {
+        "code": "panel_tune_up",
+        "qty": 1,
+        "modifiers": ["occupied_home"],
+        "selected_tier": null,
+        "evidence": "photo: Square D panel in garage with the door closed — a panel evaluation/tune-up is the only work supportable from this capture"
+      }
+    ],
+    "allowances": [
+      {
+        "description": "Panel work scope (upgrade, swap, or repairs) pending an on-site evaluation",
+        "suggested_amount_basis": "verify",
+        "reason": "The voice note recorded no audio and the single photo shows only the closed Square D panel door — amperage, condition, and intent are all unknown."
+      }
+    ],
+    "verify_flags": [
+      {
+        "item": "Panel amperage and condition",
+        "action": "Open the dead front and document amperage, brand/series, and breaker fill."
+      },
+      {
+        "item": "Customer's actual request",
+        "action": "Re-capture the dictation — the audio came through empty."
+      }
+    ],
+    "code_notes": [],
+    "scope_prose": "Your job capture came through with a photo of the Square D panel in the garage, but the voice note did not record, so the specific work you want has not been captured yet. This draft carries a panel evaluation and tune-up as the starting point, with the balance of the panel work held as an allowance until we can confirm what's needed.\n\nOnce the dictation is re-recorded or we complete an on-site evaluation — opening the panel, documenting the amperage and breaker fill, and checking overall condition — we will replace the allowance with firm line items.",
+    "questions_for_contractor": [
+      "What work did the customer actually request? The audio capture was empty."
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

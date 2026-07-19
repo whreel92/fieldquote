@@ -1,0 +1,64 @@
+{
+  "name": "voice_only",
+  "description": "Clear dictation, no photos — receptacle adds + AFCI retrofits with counts",
+  "job": {
+    "title": "Bedroom receptacles + AFCI — Chen",
+    "job_type_code": "circuits_outlets",
+    "address": "4112 E Cactus Rd, Phoenix, AZ"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Chen house again. Three bedrooms, she wants two receptacles added in each bedroom, so six total, walls are finished drywall so we're fishing everything. And swap the three bedroom circuits over to AFCI breakers at the panel, so one AFCI plus two more. House is occupied, work around furniture."
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "circuits_outlets",
+    "assemblies": [
+      {
+        "code": "receptacle_add_existing_circuit",
+        "qty": 6,
+        "modifiers": ["finished_walls", "occupied_home"],
+        "selected_tier": null,
+        "evidence": "transcript: 'two receptacles added in each bedroom, so six total', 'walls are finished drywall so we're fishing everything', 'house is occupied'"
+      },
+      {
+        "code": "afci_breaker_retrofit_single",
+        "qty": 1,
+        "modifiers": [],
+        "selected_tier": null,
+        "evidence": "transcript: 'swap the three bedroom circuits over to AFCI breakers... so one AFCI'"
+      },
+      {
+        "code": "afci_breaker_retrofit_additional",
+        "qty": 2,
+        "modifiers": [],
+        "selected_tier": null,
+        "evidence": "transcript: '...plus two more' AFCI breakers for the remaining bedroom circuits"
+      }
+    ],
+    "allowances": [],
+    "verify_flags": [
+      {
+        "item": "Panel brand and AFCI breaker compatibility",
+        "action": "No panel photo was captured — confirm the panel accepts standard AFCI breakers before ordering."
+      },
+      {
+        "item": "Receptacle placement in each bedroom",
+        "action": "Walk each room with the homeowner to mark the six locations before cutting drywall."
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "Bedroom circuits are an AFCI-protection area under modern code; the retrofit brings these circuits in line. Final code applicability confirmed by the licensed contractor.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "We will add six new receptacles across your three bedrooms — two per room — fishing the wiring through the finished walls so drywall disturbance stays minimal. Because the home is occupied, we will protect furniture and flooring in each room and clean up fully as we go.\n\nAt the panel, the three bedroom circuits will be moved onto new AFCI (arc-fault) breakers, which add protection against the wiring faults most associated with electrical fires in sleeping areas.\n\nSince no panel photo was captured, we will confirm the panel brand and breaker compatibility on site before ordering parts, and we'll walk each bedroom with you to mark exact receptacle locations before any cutting.",
+    "questions_for_contractor": [
+      "Any preference on receptacle color/style to match existing devices?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

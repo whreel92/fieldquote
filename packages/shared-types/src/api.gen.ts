@@ -267,6 +267,92 @@ export interface paths {
     patch?: never;
     trace?: never;
   };
+  '/jobs/{job_id}/captures': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Captures */
+    get: operations['list_captures_jobs__job_id__captures_get'];
+    put?: never;
+    /** Create Capture */
+    post: operations['create_capture_jobs__job_id__captures_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/captures/{capture_id}/complete': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Complete Capture */
+    post: operations['complete_capture_captures__capture_id__complete_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/jobs/{job_id}/estimates/generate': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /** Generate */
+    post: operations['generate_jobs__job_id__estimates_generate_post'];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/jobs/{job_id}/estimates': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** List Estimates */
+    get: operations['list_estimates_jobs__job_id__estimates_get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
+  '/estimates/{estimate_id}': {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /** Get Estimate */
+    get: operations['get_estimate_estimates__estimate_id__get'];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
+  };
 }
 export type webhooks = Record<string, never>;
 export interface components {
@@ -329,6 +415,58 @@ export interface components {
       modifiers_allowed?: string[] | null;
       /** Status */
       status?: string | null;
+    };
+    /** CaptureCreated */
+    CaptureCreated: {
+      capture: components['schemas']['CaptureOut'];
+      /** Upload Url */
+      upload_url: string;
+      /** Upload Token */
+      upload_token: string;
+    };
+    /** CaptureIn */
+    CaptureIn: {
+      /**
+       * Kind
+       * @enum {string}
+       */
+      kind: 'photo' | 'audio';
+      /** Duration S */
+      duration_s?: number | string | null;
+      /** Exif */
+      exif?: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** CaptureOut */
+    CaptureOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Job Id
+       * Format: uuid
+       */
+      job_id: string;
+      /** Kind */
+      kind: string;
+      /** Storage Path */
+      storage_path: string;
+      /** Upload State */
+      upload_state: string;
+      /** Duration S */
+      duration_s: string | null;
+      /** Has Transcript */
+      has_transcript: boolean;
+      /** Has Vision Findings */
+      has_vision_findings: boolean;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
     };
     /** ClientIn */
     ClientIn: {
@@ -431,6 +569,119 @@ export interface components {
       settings?: {
         [key: string]: unknown;
       } | null;
+    };
+    /** EstimateDetail */
+    EstimateDetail: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Job Id
+       * Format: uuid
+       */
+      job_id: string;
+      /** Version */
+      version: number;
+      /** Status */
+      status: string;
+      /** Source */
+      source: string;
+      /** Totals */
+      totals: {
+        [key: string]: unknown;
+      } | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+      /** Scope Prose */
+      scope_prose: string | null;
+      /** Ai Output */
+      ai_output: {
+        [key: string]: unknown;
+      } | null;
+      /** Lines */
+      lines: components['schemas']['EstimateLineOut'][];
+    };
+    /** EstimateLineOut */
+    EstimateLineOut: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /** Position */
+      position: number;
+      /** Assembly Code */
+      assembly_code: string | null;
+      /** Description */
+      description: string;
+      /** Qty */
+      qty: string;
+      /** Unit */
+      unit: string | null;
+      /** Material Cost */
+      material_cost: string | null;
+      /** Labor Hours */
+      labor_hours: string | null;
+      /** Labor Rate */
+      labor_rate: string | null;
+      /** Line Type */
+      line_type: string;
+      /** Price Source */
+      price_source: string;
+      /** Confidence */
+      confidence: string;
+      /** Editable Note */
+      editable_note: string | null;
+      /** Totals */
+      totals: {
+        [key: string]: unknown;
+      } | null;
+    };
+    /** EstimateSummary */
+    EstimateSummary: {
+      /**
+       * Id
+       * Format: uuid
+       */
+      id: string;
+      /**
+       * Job Id
+       * Format: uuid
+       */
+      job_id: string;
+      /** Version */
+      version: number;
+      /** Status */
+      status: string;
+      /** Source */
+      source: string;
+      /** Totals */
+      totals: {
+        [key: string]: unknown;
+      } | null;
+      /**
+       * Created At
+       * Format: date-time
+       */
+      created_at: string;
+    };
+    /** GenerateQueued */
+    GenerateQueued: {
+      /**
+       * Status
+       * @default queued
+       */
+      status: string;
+      /**
+       * Job Id
+       * Format: uuid
+       */
+      job_id: string;
     };
     /** HTTPValidationError */
     HTTPValidationError: {
@@ -1498,6 +1749,196 @@ export interface operations {
         };
         content: {
           'application/json': components['schemas']['PricedEstimate'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  list_captures_jobs__job_id__captures_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CaptureOut'][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  create_capture_jobs__job_id__captures_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody: {
+      content: {
+        'application/json': components['schemas']['CaptureIn'];
+      };
+    };
+    responses: {
+      /** @description Successful Response */
+      201: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CaptureCreated'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  complete_capture_captures__capture_id__complete_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        capture_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['CaptureOut'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  generate_jobs__job_id__estimates_generate_post: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      202: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['GenerateQueued'];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  list_estimates_jobs__job_id__estimates_get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        job_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateSummary'][];
+        };
+      };
+      /** @description Validation Error */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['HTTPValidationError'];
+        };
+      };
+    };
+  };
+  get_estimate_estimates__estimate_id__get: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        estimate_id: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description Successful Response */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          'application/json': components['schemas']['EstimateDetail'];
         };
       };
       /** @description Validation Error */

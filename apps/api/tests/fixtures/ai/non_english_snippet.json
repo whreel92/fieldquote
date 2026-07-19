@@ -1,0 +1,61 @@
+{
+  "name": "non_english_snippet",
+  "description": "Transcript partly in Spanish — model maps it correctly and quotes it as evidence",
+  "job": {
+    "title": "Panel upgrade — Ramirez",
+    "job_type_code": "panel_upgrade",
+    "address": "1830 W Maldonado Rd, Phoenix, AZ"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Okay Ramirez house. El dueño quiere cambiar el panel, cien amperios a doscientos. Overhead service drop. La casa es de estuco. Permit lo manejamos nosotros. Panel is original to the house, breaker spaces are full."
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": {
+          "brand": null,
+          "amperage": 100,
+          "breaker_spaces_total": 20,
+          "breaker_spaces_free": 0,
+          "condition_flags": ["rust"]
+        },
+        "hazards": ["rust at panel bottom"],
+        "equipment": ["overhead service drop", "meter"],
+        "environment": { "exterior_type": "stucco", "stories": 1, "location": "exterior wall" },
+        "ocr_text": ["100"],
+        "confidence": "high"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "panel_upgrade",
+    "assemblies": [
+      {
+        "code": "panel_upgrade_100_200_overhead",
+        "qty": 1,
+        "modifiers": ["stucco_exterior", "permit_handling"],
+        "selected_tier": null,
+        "evidence": "transcript: 'cambiar el panel, cien amperios a doscientos' (change the panel, 100 amps to 200), 'overhead service drop', 'la casa es de estuco', 'permit lo manejamos nosotros'"
+      }
+    ],
+    "allowances": [],
+    "verify_flags": [
+      {
+        "item": "Rust at panel bottom — feeder and bus condition",
+        "action": "Inspect conductor condition behind the dead front during the upgrade; photo shows rust at the panel bottom."
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "A full panel with zero free spaces is a common driver for a 200A upgrade; final circuit layout and any required protective breakers to be confirmed by the licensed contractor.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "We will upgrade your electrical service from 100 amps to 200 amps, replacing the original panel on the stucco exterior wall with a new 200-amp load center fed from the existing overhead service drop. The current panel is completely full, and the upgrade provides both the capacity and the breaker space your home needs.\n\nOur office will handle the permit and utility coordination, including scheduling the disconnect and reconnect with the power company. The photo shows rust at the base of the existing panel, so we will inspect the conductors during the changeover and address anything of concern with you before proceeding.",
+    "questions_for_contractor": [],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

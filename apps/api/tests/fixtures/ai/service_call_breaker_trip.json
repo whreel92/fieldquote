@@ -1,0 +1,51 @@
+{
+  "name": "service_call_breaker_trip",
+  "description": "Kitchen breaker repeatedly tripping; diagnostic visit with repair quoted after findings.",
+  "job": {
+    "title": "Service call - kitchen breaker tripping",
+    "job_type_code": "service_call",
+    "address": "302 Elm St, Des Moines, IA"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Service call for tomorrow morning. Homeowner says the breaker keeps tripping in the kitchen, mostly when the microwave and toaster run at the same time, but she says it also popped once overnight with nothing on. Could be a simple overload on a shared circuit, could be a loose neutral or a failing breaker. Family lives there full time. I want to split the circuit and load test it before we promise anything."
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "service_call",
+    "assemblies": [
+      {
+        "code": "breaker_trip_diagnosis",
+        "qty": 1,
+        "modifiers": ["occupied_home"],
+        "selected_tier": null,
+        "evidence": "transcript: 'the breaker keeps tripping in the kitchen', 'I want to split the circuit and load test it'; occupied: 'family lives there full time'"
+      }
+    ],
+    "allowances": [
+      {
+        "description": "Repair of the fault once identified (device, wiring, or breaker replacement)",
+        "suggested_amount_basis": "verify",
+        "reason": "The cause is not yet known - the contractor noted it 'could be a simple overload... could be a loose neutral or a failing breaker'; repair scope and pricing follow the diagnosis"
+      }
+    ],
+    "verify_flags": [
+      {
+        "item": "Overnight trip with no loads running",
+        "action": "Test for ground faults and loose connections, not just overload - a no-load trip suggests a wiring or breaker fault rather than appliance use"
+      },
+      {
+        "item": "Kitchen circuit configuration",
+        "action": "Confirm whether the microwave and countertop receptacles share one circuit; a dedicated circuit may be the right fix"
+      }
+    ],
+    "code_notes": [],
+    "scope_prose": "A breaker that trips repeatedly is your electrical system doing its job - shutting power off before a problem becomes a hazard. Our first visit is a systematic diagnosis: we will identify which circuit is affected, split it into sections, and load-test each one to pinpoint whether the cause is too many appliances sharing one circuit, a loose or damaged connection, or a breaker that is wearing out.\n\nYou mentioned the breaker has also tripped overnight with nothing running. That detail matters, and we will specifically test for wiring faults rather than assuming a simple overload. During the visit we work carefully around your kitchen and keep disruption to a minimum since your family is home.\n\nAt the end of the diagnosis you will get a clear explanation of what we found and a written quote for the specific repair before any additional work happens. Nothing beyond the diagnosis is done without your approval.",
+    "questions_for_contractor": [
+      "Should a dedicated microwave circuit be offered proactively if the diagnosis confirms a shared, overloaded kitchen circuit?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "name": "fan_install",
+  "description": "Ceiling fan where only a light box exists — needs fan-rated box",
+  "job": {
+    "title": "Ceiling fan install — master bedroom",
+    "job_type_code": "fixtures_fans",
+    "address": null
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Master bedroom ceiling fan swap. There's just a light up there now and the box is a plastic light box, not fan rated, so we need a new fan rated box. Attic access is above it which helps. Customer bought their own fan. Occupied house, furniture everywhere."
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "hazards": [],
+        "equipment": ["existing ceiling light fixture", "plastic round ceiling box"],
+        "environment": { "exterior_type": null, "stories": 1, "location": "bedroom ceiling" },
+        "ocr_text": [],
+        "confidence": "high"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "fixtures_fans",
+    "assemblies": [
+      {
+        "code": "ceiling_fan_install_new_fan_box",
+        "qty": 1,
+        "modifiers": ["occupied_home", "attic_run"],
+        "selected_tier": null,
+        "evidence": "transcript: 'plastic light box, not fan rated, so we need a new fan rated box'; 'attic access is above it'; 'occupied house'"
+      }
+    ],
+    "allowances": [],
+    "verify_flags": [
+      {
+        "item": "Customer-supplied fan condition and completeness",
+        "action": "Inspect the boxed fan for all mounting hardware before removing the existing fixture."
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "Ceiling fans must hang from a listed fan-rated box — the existing plastic light box will be replaced with a fan-rated brace box, confirmed by the licensed contractor at installation.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "We will replace the existing light fixture in the master bedroom with your new ceiling fan. The current ceiling box is a plastic light-only box that is not rated to carry a fan, so we will install a new fan-rated brace box, working from the attic access directly above for a clean installation.\n\nYour supplied fan will be assembled, hung on the new box, balanced, and tested on all speeds. We will protect flooring and furniture in the work area and leave the room as we found it.",
+    "questions_for_contractor": [
+      "Does the customer want a fan-speed/light wall control added, or keep the existing switch?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "hot_tub",
+  "description": "50A GFCI hot tub circuit, ~40ft run with trenching",
+  "job": {
+    "title": "Hot tub circuit — O'Rourke",
+    "job_type_code": "circuits_outlets",
+    "address": "313 E Osborn Rd, Phoenix, AZ"
+  },
+  "captures": [
+    {
+      "kind": "audio",
+      "transcript": "Hot tub hookup in the backyard. Tub pad is about forty feet from the panel. Fifty amp GFCI, needs the disconnect within sight of the tub. We'll have to trench across the yard from the house to the pad, maybe twenty feet of trench, rest runs along the stucco wall. Homeowner is living there so keep the power off windows short."
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": {
+          "brand": "Eaton",
+          "amperage": 200,
+          "breaker_spaces_total": 40,
+          "breaker_spaces_free": 6,
+          "condition_flags": []
+        },
+        "hazards": [],
+        "equipment": ["200A load center"],
+        "environment": { "exterior_type": "stucco", "stories": 1, "location": "exterior wall" },
+        "ocr_text": ["EATON", "200"],
+        "confidence": "high"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "circuits_outlets",
+    "assemblies": [
+      {
+        "code": "hot_tub_50a_gfci_25_50ft",
+        "qty": 1,
+        "modifiers": ["trench_required", "stucco_exterior", "occupied_home"],
+        "selected_tier": null,
+        "evidence": "transcript: 'tub pad is about forty feet from the panel', 'fifty amp GFCI', 'trench across the yard', 'runs along the stucco wall', 'homeowner is living there'"
+      }
+    ],
+    "allowances": [],
+    "verify_flags": [
+      {
+        "item": "Disconnect placement within sight of the tub",
+        "action": "Confirm final disconnect location meets clearance from the water's edge on site."
+      },
+      {
+        "item": "Trench length and surface restoration",
+        "action": "Measure the actual trench run (~20 ft dictated) and confirm who handles landscape restoration."
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "Hot tub circuits require GFCI protection and a maintenance disconnect within sight of the tub — layout to be confirmed by the licensed contractor during installation.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "We will install a new 50-amp GFCI-protected circuit from your 200-amp Eaton panel to the hot tub pad in the backyard, a run of roughly forty feet. The panel photo confirms available breaker space for the new circuit.\n\nThe run will be trenched across the yard section between the house and the pad, with the remainder routed in conduit along the stucco exterior wall. A weatherproof maintenance disconnect will be mounted within sight of the tub as required for safe service access.\n\nBecause the home is occupied, we will schedule the brief power-down windows with you in advance and keep them as short as possible. Final disconnect placement and the exact trench footage will be confirmed on site.",
+    "questions_for_contractor": [
+      "Is the yard section irrigated or hardscaped where the trench crosses?"
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "name": "photo_only",
+  "description": "No dictation — three panel photos drive a panel-focused scope with verify flags",
+  "job": {
+    "title": "Panel service — Martinez",
+    "job_type_code": "panel_upgrade",
+    "address": "788 W Elm St, Scottsdale, AZ"
+  },
+  "captures": [
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "panel": {
+          "brand": "Federal Pacific",
+          "amperage": 100,
+          "breaker_spaces_total": 24,
+          "breaker_spaces_free": 0,
+          "condition_flags": ["obsolete_brand", "double_tap", "scorching"]
+        },
+        "hazards": ["scorching around one stab", "double-tapped breaker"],
+        "equipment": ["Stab-Lok breakers"],
+        "environment": { "exterior_type": null, "stories": null, "location": "garage" },
+        "ocr_text": ["FEDERAL PACIFIC", "STAB-LOK", "100"],
+        "confidence": "high"
+      }
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "hazards": [],
+        "equipment": ["meter", "overhead service drop", "service mast"],
+        "environment": { "exterior_type": "stucco", "stories": 1, "location": "exterior wall" },
+        "ocr_text": [],
+        "confidence": "high"
+      }
+    },
+    {
+      "kind": "photo",
+      "vision_findings": {
+        "hazards": [],
+        "equipment": ["single ground rod visible at foundation"],
+        "environment": {
+          "exterior_type": "stucco",
+          "stories": 1,
+          "location": "exterior foundation"
+        },
+        "ocr_text": [],
+        "confidence": "medium"
+      }
+    }
+  ],
+  "expected_scoping": {
+    "job_type_code": "panel_upgrade",
+    "assemblies": [
+      {
+        "code": "panel_upgrade_100_200_overhead",
+        "qty": 1,
+        "modifiers": ["stucco_exterior", "panel_brand_obsolete"],
+        "selected_tier": null,
+        "evidence": "photos: Federal Pacific Stab-Lok 100A panel with scorching and a double-tap; overhead service drop on a stucco exterior"
+      }
+    ],
+    "allowances": [
+      {
+        "description": "Branch-circuit corrections discovered during the changeover",
+        "suggested_amount_basis": "verify",
+        "reason": "Scorching and a double-tapped breaker are visible; the full extent of conductor damage is unknown until the old panel is opened up."
+      }
+    ],
+    "verify_flags": [
+      {
+        "item": "Grounding electrode system",
+        "action": "Only one ground rod is visible at the foundation — verify the grounding system and bonding during the upgrade."
+      },
+      {
+        "item": "Customer intent and schedule",
+        "action": "No dictation was captured — confirm the homeowner's goals before sending."
+      }
+    ],
+    "code_notes": [
+      {
+        "note": "Federal Pacific Stab-Lok panels are widely flagged by inspectors and insurers for reliability concerns; replacement is recommended. Final determination by the licensed contractor.",
+        "customer_visible": true
+      }
+    ],
+    "scope_prose": "The photos show a 100-amp Federal Pacific Stab-Lok panel that is completely full, with visible scorching at one breaker stab and a double-tapped breaker. Federal Pacific equipment of this era is widely flagged by home inspectors and insurance carriers, and the visible heat damage makes replacement the safe path forward.\n\nWe will replace the existing service with a new 200-amp panel fed from your overhead service drop, rebuilt cleanly on the stucco exterior wall. All existing circuits will be transferred to new breakers, the double-tap corrected with proper terminations, and the grounding and bonding brought up to standard — the visible single ground rod will be verified and supplemented as needed during the work.\n\nAn allowance is carried for branch-circuit repairs that may surface once the old panel is opened, since heat-damaged conductors can't be fully assessed until then.",
+    "questions_for_contractor": [
+      "No dictation came through — confirm the customer asked for a full upgrade rather than a repair."
+    ],
+    "outside_supported_scope": false,
+    "outside_reason": null
+  }
+}
