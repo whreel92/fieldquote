@@ -113,6 +113,84 @@ class CompanyRate(Base):
     overrides: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict)
 
 
+class Capture(Base):
+    __tablename__ = "captures"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    job_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("jobs.id", ondelete="CASCADE")
+    )
+    kind: Mapped[str] = mapped_column(Text)  # photo | audio
+    storage_path: Mapped[str] = mapped_column(Text)
+    duration_s: Mapped[Decimal | None] = mapped_column(Numeric)
+    exif: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    transcript: Mapped[str | None] = mapped_column(Text)
+    vision_findings: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    upload_state: Mapped[str] = mapped_column(Text, default="pending")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+
+class Estimate(Base):
+    __tablename__ = "estimates"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    job_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("jobs.id", ondelete="CASCADE")
+    )
+    version: Mapped[int] = mapped_column(default=1)
+    status: Mapped[str] = mapped_column(Text, default="draft")
+    source: Mapped[str] = mapped_column(Text, default="ai")
+    scope_prose: Mapped[str | None] = mapped_column(Text)
+    ai_output: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    totals: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+    approved_by: Mapped[uuid.UUID | None] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("users.id", ondelete="SET NULL")
+    )
+    approved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=func.now()
+    )
+
+    lines: Mapped[list["EstimateLine"]] = relationship(
+        back_populates="estimate", order_by="EstimateLine.position"
+    )
+
+
+class EstimateLine(Base):
+    __tablename__ = "estimate_lines"
+
+    id: Mapped[uuid.UUID] = mapped_column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    company_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("companies.id", ondelete="CASCADE")
+    )
+    estimate_id: Mapped[uuid.UUID] = mapped_column(
+        UUID(as_uuid=True), ForeignKey("estimates.id", ondelete="CASCADE")
+    )
+    position: Mapped[int] = mapped_column()
+    assembly_code: Mapped[str | None] = mapped_column(Text)
+    description: Mapped[str] = mapped_column(Text)
+    qty: Mapped[Decimal] = mapped_column(Numeric, default=Decimal(1))
+    unit: Mapped[str | None] = mapped_column(Text)
+    material_cost: Mapped[Decimal | None] = mapped_column(Numeric)
+    labor_hours: Mapped[Decimal | None] = mapped_column(Numeric)
+    labor_rate: Mapped[Decimal | None] = mapped_column(Numeric)
+    line_type: Mapped[str] = mapped_column(Text, default="standard")
+    price_source: Mapped[str] = mapped_column(Text, default="engine")
+    confidence: Mapped[str] = mapped_column(Text, default="known")
+    editable_note: Mapped[str | None] = mapped_column(Text)
+    totals: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
+
+    estimate: Mapped[Estimate] = relationship(back_populates="lines")
+
+
 class MaterialItem(Base):
     """Global pricing catalog — not tenant-scoped."""
 

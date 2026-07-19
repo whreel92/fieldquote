@@ -9,7 +9,9 @@ the `dev_mode` setting enabled. Placeholder prices must never reach a real
 customer.
 """
 
+import json
 from decimal import Decimal
+from pathlib import Path
 from typing import Any
 
 from sqlalchemy import select
@@ -40,6 +42,7 @@ def _to_assembly(row: Assembly) -> CatalogAssembly:
         "name": row.name,
         "description": row.description or "",
         "unit": row.unit,
+        "job_type_codes": tuple(row.job_type_codes),
         "labor_hours": row.labor_hours,
         "helper_hours": row.helper_hours,
         "bom": row.bom,
@@ -99,3 +102,54 @@ def load_company_rates(db: Session, company: Company) -> CompanyRates:
 
 def company_region(company: Company) -> str:
     return str(company.settings.get("region", "default"))
+
+
+def load_catalog_from_seed_files(catalog_dir: Path | None = None) -> Catalog:
+    """Build a Catalog straight from seeds/catalog/*.json — no DB. Used by
+    AI contract tests and the eval harness so they validate against the real
+    shipped catalog."""
+    directory = catalog_dir or Path(__file__).resolve().parents[3] / "seeds" / "catalog"
+
+    def _read(name: str) -> list[dict[str, Any]]:
+        with open(directory / name, encoding="utf-8") as fh:
+            data: list[dict[str, Any]] = json.load(fh)
+        return data
+
+    assemblies = [
+        CatalogAssembly.model_validate(
+            {
+                "code": item["code"],
+                "name": item["name"],
+                "description": item.get("description", ""),
+                "unit": item.get("unit", "ea"),
+                "job_type_codes": tuple(item.get("job_type_codes", [])),
+                "labor_hours": str(item["labor_hours"]),
+                "helper_hours": str(item.get("helper_hours", 0)),
+                "bom": item.get("bom", []),
+                "modifiers_allowed": tuple(item.get("modifiers_allowed", [])),
+                "option_tiers": tuple(item.get("option_tiers") or ()),
+                "status": "draft",
+            }
+        )
+        for path in sorted(directory.glob("assemblies_*.json"))
+        for item in _read(path.name)
+    ]
+    materials = [
+        CatalogMaterial.model_validate(
+            {
+                "sku": item["sku"],
+                "description": item["description"],
+                "unit": item["unit"],
+                "base_price": str(item["base_price"]),
+                "region_multipliers": item.get("region_multipliers", {}),
+            }
+        )
+        for item in _read("materials.json")
+    ]
+    modifiers = [
+        CatalogModifier.model_validate(
+            {"code": item["code"], "name": item["name"], "effect": item["effect"]}
+        )
+        for item in _read("modifiers.json")
+    ]
+    return Catalog.build(assemblies=assemblies, materials=materials, modifiers=modifiers)

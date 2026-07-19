@@ -44,6 +44,8 @@ class CatalogAssembly(_Frozen):
     name: str
     description: str = ""
     unit: str = "ea"
+    # Not used by the engine; carried for the scoping catalog summary.
+    job_type_codes: tuple[str, ...] = ()
     labor_hours: Decimal = Field(ge=ZERO)
     helper_hours: Decimal = Field(default=ZERO, ge=ZERO)
     bom: tuple[BomLine, ...] = ()
